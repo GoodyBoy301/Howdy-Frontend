@@ -21,6 +21,7 @@ export default {
   --primary: #7c00ff;
   --primaryO: #7c00ff27;
   --secondary: #fedcba;
+  --red: #ff2360;
 }
 * {
   margin: 0;
@@ -35,6 +36,7 @@ export default {
   background-color: var(--secondary);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  overflow: hidden;
 }
 #app > .layout {
   height: 100vh;

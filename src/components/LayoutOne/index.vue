@@ -1,13 +1,14 @@
 <template>
   <div class="layout">
-    <Tab
-      ><img src="../../assets/Howdy.svg" width="150" height="30" /><em
-        >+</em
-      ></Tab
-    >
+    <Tab><img src="../../assets/Howdy.svg" width="150" height="30" /></Tab>
     <Body
       ><div class="articles">
-        <Post v-for="post in posts" :key="post.id" :post="post"> </Post></div
+        <Post
+          v-for="post in posts"
+          :key="post.id"
+          :liked="false"
+          :post="post"
+        /></div
     ></Body>
     <Footer>hdjbj</Footer>
   </div>
