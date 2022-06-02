@@ -19,6 +19,7 @@ export default {
 <style>
 :root {
   --primary: #7c00ff;
+  --primaryO: #7c00ff27;
   --secondary: #fedcba;
 }
 * {

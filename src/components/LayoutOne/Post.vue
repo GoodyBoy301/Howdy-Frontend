@@ -3,6 +3,7 @@
     <div class="title">
       <DP addClass="scale">{{ post.author[0] }}</DP>
       <span class="user">{{ post.author }}</span>
+      <span class="like">32❤ </span>
     </div>
     <div>{{ post.content }}</div>
   </article>
@@ -18,21 +19,29 @@ export default {
 
 <style scoped>
 article {
-  background: var(--primary);
+  background: var(--primaryO);
+
   margin-bottom: 2%;
   border-radius: 2%;
   padding: 2%;
 }
 .title {
   position: relative;
-  background: green;
   display: flex;
+  justify-content: space-between;
+  color: var(--primary);
 }
 .user {
-  margin-left: 15%;
+  margin-left: 13%;
   font-size: 14px;
 }
 .user::before {
   content: "@";
+}
+.like {
+  margin-right: 5%;
+}
+.liked {
+  color: red;
 }
 </style>
