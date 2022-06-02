@@ -10,7 +10,8 @@
           :post="post"
         /></div
     ></Body>
-    <Fab />
+    <CreatePost v-if="create"><Fab @click="handleCreate" /></CreatePost>
+    <Fab @click="handleCreate" />
   </div>
 </template>
 
@@ -20,14 +21,21 @@ import Tab from "../Tab.vue";
 
 import posts from "../../data/posts";
 import Post from "./Post.vue";
-import Fab from "../Fab.vue";
+import Fab from "./Fab.vue";
+import CreatePost from "./CreatePost.vue";
 
 export default {
-  components: { Tab, Body, Post, Fab },
+  components: { Tab, Body, Post, Fab, CreatePost },
   data() {
     return {
       posts,
+      create: false,
     };
+  },
+  methods: {
+    handleCreate() {
+      this.create = !this.create;
+    },
   },
 };
 </script>

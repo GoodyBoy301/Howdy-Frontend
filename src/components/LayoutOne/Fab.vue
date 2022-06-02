@@ -14,7 +14,7 @@ export default {};
   height: 50px;
   width: 50px;
   background: var(--primary);
-  position: fixed;
+  position: absolute;
   bottom: 8px;
   border-radius: 100%;
   left: 8px;
