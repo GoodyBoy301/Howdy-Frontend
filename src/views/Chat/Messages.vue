@@ -8,10 +8,11 @@ export default {};
 
 <style scoped>
 .messages {
-  background: peru;
-  height: 85vh;
-  width: calc(100vw / 3 - 1px);
+  background: var(--peru);
+  height: 90vh;
+  width: 33%;
+  margin: auto;
   position: fixed;
-  bottom: 10vh;
+  top: 10vh;
 }
 </style>

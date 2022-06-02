@@ -22,6 +22,7 @@ export default {
   --primaryO: #7c00ff27;
   --secondary: #fedcba;
   --red: #ff2360;
+  --peru: peru;
 }
 * {
   margin: 0;
