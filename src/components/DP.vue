@@ -1,18 +1,11 @@
 <template>
-  <div class="image" :class="addClass">J</div>
+  <div class="image" :class="addClass"><slot /></div>
 </template>
 
 <script>
 export default {
   name: "DP",
-  props: {
-    addClass: String,
-  },
-  data() {
-    return {
-      scale: "scale",
-    };
-  },
+  props: ["addClass"],
 };
 </script>
 
@@ -27,6 +20,7 @@ export default {
   align-items: center;
   font-size: 3em;
   color: var(--secondary);
+  text-transform: capitalize;
 }
 .scale {
   transform: scale(0.3);

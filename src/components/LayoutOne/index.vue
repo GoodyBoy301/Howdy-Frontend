@@ -7,15 +7,8 @@
     >
     <Body
       ><div class="articles">
-        <article v-for="post in posts" :key="post.id">
-          <div class="title">
-            <DP addClass="scale" />
-            {{ post.author }}
-          </div>
-          <div>{{ post.content }}</div>
-        </article>
-      </div></Body
-    >
+        <Post v-for="post in posts" :key="post.id" :post="post"> </Post></div
+    ></Body>
     <Footer>hdjbj</Footer>
   </div>
 </template>
@@ -26,10 +19,10 @@ import Footer from "../Footer.vue";
 import Tab from "../Tab.vue";
 
 import posts from "../../data/posts";
-import DP from "../DP.vue";
+import Post from "./Post.vue";
 
 export default {
-  components: { Tab, Body, Footer, DP },
+  components: { Tab, Body, Footer, Post },
   data() {
     return {
       posts,
@@ -38,13 +31,4 @@ export default {
 };
 </script>
 
-<style scoped>
-article {
-  background: var(--primary);
-  margin-bottom: 2%;
-  border-radius: 2%;
-}
-.title {
-  position: relative;
-}
-</style>
+<style scoped></style>
