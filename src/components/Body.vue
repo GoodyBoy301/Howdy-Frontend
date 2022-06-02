@@ -10,6 +10,10 @@ export default {};
 
 <style scoped>
 .body {
-  font-size: 20px;
+  font-size: 16px;
+  margin: 2%;
+  padding-bottom: 10vh;
+  height: 100vh;
+  overflow: scroll;
 }
 </style>

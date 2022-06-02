@@ -6,11 +6,13 @@
       ></Tab
     >
     <Body
-      ><div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas sint
-        molestias accusantium, ea eos iure. Voluptatibus, autem? Fugiat error
-        debitis placeat repellat minima, quaerat minus vitae maiores non iusto.
-        Perferendis.
+      ><div class="articles">
+        <article v-for="post in posts" :key="post.id">
+          <div class="post">
+            {{ post.author }}
+          </div>
+          <div>{{ post.content }}</div>
+        </article>
       </div></Body
     >
     <Footer>hdjbj</Footer>
@@ -22,8 +24,24 @@ import Body from "../Body.vue";
 import Footer from "../Footer.vue";
 import Tab from "../Tab.vue";
 
-import LogoText from "../../assets/Howdy.png";
+import posts from "../../data/posts";
+
 export default {
   components: { Tab, Body, Footer },
+  data() {
+    return {
+      posts,
+    };
+  },
 };
 </script>
+
+<style scoped>
+.articles {
+}
+article {
+  background: var(--primary);
+  margin-bottom: 2%;
+  border-radius: 2%;
+}
+</style>
