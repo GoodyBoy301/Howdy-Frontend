@@ -37,6 +37,25 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
 }
 #app > .layout {
-  min-height: 100vh;
+  height: 100vh;
+}
+
+/* CUSTOM SCROLL BAR */
+::-webkit-scrollbar {
+  width: 3px !important;
+}
+::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+::-webkit-scrollbar-track:hover {
+  background: var(--secondary) !important;
+  transition: all 0.5s ease-in-out !important;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primaryO) !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary) !important;
+  transition: all 0.5s ease-in-out !important;
 }
 </style>

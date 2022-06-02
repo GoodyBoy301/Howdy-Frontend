@@ -3,9 +3,9 @@
     <div class="title">
       <DP addClass="scale">{{ post.author[0] }}</DP>
       <span class="user">{{ post.author }}</span>
-      <span class="like">32❤ </span>
+      <span class="like">{{ post.likes.length }}❤ </span>
     </div>
-    <div>{{ post.content }}</div>
+    <div class="content">{{ post.content }}</div>
   </article>
 </template>
 
@@ -22,8 +22,9 @@ article {
   background: var(--primaryO);
 
   margin-bottom: 2%;
-  border-radius: 2%;
+  border-radius: 5%;
   padding: 2%;
+  font-size: 13px;
 }
 .title {
   position: relative;
@@ -43,5 +44,9 @@ article {
 }
 .liked {
   color: red;
+}
+.content {
+  padding: 5% 0 2% 3%;
+  text-align: left;
 }
 </style>
