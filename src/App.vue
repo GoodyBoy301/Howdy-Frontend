@@ -41,6 +41,9 @@ export default {
 #app > .layout {
   height: 100vh;
 }
+a {
+  all: unset;
+}
 
 /* CUSTOM SCROLL BAR */
 ::-webkit-scrollbar {

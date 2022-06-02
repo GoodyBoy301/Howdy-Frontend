@@ -2,7 +2,9 @@
   <article>
     <div class="title">
       <DP addClass="scale">{{ post.author[0] }}</DP>
-      <span class="user">{{ post.author }}</span>
+      <span class="user"
+        ><router-link :to="post.author">@{{ post.author }}</router-link></span
+      >
       <span class="like" :class="DoesLike" @click="handleClick"
         >{{ _likes.length }}❤
       </span>
@@ -59,9 +61,6 @@ article {
   margin-left: 13%;
   font-size: 14px;
   cursor: pointer;
-}
-.user::before {
-  content: "@";
 }
 .user:hover {
   color: var(--red);

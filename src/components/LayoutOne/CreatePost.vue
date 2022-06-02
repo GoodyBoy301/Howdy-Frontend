@@ -3,10 +3,11 @@
     <div class="close"><slot /></div>
     <textarea
       autofocus
-      max-length="50"
+      maxlength="250"
       placeholder="Whats popping?"
       spellcheck="false"
     />
+    <button>Post</button>
   </div>
 </template>
 
@@ -47,8 +48,29 @@ textarea:active {
   opacity: 0.8;
   border: 0;
   outline: none;
-  font-size: 20px;
+  font-size: 19px;
   color: var(--secondary);
   resize: none;
+}
+textarea::placeholder {
+  opacity: 0.4;
+  color: #fff;
+}
+button {
+  position: absolute;
+  bottom: 2%;
+  outline: none;
+  border: 0;
+  color: var(--secondary);
+  text-transform: uppercase;
+  font-weight: 800;
+  padding: 2% 5%;
+  margin: auto;
+  background: transparent;
+  font-size: 19px;
+  cursor: pointer;
+}
+button:hover {
+  border: 1px solid var(--secondary);
 }
 </style>
