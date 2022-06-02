@@ -58,9 +58,14 @@ article {
 .user {
   margin-left: 13%;
   font-size: 14px;
+  cursor: pointer;
 }
 .user::before {
   content: "@";
+}
+.user:hover {
+  color: var(--red);
+  border-bottom: 1px solid var(--red);
 }
 .like {
   margin-right: 5%;

@@ -13,7 +13,8 @@ export default {};
   position: fixed;
   bottom: 0;
   margin: 0 auto;
-  background: darkblue;
   width: calc(100% / 3);
+  background: var(--primaryO);
+  color: var(--red);
 }
 </style>

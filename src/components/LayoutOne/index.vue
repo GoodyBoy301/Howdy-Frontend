@@ -10,20 +10,20 @@
           :post="post"
         /></div
     ></Body>
-    <Footer>hdjbj</Footer>
+    <Fab />
   </div>
 </template>
 
 <script>
 import Body from "../Body.vue";
-import Footer from "../Footer.vue";
 import Tab from "../Tab.vue";
 
 import posts from "../../data/posts";
 import Post from "./Post.vue";
+import Fab from "../Fab.vue";
 
 export default {
-  components: { Tab, Body, Footer, Post },
+  components: { Tab, Body, Post, Fab },
   data() {
     return {
       posts,
@@ -32,4 +32,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+p {
+  font-size: 0.7em;
+}
+</style>
