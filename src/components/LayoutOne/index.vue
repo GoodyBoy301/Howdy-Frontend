@@ -1,6 +1,10 @@
 <template>
   <div class="layout">
-    <Tab><h1>LayoutOne</h1></Tab>
+    <Tab
+      ><img src="../../assets/Howdy.svg" width="150" height="30" /><em
+        >+</em
+      ></Tab
+    >
     <Body
       ><div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas sint
@@ -17,6 +21,8 @@
 import Body from "../Body.vue";
 import Footer from "../Footer.vue";
 import Tab from "../Tab.vue";
+
+import LogoText from "../../assets/Howdy.png";
 export default {
   components: { Tab, Body, Footer },
 };

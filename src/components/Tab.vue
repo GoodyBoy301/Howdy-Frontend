@@ -10,7 +10,10 @@ export default {};
 
 <style scoped>
 .tab {
-  background: red;
-  height: 7.5h;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2%;
+  padding: 2%;
 }
 </style>
