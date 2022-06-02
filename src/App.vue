@@ -17,6 +17,10 @@ export default {
 };
 </script>
 <style>
+:root {
+  --primary: #7c00ff;
+  --secondary: #fedcba;
+}
 * {
   margin: 0;
   padding: 0;
@@ -27,12 +31,11 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  background-color: #fedcba;
-  display: flex;
+  background-color: var(--secondary);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 #app > .layout {
-  flex: 1;
   min-height: 100vh;
 }
 </style>
