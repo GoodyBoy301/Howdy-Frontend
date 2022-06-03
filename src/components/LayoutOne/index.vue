@@ -2,7 +2,7 @@
   <div class="layout">
     <Tab><img src="../../assets/Howdy.svg" width="150" height="30" /></Tab>
     <Body
-      ><div class="articles">
+      ><div>
         <Post
           v-for="post in posts"
           :key="post.id"
