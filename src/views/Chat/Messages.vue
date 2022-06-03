@@ -1,9 +1,30 @@
 <template>
-  <div class="messages"></div>
+  <div class="messages">
+    <article>
+      <aside />
+      <aside />
+      <Text :viewed="false" />
+      <Text :viewed="true" />
+      <Text :viewed="false" />
+      <Text :viewed="false" />
+      <Text :viewed="true" />
+      <Text :viewed="true" />
+      <Text :viewed="false" />
+      <Text :viewed="true" />
+      <Text :viewed="false" />
+      <Text :viewed="true" />
+      <Text :viewed="false" />
+      <Text :viewed="true" />
+      <Text :viewed="false" />
+    </article>
+  </div>
 </template>
 
 <script>
-export default {};
+import Text from "./Text.vue";
+export default {
+  components: { Text },
+};
 </script>
 
 <style scoped>
@@ -14,5 +35,34 @@ export default {};
   margin: auto;
   position: fixed;
   top: 10vh;
+  padding: 0;
+}
+article {
+  /* margin-top: 20vh; */
+  overflow: scroll;
+  height: calc(90vh + 18px);
+  padding-bottom: calc(65px + 18px);
+  display: flex;
+  flex-direction: column-reverse;
+}
+aside:first-of-type {
+  height: 20vh;
+  width: calc(100% - 20px);
+  background: #cd853fee;
+  box-shadow: inset 0px 20px 20px 20px #cd853fee, 0px 5px 5px 2px #cd853fee;
+  position: absolute;
+  left: 10px;
+  top: 0;
+}
+aside:nth-of-type(2) {
+  height: 15vh;
+  width: calc(100% - 3px);
+  background: #cd853fee;
+  position: absolute;
+  left: 0px;
+  top: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: black !important;
 }
 </style>
