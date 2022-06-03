@@ -12,8 +12,8 @@ export default {
 <style scoped>
 .image {
   background-color: black;
-  width: calc(100vw / 9);
-  height: calc(100vw / 9);
+  width: clamp(100px, 10vw, 150vw);
+  height: clamp(100px, 10vw, 150vw);
   border-radius: 100%;
   display: flex;
   justify-content: center;

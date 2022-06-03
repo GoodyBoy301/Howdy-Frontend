@@ -23,7 +23,6 @@ import Person from "./Person.vue";
 import messages from "../../data/messages";
 
 contacts.forEach((contact) => (contact.messages = messages));
-console.log(contacts);
 
 export default {
   name: "LayoutOne",

@@ -5,7 +5,7 @@
         <DP addClass="scale">{{ contact.name[0] }}</DP>
         <span class="user">{{ contact.name }}</span>
       </div>
-      <div class="content">{{ contact.lastMessage }}</div>
+      <div class="content">{{ contact.messages[0].content }}</div>
     </router-link>
   </section>
 </template>

@@ -61,6 +61,7 @@ article {
   margin-left: 13%;
   font-size: 14px;
   cursor: pointer;
+  margin-top: 2%;
 }
 .user:hover {
   color: var(--red);
@@ -70,6 +71,7 @@ article {
   margin-right: 5%;
   cursor: pointer;
   font-size: 1.2em;
+  margin-top: 2%;
 }
 .liked {
   color: var(--red);
