@@ -1,7 +1,13 @@
 <template>
   <div class="message">
-    <textarea class="new" />
-    <em class="send">></em>
+    <textarea
+      autofocus
+      maxlength="160"
+      placeholder="Whats popping?"
+      spellcheck="false"
+      rows="20"
+    />
+    <img class="send" src="../../assets/send.svg" />
   </div>
 </template>
 
@@ -14,18 +20,40 @@ export default {};
   position: fixed;
   bottom: 0;
   /* background: lightsalmon; */
-  width: calc(100% / 3);
+  width: calc(100% / 3.1);
   display: flex;
   align-items: center;
 }
-.new {
-  height: 10vh;
-  width: 80%;
-  margin: 1%;
-}
+
 .send {
-  font-size: 4em;
-  line-height: 1em;
-  margin: 0 auto;
+  width: 30px;
+}
+textarea,
+textarea:active {
+  background: var(--secondary);
+  opacity: 0.8;
+  border: 0;
+  outline: none;
+  font-size: 19px;
+  color: black;
+  resize: none;
+  font-size: 16px;
+  line-height: 14.3px;
+  height: min-content;
+  display: flex;
+  height: 60px;
+  width: 90%;
+  margin: 6px;
+  padding: 4px;
+  font-family: "Segoe UI";
+  transition: all 0.2s ease-in;
+}
+textarea:focus {
+  height: 80px;
+  opacity: 1;
+}
+textarea::placeholder {
+  opacity: 0.4;
+  color: #fff;
 }
 </style>
