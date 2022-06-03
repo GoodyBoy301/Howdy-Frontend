@@ -12,6 +12,7 @@ const routes = [
     path: "/:contact",
     name: "Chat",
     component: Chat,
+    props: true,
   },
 ];
 
