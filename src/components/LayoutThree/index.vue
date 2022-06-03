@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <Tab><h1>LayoutThree</h1></Tab>
+    <Tab><h5>Logout</h5></Tab>
     <Body
       ><div>
         Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolorem,
@@ -9,13 +9,18 @@
         adipisci natus?
       </div></Body
     >
-    <Footer>ujhdjhn</Footer>
   </div>
 </template>
 
 <script>
 import Body from "../Body.vue";
-import Footer from "../Footer.vue";
 import Tab from "../Tab.vue";
-export default { name: "LayoutOne", components: { Tab, Body, Footer } };
+export default { name: "LayoutOne", components: { Tab, Body } };
 </script>
+
+<style scoped>
+h5 {
+  margin-left: auto;
+  cursor: pointer;
+}
+</style>
