@@ -4,15 +4,17 @@
     <router-view />
   </LayoutTwo>
   <LayoutThree />
+  <NavBar />
 </template>
 
 <script>
 import LayoutOne from "./components/LayoutOne/index.vue";
 import LayoutTwo from "./components/LayoutTwo/index.vue";
 import LayoutThree from "./components/LayoutThree/index.vue";
+import NavBar from "./components/NavBar.vue";
 export default {
   name: "App",
-  components: { LayoutOne, LayoutTwo, LayoutThree },
+  components: { LayoutOne, LayoutTwo, LayoutThree, NavBar },
   setup() {},
 };
 </script>
@@ -63,5 +65,20 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary) !important;
   transition: all 0.5s ease-in-out !important;
+}
+
+/* tablet */
+@media (max-width: 900px) {
+  #app {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  #app > .layout {
+    display: none;
+    height: calc(100vh - 50px);
+  }
+  #app > .layout:nth-of-type(2) {
+    display: block;
+  }
 }
 </style>
