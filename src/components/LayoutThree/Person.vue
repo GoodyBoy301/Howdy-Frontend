@@ -1,6 +1,6 @@
 <template>
   <section>
-    <router-link :to="contact.username">
+    <router-link :to="{ name: 'Chat', params: { contact: contact.username } }">
       <div class="title">
         <DP addClass="scale">{{ contact.name[0] }}</DP>
         <span class="user">{{ contact.name }}</span>

@@ -3,7 +3,9 @@
     <div class="title">
       <DP addClass="scale">{{ post.author[0] }}</DP>
       <span class="user"
-        ><router-link :to="post.author">@{{ post.author }}</router-link></span
+        ><router-link :to="{ name: 'Chat', params: { contact: post.author } }"
+          >@{{ post.author }}</router-link
+        ></span
       >
       <span class="like" :class="DoesLike" @click="handleClick"
         >{{ _likes.length }}❤
