@@ -19,7 +19,6 @@ export default {};
 .message {
   position: fixed;
   bottom: 0;
-  /* background: lightsalmon; */
   width: calc(100% / 3.1);
   display: flex;
   align-items: flex-end;
@@ -64,5 +63,12 @@ textarea::placeholder {
   opacity: 0.8;
   color: #444;
   padding: 0 1ch;
+}
+/* tablet */
+@media (max-width: 900px) {
+  .message {
+    width: 100%;
+    bottom: 50px;
+  }
 }
 </style>

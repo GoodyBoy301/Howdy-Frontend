@@ -46,4 +46,11 @@ export default {
   justify-content: center;
   min-height: 100vh;
 }
+
+/* tablet */
+@media (max-width: 900px) {
+  .home {
+    min-height: calc(100vh - 50px);
+  }
+}
 </style>

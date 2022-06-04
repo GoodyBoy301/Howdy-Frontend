@@ -34,4 +34,10 @@ export default {
   border-bottom-left-radius: 20px;
   border-top-right-radius: 0%;
 }
+/* tablet */
+@media (max-width: 900px) {
+  .text {
+    width: 300px;
+  }
+}
 </style>

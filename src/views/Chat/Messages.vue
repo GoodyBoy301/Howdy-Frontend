@@ -38,9 +38,9 @@ export default {
   padding: 0;
 }
 article {
-  /* margin-top: 20vh; */
   overflow: scroll;
   height: calc(90vh + 18px);
+  padding-top: 20vh;
   padding-bottom: calc(65px + 18px);
   display: flex;
   flex-direction: column-reverse;
@@ -55,7 +55,7 @@ aside:first-of-type {
   top: 0;
 }
 aside:nth-of-type(2) {
-  height: 15vh;
+  height: 10vh;
   width: calc(100% - 3px);
   background: #cd853fee;
   position: absolute;
@@ -64,5 +64,37 @@ aside:nth-of-type(2) {
 }
 ::-webkit-scrollbar-thumb:hover {
   background: black !important;
+}
+
+/* tablet */
+@media (max-width: 900px) {
+  .messages {
+    width: 100%;
+    height: calc(90vh - 25px);
+    top: calc(10vh - 25px);
+  }
+  article {
+    padding-top: 20vh;
+    padding-bottom: calc(95px + 18px);
+  }
+  aside:first-of-type {
+    height: 10vh;
+    width: calc(100% - 20px);
+    background: #cd853fee;
+    box-shadow: inset 0px 20px 20px 20px #cd853fee, 0px 5px 5px 2px #cd853fee;
+    position: absolute;
+    left: 10px;
+    top: 0;
+    display: none;
+  }
+  aside:nth-of-type(2) {
+    height: 5vh;
+    width: calc(100% - 3px);
+    background: #cd853fee;
+    position: absolute;
+    left: 0px;
+    top: 0;
+    display: none;
+  }
 }
 </style>
