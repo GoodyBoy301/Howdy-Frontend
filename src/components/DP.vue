@@ -28,4 +28,13 @@ export default {
   top: 0;
   transform-origin: 0% 0%;
 }
+/* tablet */
+@media (max-width: 900px) {
+  .image {
+    width: clamp(40px, 5vw, 6vw);
+    height: clamp(40px, 5vw, 6vw);
+    font-size: 2em;
+    clip-path: circle();
+  }
+}
 </style>

@@ -74,7 +74,7 @@ aside:nth-of-type(2) {
     top: calc(10vh - 25px);
   }
   article {
-    padding-top: 20vh;
+    padding-top: 0vh;
     padding-bottom: calc(95px + 18px);
   }
   aside:first-of-type {

@@ -30,4 +30,25 @@ i,
 p {
   font-size: 0.7em;
 }
+/* tablet */
+@media (max-width: 900px) {
+  .head {
+    flex-direction: row;
+    margin-top: 1vh;
+    width: 80%;
+    justify-content: flex-start;
+    margin-left: 100px;
+    align-items: baseline;
+  }
+  p {
+    margin-left: auto;
+  }
+  h3 {
+    font-size: 1.8em;
+    padding: 0 10px;
+  }
+  i {
+    display: none;
+  }
+}
 </style>
