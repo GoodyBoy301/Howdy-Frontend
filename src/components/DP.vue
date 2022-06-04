@@ -36,5 +36,11 @@ export default {
     font-size: 2em;
     clip-path: circle();
   }
+  .scale {
+    transform: scale(1);
+    position: absolute;
+    top: 0;
+    transform-origin: 0% 0%;
+  }
 }
 </style>
