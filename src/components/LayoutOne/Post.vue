@@ -82,4 +82,21 @@ article {
   padding: 5% 0 2% 3%;
   text-align: left;
 }
+@media (max-width: 900px) {
+  article {
+    border-radius: 30px;
+    font-size: 20px;
+  }
+  .user {
+    margin-left: 7%;
+    font-size: 20px;
+    margin-top: 1%;
+  }
+  .like {
+    margin-top: 1%;
+  }
+  .content {
+    padding: 2% 0 1% 3%;
+  }
+}
 </style>
