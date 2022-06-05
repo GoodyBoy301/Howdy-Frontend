@@ -1,7 +1,6 @@
 <template>
   <div class="message">
     <textarea
-      autofocus
       maxlength="160"
       placeholder="type a message..."
       spellcheck="false"
@@ -36,7 +35,7 @@ export default {};
 }
 textarea,
 textarea:active {
-  background: var(--secondary);
+  background: white;
   opacity: 0.8;
   border: 0;
   outline: none;
@@ -57,7 +56,7 @@ textarea:active {
 textarea:focus {
   height: 80px;
   opacity: 1;
-  border-radius: 0;
+  border-radius: 15px;
 }
 textarea::placeholder {
   opacity: 0.8;
@@ -69,6 +68,13 @@ textarea::placeholder {
   .message {
     width: 100%;
     bottom: 50px;
+    display: flex;
+    justify-content: center;
+  }
+  textarea,
+  textarea:active {
+    max-width: calc(500px * 0.9);
+    padding: 1%;
   }
 }
 </style>

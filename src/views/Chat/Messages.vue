@@ -44,12 +44,13 @@ article {
   padding-bottom: calc(65px + 18px);
   display: flex;
   flex-direction: column-reverse;
+  margin-top: 1px;
 }
 aside:first-of-type {
   height: 20vh;
   width: calc(100% - 20px);
-  background: #cd853fee;
-  box-shadow: inset 0px 20px 20px 20px #cd853fee, 0px 5px 5px 2px #cd853fee;
+  background: #fedcbaee;
+  box-shadow: inset 0px 20px 20px 20px #fedcbaee, 0px 5px 5px 2px #fedcbaee;
   position: absolute;
   left: 10px;
   top: 0;
@@ -57,7 +58,7 @@ aside:first-of-type {
 aside:nth-of-type(2) {
   height: 10vh;
   width: calc(100% - 3px);
-  background: #cd853fee;
+  background: #fedcbaee;
   position: absolute;
   left: 0px;
   top: 0;
@@ -76,6 +77,8 @@ aside:nth-of-type(2) {
   article {
     padding-top: 0vh;
     padding-bottom: calc(95px + 18px);
+    max-width: 500px;
+    margin: auto;
   }
   aside:first-of-type {
     height: 10vh;
