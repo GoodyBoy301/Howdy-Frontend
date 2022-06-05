@@ -85,11 +85,12 @@ article {
 @media (max-width: 900px) {
   article {
     border-radius: 30px;
-    font-size: 20px;
+    font-size: 18px;
+    max-width: 500px;
   }
   .user {
-    margin-left: 7%;
-    font-size: 20px;
+    margin-left: 9%;
+    font-size: 18px;
     margin-top: 1%;
   }
   .like {

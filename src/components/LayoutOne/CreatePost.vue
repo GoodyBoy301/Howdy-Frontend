@@ -49,7 +49,7 @@ textarea:active {
   border: 0;
   outline: none;
   font-size: 19px;
-  color: var(--secondary);
+  color: white;
   resize: none;
 }
 textarea::placeholder {
@@ -72,5 +72,13 @@ button {
 }
 button:hover {
   border: 1px solid var(--secondary);
+}
+/* tablet */
+@media (max-width: 900px) {
+  .createPost {
+    width: 50vw;
+    left: calc(calc(100vw / 2) - 25vw);
+    color: black;
+  }
 }
 </style>

@@ -11,7 +11,7 @@
         /></div
     ></Body>
     <CreatePost v-if="create"><Fab @click="handleCreate" /></CreatePost>
-    <Fab @click="handleCreate" />
+    <Fab @click="handleCreate" class="hideOnMobile" />
   </div>
 </template>
 

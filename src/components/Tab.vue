@@ -20,4 +20,11 @@ export default {};
   line-height: 30px;
   min-height: 10vh;
 }
+/* tablet */
+@media (max-width: 900px) {
+  .tab {
+    max-width: 500px;
+    margin: auto;
+  }
+}
 </style>

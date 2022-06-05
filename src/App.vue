@@ -81,5 +81,8 @@ a {
   #app > .layout:nth-of-type(2) {
     display: block;
   }
+  .hideOnMobile {
+    display: none !important;
+  }
 }
 </style>

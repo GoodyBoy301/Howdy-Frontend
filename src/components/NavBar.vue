@@ -6,19 +6,29 @@
         <i style="width: 75%" />
         <i style="width: 100%" />
       </span>
-      <span class="new"><Fab /></span>
+      <span class="new"><Fab @click="handleCreate" /></span>
       <span class="contacts"><img src="../assets/Logo.svg" /></span>
     </aside>
   </div>
+  <CreatePost v-if="create"><Fab @click="handleCreate" /></CreatePost>
 </template>
 
 <script>
+import CreatePost from "./LayoutOne/CreatePost.vue";
 import Fab from "./LayoutOne/Fab.vue";
 export default {
-  components: { Fab },
+  components: { Fab, CreatePost },
+  data() {
+    return {
+      create: false,
+    };
+  },
   methods: {
     handleExplore() {
       this.$router.push("/explore");
+    },
+    handleCreate() {
+      this.create = !this.create;
     },
   },
 };
