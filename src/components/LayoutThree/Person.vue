@@ -51,4 +51,10 @@ section:hover {
   text-align: left;
   font-size: 0.8em;
 }
+/* tablet */
+@media (max-width: 900px) {
+  section {
+    max-width: 400px;
+  }
+}
 </style>

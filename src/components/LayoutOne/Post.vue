@@ -84,13 +84,11 @@ article {
 }
 @media (max-width: 900px) {
   article {
-    border-radius: 30px;
-    font-size: 18px;
-    max-width: 500px;
+    border-radius: 15px;
+    max-width: 400px;
   }
   .user {
-    margin-left: 9%;
-    font-size: 18px;
+    margin-left: 50px;
     margin-top: 1%;
   }
   .like {

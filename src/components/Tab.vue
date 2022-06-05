@@ -23,7 +23,7 @@ export default {};
 /* tablet */
 @media (max-width: 900px) {
   .tab {
-    max-width: 500px;
+    max-width: 400px;
     margin: auto;
   }
 }
