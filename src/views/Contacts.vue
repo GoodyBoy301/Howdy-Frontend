@@ -1,13 +1,13 @@
 <template>
   <Home class="desktop" />
-  <LayoutOne class="mobile" />
+  <LayoutThree class="mobile" />
 </template>
 
 <script>
-import LayoutOne from "../components/LayoutOne/index.vue";
+import LayoutThree from "../components/LayoutThree/index.vue";
 import Home from "./Home.vue";
 export default {
-  components: { LayoutOne, Home },
+  components: { LayoutThree, Home },
 };
 </script>
 

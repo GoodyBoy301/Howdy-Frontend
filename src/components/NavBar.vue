@@ -7,7 +7,9 @@
         <i style="width: 100%" />
       </span>
       <span class="new"><Fab @click="handleCreate" /></span>
-      <span class="contacts"><img src="../assets/Logo.svg" /></span>
+      <span class="contacts"
+        ><img src="../assets/Logo.svg" @click="handleContacts"
+      /></span>
     </aside>
   </div>
   <CreatePost v-if="create"><Fab @click="handleCreate" /></CreatePost>
@@ -26,6 +28,9 @@ export default {
   methods: {
     handleExplore() {
       this.$router.push("/explore");
+    },
+    handleContacts() {
+      this.$router.push("/contacts");
     },
     handleCreate() {
       this.create = !this.create;
