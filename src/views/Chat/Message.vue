@@ -5,13 +5,26 @@
       placeholder="type a message..."
       spellcheck="false"
       rows="20"
+      v-model="input"
     />
-    <img class="send" src="../../assets/send.svg" />
+    <img class="send" src="../../assets/send.svg" @click="handleSend" />
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["setNewMessage"],
+  data() {
+    return {
+      input: "",
+    };
+  },
+  methods: {
+    handleSend() {
+      this.setNewMessage(this.input);
+    },
+  },
+};
 </script>
 
 <style scoped>

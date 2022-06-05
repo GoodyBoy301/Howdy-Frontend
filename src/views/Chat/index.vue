@@ -1,7 +1,7 @@
 <template>
   <div v-if="person.username" class="chat">
     <Messages />
-    <Message />
+    <Message :setNewMessage="setNewMessage" />
     <Head :person="person" />
   </div>
   <div v-else class="home">
@@ -20,7 +20,7 @@ export default {
   props: ["contact"],
   components: { Head, Message, Messages },
   data() {
-    return { person: {} };
+    return { person: {}, newMessage: "" };
   },
   mounted() {
     this.person = this.search();
@@ -29,10 +29,16 @@ export default {
     contact() {
       this.person = this.search();
     },
+    newMessage() {
+      if (this.newMessage) console.log("changed", this.newMessage);
+    },
   },
   methods: {
     search() {
       return contacts.filter((contact) => contact.username === this.contact)[0];
+    },
+    setNewMessage(input) {
+      this.newMessage = input;
     },
   },
 };
