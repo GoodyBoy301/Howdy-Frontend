@@ -38,9 +38,7 @@ export default {
   }
   .scale {
     transform: scale(1);
-    position: absolute;
-    top: 0;
-    transform-origin: 0% 0%;
+    font-size: 1em;
   }
 }
 </style>
