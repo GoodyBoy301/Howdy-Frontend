@@ -45,7 +45,6 @@ section:hover {
   border-bottom: 1px solid var(--primary);
   transform: scale(1.05);
 }
-
 .content {
   padding: 3% 0 2% 3%;
   text-align: left;
@@ -62,9 +61,12 @@ section:hover {
     position: relative;
     left: 20px;
   }
+  section:hover {
+    transform: none;
+  }
   .dp {
     position: relative;
-    right: 60px;
+    right: 55px;
     top: 10px;
   }
   .title {
@@ -76,6 +78,24 @@ section:hover {
   }
   .content {
     padding: 1px 0 2% 3%;
+  }
+}
+/* Mobile Devices*/
+@media (max-width: 576px) {
+  section {
+    width: 84%;
+    padding-top: 0;
+    height: 85px;
+  }
+  .dp {
+    right: 50px;
+  }
+  .user {
+    margin-left: -12%;
+    margin-top: 7px;
+  }
+  .content {
+    padding: 0 5px 2% 5px;
   }
 }
 </style>

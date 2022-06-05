@@ -85,4 +85,11 @@ a {
     display: none !important;
   }
 }
+
+/* Mobile Devices*/
+@media (max-width: 576px) {
+  ::-webkit-scrollbar {
+    display: none !important;
+  }
+}
 </style>

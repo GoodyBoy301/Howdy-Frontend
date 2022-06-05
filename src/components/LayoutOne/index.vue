@@ -1,6 +1,8 @@
 <template>
   <div class="layout">
-    <Tab><img src="../../assets/Howdy.svg" width="150" height="30" /></Tab>
+    <Tab class="howdy"
+      ><img src="../../assets/Howdy.svg" width="150" height="30"
+    /></Tab>
     <Body
       ><div>
         <Post
@@ -43,5 +45,12 @@ export default {
 <style scoped>
 p {
   font-size: 0.7em;
+}
+/* Mobile Devices*/
+@media (max-width: 576px) {
+  .howdy {
+    position: sticky;
+    top: 5px;
+  }
 }
 </style>
