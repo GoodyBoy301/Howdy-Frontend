@@ -1,10 +1,10 @@
 <template>
   <div>
     <aside>
-      <span class="posts">
-        <i style="width: 50%" />
-        <i style="width: 40%" />
-        <i style="width: 50%" />
+      <span class="posts" @click="handleExplore">
+        <i style="width: 100%" />
+        <i style="width: 75%" />
+        <i style="width: 100%" />
       </span>
       <span class="new"><Fab /></span>
       <span class="contacts"><img src="../assets/Logo.svg" /></span>
@@ -16,6 +16,11 @@
 import Fab from "./LayoutOne/Fab.vue";
 export default {
   components: { Fab },
+  methods: {
+    handleExplore() {
+      this.$router.push("/explore");
+    },
+  },
 };
 </script>
 
@@ -45,11 +50,14 @@ div {
     position: relative;
     display: grid;
   }
+  .posts {
+    width: 65%;
+    cursor: pointer;
+  }
   .new {
     margin: 0 calc(50% - 33px);
   }
   .posts i {
-    width: 75%;
     height: 50%;
     /* padding:1px 10px; */
     background: var(--primary);
@@ -60,6 +68,7 @@ div {
   .contacts img {
     width: 60%;
     margin-left: auto;
+    cursor: pointer;
   }
 }
 </style>
