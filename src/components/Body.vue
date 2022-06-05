@@ -17,4 +17,10 @@ export default {};
   height: 100vh;
   overflow: scroll;
 }
+/* tablet */
+@media (max-width: 900px) {
+  .body {
+    padding-bottom: 20vh;
+  }
+}
 </style>
