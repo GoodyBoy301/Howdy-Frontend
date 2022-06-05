@@ -73,8 +73,13 @@ textarea::placeholder {
   }
   textarea,
   textarea:active {
-    max-width: calc(500px * 0.9);
+    max-width: calc(400px * 0.7);
     padding: 1%;
+  }
+  .send {
+    width: 35px;
+    margin: 1% 0;
+    transition: all 0.1s ease-in;
   }
 }
 </style>

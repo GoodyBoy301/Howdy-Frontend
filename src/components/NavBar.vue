@@ -64,6 +64,8 @@ div {
     padding: 10px;
     position: relative;
     display: grid;
+    transform: scale(0.8);
+    transform-origin: center center;
   }
   .posts {
     width: 65%;

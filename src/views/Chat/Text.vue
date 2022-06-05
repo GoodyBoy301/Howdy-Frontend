@@ -27,6 +27,7 @@ export default {
   border-radius: 20px;
   text-align: left;
   border-bottom-left-radius: 0%;
+  font-weight: 500;
 }
 .view {
   margin-left: calc(auto - 10px);

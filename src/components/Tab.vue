@@ -25,6 +25,8 @@ export default {};
   .tab {
     max-width: 400px;
     margin: auto;
+    max-height: 5vh;
+    min-height: 7.5vh;
   }
 }
 </style>

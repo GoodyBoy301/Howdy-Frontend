@@ -95,7 +95,7 @@ article {
     margin-top: 1%;
   }
   .content {
-    padding: 2% 0 1% 3%;
+    padding: 3.5% 0 1% 3%;
   }
 }
 </style>

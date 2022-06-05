@@ -1,6 +1,6 @@
 <template>
   <div class="head">
-    <DP>{{ person.name[0] }}</DP>
+    <DP class="hideOnMobile">{{ person.name[0] }}</DP>
     <h3>{{ person.name }}</h3>
     <i>@{{ person.username }}</i>
     <p>Last seen 10 mins ago</p>
@@ -33,15 +33,11 @@ p {
 /* tablet */
 @media (max-width: 900px) {
   .head {
-    flex-direction: row;
     margin-top: 1vh;
-    width: 80%;
+    width: 100vw;
     justify-content: flex-start;
-    margin-left: 100px;
     align-items: baseline;
-  }
-  p {
-    margin-left: auto;
+    align-items: center;
   }
   h3 {
     font-size: 1.8em;

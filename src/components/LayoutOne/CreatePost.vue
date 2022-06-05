@@ -76,9 +76,13 @@ button:hover {
 /* tablet */
 @media (max-width: 900px) {
   .createPost {
-    width: 50vw;
-    left: calc(calc(100vw / 2) - 25vw);
+    width: 320px;
+    left: calc(calc(100vw / 2) - 160px);
     color: black;
+    height: 300px;
+    bottom: 10vh;
+    top: unset;
+    box-shadow: 0px -10px 100vw 100vw #7c00ff11;
   }
 }
 </style>

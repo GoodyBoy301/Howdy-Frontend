@@ -2,7 +2,7 @@
   <section>
     <router-link :to="{ name: 'Chat', params: { contact: contact.username } }">
       <div class="title">
-        <DP addClass="scale">{{ contact.name[0] }}</DP>
+        <DP addClass="scale" class="dp">{{ contact.name[0] }}</DP>
         <span class="user">{{ contact.name }}</span>
       </div>
       <div class="content">{{ contact.messages[0].content }}</div>
@@ -54,7 +54,28 @@ section:hover {
 /* tablet */
 @media (max-width: 900px) {
   section {
-    max-width: 400px;
+    max-width: 380px;
+    margin: 1% auto;
+    margin-bottom: 0%;
+    padding: 1%;
+    font-size: 16px;
+    position: relative;
+    left: 20px;
+  }
+  .dp {
+    position: relative;
+    right: 60px;
+    top: 10px;
+  }
+  .title {
+    justify-content: flex-start;
+  }
+  .user {
+    margin-left: -7.5%;
+    margin-top: 2px;
+  }
+  .content {
+    padding: 1px 0 2% 3%;
   }
 }
 </style>
