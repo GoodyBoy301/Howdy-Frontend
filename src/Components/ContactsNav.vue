@@ -19,10 +19,12 @@ export default {};
 
 <style>
 aside {
-  background: var(--darkPrimary);
+  background: #342324ee;
   border-radius: 15px 0 0 15px;
   width: 100%;
   height: 100%;
+  backdrop-filter: blur(13px);
+  /* cursor: url("/cursor.png"), auto; */
 }
 div {
   margin: 5%;
