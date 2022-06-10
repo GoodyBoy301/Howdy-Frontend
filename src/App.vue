@@ -1,32 +1,53 @@
 <template>
-
+  <main>
+    <ContactsNav />
     <router-view />
-
+  </main>
 </template>
 
 <script>
+import ContactsNav from "./Components/ContactsNav.vue";
 
+export default {
+  name: "App",
+  props: [],
+  components: { ContactsNav },
+};
 </script>
 <style>
 :root {
- 
+  --darkPrimary: #342324;
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-image: url("/backgroundImg.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #app {
   font-family: Poppins, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  background-color: var(--secondary);
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  overflow: hidden;
+  /* overflow: hidden; */
+  margin: 0 auto;
 }
 
+main {
+  width: 1000px;
+  height: 600px;
+  border-radius: 25px;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+}
 a {
   all: unset;
 }
@@ -52,7 +73,6 @@ a {
 
 /* tablet */
 @media (max-width: 900px) {
-
 }
 
 /* Mobile Devices*/
