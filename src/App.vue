@@ -17,6 +17,7 @@ export default {
 <style>
 :root {
   --darkPrimary: #342324;
+  --lightPrimary: #51312e;
 }
 * {
   margin: 0;
