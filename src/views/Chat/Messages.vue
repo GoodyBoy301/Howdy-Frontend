@@ -3,19 +3,12 @@
     <article>
       <aside />
       <aside />
-      <Text :viewed="false" />
-      <Text :viewed="true" />
-      <Text :viewed="false" />
-      <Text :viewed="false" />
-      <Text :viewed="true" />
-      <Text :viewed="true" />
-      <Text :viewed="false" />
-      <Text :viewed="true" />
-      <Text :viewed="false" />
-      <Text :viewed="true" />
-      <Text :viewed="false" />
-      <Text :viewed="true" />
-      <Text :viewed="false" />
+      <Text
+        v-for="message in arrayOfMessages"
+        :key="message.id"
+        :viewed="message.fromMe"
+        :text="message.content"
+      />
     </article>
   </div>
 </template>
@@ -23,6 +16,7 @@
 <script>
 import Text from "./Text.vue";
 export default {
+  props: ["arrayOfMessages"],
   components: { Text },
 };
 </script>

@@ -1,12 +1,12 @@
 <template>
   <div class="text" :class="view">
-    Lorem ipsum dolor sit amet consectetur adipiscing amet
+    {{ text }}
   </div>
 </template>
 
 <script>
 export default {
-  props: ["viewed"],
+  props: ["viewed", "text"],
   computed: {
     view() {
       if (this.viewed) return "view";

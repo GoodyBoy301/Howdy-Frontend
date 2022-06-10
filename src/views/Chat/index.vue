@@ -1,6 +1,6 @@
 <template>
   <div v-if="person.username" class="chat">
-    <Messages />
+    <Messages :arrayOfMessages="person.messages" />
     <Message :setNewMessage="setNewMessage" />
     <Head :person="person" />
   </div>
@@ -30,7 +30,17 @@ export default {
       this.person = this.search();
     },
     newMessage() {
-      if (this.newMessage) console.log("changed", this.newMessage);
+      if (this.newMessage) {
+        this.person.messages.push({
+          id: "ygygsyhgyh6763",
+          fromMe: false,
+          content: "Lorem ipsum dolor sit amet consectetur asipiscing elit",
+          view: false,
+          username: "goodyboy301",
+          time: "20201001",
+        });
+      }
+      console.log(this.person.messages.length);
     },
   },
   methods: {

@@ -22,6 +22,7 @@ import contacts from "../../data/contacts";
 import Person from "./Person.vue";
 import messages from "../../data/messages";
 
+//sets messages for contacts globally
 contacts.forEach((contact) => (contact.messages = messages));
 
 export default {
