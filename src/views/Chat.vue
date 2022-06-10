@@ -9,7 +9,7 @@ export default {};
 <style>
 .chat {
   background: var(--lightPrimary);
-  border-radius: 0 25px 25px 0;
+  border-radius: 0 15px 15px 0;
   width: 100%;
   height: 100%;
 }
