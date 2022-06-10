@@ -1,31 +1,15 @@
 <template>
-  <LayoutOne />
-  <LayoutTwo>
+
     <router-view />
-  </LayoutTwo>
-  <LayoutThree />
-  <NavBar />
+
 </template>
 
 <script>
-import LayoutOne from "./components/LayoutOne/index.vue";
-import LayoutTwo from "./components/LayoutTwo/index.vue";
-import LayoutThree from "./components/LayoutThree/index.vue";
-import NavBar from "./components/NavBar.vue";
-export default {
-  name: "App",
-  components: { LayoutOne, LayoutTwo, LayoutThree, NavBar },
-  setup() {},
-};
+
 </script>
 <style>
 :root {
-  --primary: #7c00ff;
-  --primaryO: #7c00ff27;
-  --secondary: #fedcba;
-  --red: #ff2360;
-  /* --peru: peru; */
-  --peru: var(--secondary);
+ 
 }
 * {
   margin: 0;
@@ -42,9 +26,7 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   overflow: hidden;
 }
-#app > .layout {
-  height: 100vh;
-}
+
 a {
   all: unset;
 }
@@ -70,20 +52,7 @@ a {
 
 /* tablet */
 @media (max-width: 900px) {
-  #app {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  #app > .layout {
-    display: none;
-    height: calc(100vh - 50px);
-  }
-  #app > .layout:nth-of-type(2) {
-    display: block;
-  }
-  .hideOnMobile {
-    display: none !important;
-  }
+
 }
 
 /* Mobile Devices*/

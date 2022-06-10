@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
-import Chat from "../views/Chat/index.vue";
-import Explore from "../views/Explore.vue";
-import Contacts from "../views/Contacts.vue";
+import Chat from "../views/Chat.vue";
 
 const routes = [
   {
@@ -15,16 +13,6 @@ const routes = [
     name: "Chat",
     component: Chat,
     props: true,
-  },
-  {
-    path: "/explore",
-    name: "Explore",
-    component: Explore,
-  },
-  {
-    path: "/contacts",
-    name: "Contacts",
-    component: Contacts,
   },
 ];
 

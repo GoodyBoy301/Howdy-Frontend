@@ -5,6 +5,8 @@ node_modules
 #added by me
 pnpm-lock.yaml*
 package-lock.json*
+sample.png*
+config.txt*
 
 # local env files
 .env.local
