@@ -26,7 +26,7 @@ export default {
   color: white;
 }
 body {
-  background-image: url("/backgroundImg.jpg");
+  background-image: url("/assets/backgroundImg.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -61,16 +61,16 @@ a {
 ::-webkit-scrollbar-track {
   background: transparent !important;
 }
-::-webkit-scrollbar-track:hover {
-  background: var(--secondary) !important;
+/* ::-webkit-scrollbar-track:hover {
+  background: var(--lightPrimary) !important;
   transition: all 0.5s ease-in-out !important;
-}
+} */
 ::-webkit-scrollbar-thumb {
-  background: var(--primaryO) !important;
+  background: var(--darkPrimary) !important;
+  transition: all 2s ease-in-out !important;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--primary) !important;
-  transition: all 0.5s ease-in-out !important;
+  background: white !important;
 }
 
 /* tablet */
