@@ -12,7 +12,7 @@
     </div>
     <ul>
       <li v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :key="i">
-        <img src="/assets/DPs/male02.png" alt="" />
+        <img src="/assets/DPs/male02.png" alt="" class="dp" />
         <div>
           <h3>Kush Gibson</h3>
           <p>Lorem ipsum dol...</p>
@@ -102,7 +102,9 @@ li img {
   padding: 0.25em;
   box-sizing: border-box;
   object-fit: contain;
-  background: yellow;
+}
+img.dp {
+  background: yellow !important;
 }
 li > div {
   font-size: 0.7rem;
