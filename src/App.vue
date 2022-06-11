@@ -46,9 +46,9 @@ body {
 main {
   width: 1000px;
   height: 600px;
-  border-radius: 25px;
   display: grid;
   grid-template-columns: 3fr 7fr;
+  overflow: hidden;
 }
 a {
   all: unset;
@@ -66,11 +66,11 @@ a {
   transition: all 0.5s ease-in-out !important;
 } */
 ::-webkit-scrollbar-thumb {
-  background: var(--darkPrimary) !important;
+  background: transparent !important;
   transition: all 2s ease-in-out !important;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: white !important;
+  background: var(--darkPrimary) !important;
 }
 
 /* tablet */

@@ -10,6 +10,44 @@
         <div><img src="/assets/icons/dots.svg" alt="" /></div>
       </li>
     </div>
+    <div class="messages">
+      <div>
+        <article>
+          <img src="/assets/DPs/male01.png" alt="" class="dp" />
+          <p>ipsum dolor, sit amet consec</p>
+        </article>
+        <article class="receive">
+          <img src="/assets/DPs/male02.png" alt="" class="dp" />
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+        </article>
+        <article>
+          <img src="/assets/DPs/male01.png" alt="" class="dp" />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            facilis beatae earum, laudantium
+          </p>
+        </article>
+        <article class="receive">
+          <img src="/assets/DPs/male02.png" alt="" class="dp" />
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
+            velit eveniet. Sit laborum fugit praesentium non quas odio
+            consequatur,
+          </p>
+        </article>
+        <article>
+          <img src="/assets/DPs/male01.png" alt="" class="dp" />
+          <p>ipsum dolor, sit amet consec</p>
+        </article>
+        <article class="receive">
+          <img src="/assets/DPs/male02.png" alt="" class="dp" />
+          <p>
+            Lorem ipsum dolor sit amet consat corrupti numquam eos delectus
+            officiis dolorem neque error libero saepe!
+          </p>
+        </article>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -22,7 +60,7 @@ export default {};
   background: #51312eee;
   border-radius: 0 15px 15px 0;
   width: 100%;
-  height: 100%;
+  height: inherit;
   backdrop-filter: blur(13px);
 }
 .heading .topbar {
@@ -41,5 +79,52 @@ export default {};
 }
 .heading .topbar div {
   margin-left: 0.5em;
+}
+
+.messages {
+  height: 50%;
+  margin: 2.5% 0;
+}
+.messages > div {
+  margin: 0 auto;
+  width: 82.5%;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  align-content: flex-start;
+  overflow-y: scroll;
+}
+article {
+  width: 70%;
+  margin: 5px;
+  font-size: 0.8rem;
+  margin-left: auto;
+  display: flex;
+  margin-left: auto;
+  flex-direction: row-reverse;
+}
+
+article p {
+  background: #22a116;
+  flex: 1;
+  margin: 0 1.5em;
+  box-sizing: content-box;
+  padding: 0.8em 1.2em;
+  border-radius: 1em;
+}
+article > img.dp {
+  object-fit: contain;
+  padding: 1%;
+  background: #22a116 !important;
+}
+article.receive > img.dp {
+  background: #804d0a !important;
+}
+.receive {
+  margin-left: 5px;
+  flex-direction: row;
+}
+.receive p {
+  background: #804d0a;
 }
 </style>

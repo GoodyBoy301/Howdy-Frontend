@@ -32,7 +32,7 @@ aside {
   background: #342324ee;
   border-radius: 15px 0 0 15px;
   width: 100%;
-  height: 100%;
+  height: inherit;
   backdrop-filter: blur(13px);
   overflow: hidden;
   /* cursor: url("/cursor.png"), auto; */
@@ -76,8 +76,8 @@ img {
   margin: 0 0.55em 0 auto;
 }
 ul {
-  overflow: scroll;
-  max-height: calc(98%);
+  overflow-y: scroll;
+  max-height: calc(95%);
   list-style: none;
   margin-top: 0;
 }
