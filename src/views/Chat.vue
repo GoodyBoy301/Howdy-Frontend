@@ -12,14 +12,17 @@
     </div>
     <div class="messages">
       <div>
+        <time class="sent">3:49 pm</time>
         <article class="sent">
           <img src="/assets/DPs/male01.png" alt="" class="dp" />
           <p>ipsum dolor, sit amet consec</p>
         </article>
+        <time>3:49 pm</time>
         <article class="received">
           <img src="/assets/DPs/male02.png" alt="" class="dp" />
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
         </article>
+        <time class="sent">3:49 pm</time>
         <article class="sent">
           <img src="/assets/DPs/male01.png" alt="" class="dp" />
           <p>
@@ -27,6 +30,7 @@
             facilis beatae earum, laudantium
           </p>
         </article>
+        <time>3:49 pm</time>
         <article class="received">
           <img src="/assets/DPs/male02.png" alt="" class="dp" />
           <p>
@@ -35,10 +39,12 @@
             consequatur,
           </p>
         </article>
+        <time class="sent">3:49 pm</time>
         <article class="sent">
           <img src="/assets/DPs/male01.png" alt="" class="dp" />
           <p>ipsum dolor, sit amet consec</p>
         </article>
+        <time>3:49 pm</time>
         <article class="received">
           <img src="/assets/DPs/male02.png" alt="" class="dp" />
           <p>
@@ -97,7 +103,7 @@ export default {};
 }
 article {
   width: 70%;
-  margin: 5px;
+  margin: 0.75em 0.4em;
   font-size: 0.8rem;
   margin-left: auto;
   display: flex;
@@ -124,5 +130,13 @@ article > img.dp {
 
 .sent {
   --dp: #178339;
+}
+time {
+  margin: 0 6em;
+  font-size: 0.55rem;
+  font-weight: 300;
+}
+time.sent {
+  margin-left: auto;
 }
 </style>
