@@ -12,22 +12,22 @@
     </div>
     <div class="messages">
       <div>
-        <article>
+        <article class="sent">
           <img src="/assets/DPs/male01.png" alt="" class="dp" />
           <p>ipsum dolor, sit amet consec</p>
         </article>
-        <article class="receive">
+        <article class="received">
           <img src="/assets/DPs/male02.png" alt="" class="dp" />
           <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
         </article>
-        <article>
+        <article class="sent">
           <img src="/assets/DPs/male01.png" alt="" class="dp" />
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
             facilis beatae earum, laudantium
           </p>
         </article>
-        <article class="receive">
+        <article class="received">
           <img src="/assets/DPs/male02.png" alt="" class="dp" />
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
@@ -35,11 +35,11 @@
             consequatur,
           </p>
         </article>
-        <article>
+        <article class="sent">
           <img src="/assets/DPs/male01.png" alt="" class="dp" />
           <p>ipsum dolor, sit amet consec</p>
         </article>
-        <article class="receive">
+        <article class="received">
           <img src="/assets/DPs/male02.png" alt="" class="dp" />
           <p>
             Lorem ipsum dolor sit amet consat corrupti numquam eos delectus
@@ -62,6 +62,7 @@ export default {};
   width: 100%;
   height: inherit;
   backdrop-filter: blur(13px);
+  --dp: #804d0a;
 }
 .heading .topbar {
   display: grid;
@@ -105,7 +106,7 @@ article {
 }
 
 article p {
-  background: #22a116;
+  background: var(--dp);
   flex: 1;
   margin: 0 1.5em;
   box-sizing: content-box;
@@ -115,16 +116,13 @@ article p {
 article > img.dp {
   object-fit: contain;
   padding: 1%;
-  background: #22a116 !important;
 }
-article.receive > img.dp {
-  background: #804d0a !important;
-}
-.receive {
+.received {
   margin-left: 5px;
   flex-direction: row;
 }
-.receive p {
-  background: #804d0a;
+
+.sent {
+  --dp: #178339;
 }
 </style>

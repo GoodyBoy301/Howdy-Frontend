@@ -104,7 +104,7 @@ li img {
   object-fit: contain;
 }
 img.dp {
-  background: yellow !important;
+  background: var(--dp) !important;
 }
 li > div {
   font-size: 0.7rem;

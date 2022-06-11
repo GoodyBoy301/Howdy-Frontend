@@ -18,6 +18,7 @@ export default {
 :root {
   --darkPrimary: #342324;
   --lightPrimary: #51312e;
+  --rare: #8175ff;
 }
 * {
   margin: 0;
