@@ -92,5 +92,8 @@ a {
   ::-webkit-scrollbar {
     display: none !important;
   }
+  main {
+    grid-template-columns: 0fr 1fr;
+  }
 }
 </style>
