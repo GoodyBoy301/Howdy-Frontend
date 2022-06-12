@@ -54,11 +54,27 @@
         </article>
       </div>
     </div>
+    <div class="input">
+      <span class="textarea" contenteditable spellcheck="false" /><img
+        src="/assets/icons/send.svg"
+        alt=""
+      />
+    </div>
   </section>
 </template>
 
 <script>
-export default {};
+import { ref } from "vue";
+export default {
+  name: "chat",
+  props: [],
+  components: {},
+  setup() {
+    const input = ref("");
+
+    return { input };
+  },
+};
 </script>
 
 <style>
@@ -138,5 +154,49 @@ time {
 }
 time.sent {
   margin-left: auto;
+}
+
+.input {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto;
+  height: 13.5%;
+  align-items: flex-end;
+  max-width: 35em;
+  position: relative;
+}
+.textarea {
+  width: 35em;
+  background: #342324bb;
+  min-height: 2rem;
+  padding: 1em;
+  max-height: 6em;
+  font-size: 0.8em;
+  overflow: auto;
+  border-radius: 1em;
+  padding-right: 4em;
+  flex: 1;
+  opacity: 0.8;
+}
+.textarea:focus {
+  outline: var(--darkPrimary) solid 1px;
+  opacity: 1;
+}
+.textarea div {
+  margin: 0;
+  max-width: 100%;
+}
+.input img {
+  position: absolute;
+  right: 1em;
+  float: right;
+  --dp: transparent;
+  object-fit: contain;
+  color: var(--rare);
+  align-self: center;
+  bottom: 0.3em;
+  width: 1.5em;
+  cursor: pointer;
 }
 </style>
