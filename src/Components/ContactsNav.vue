@@ -11,7 +11,10 @@
       <img src="/assets/icons/plus.svg" alt="" />
     </div>
     <ul>
-      <li v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]" :key="i">
+      <li
+        v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]"
+        :key="i"
+      >
         <img src="/assets/DPs/male02.png" alt="" class="dp" />
         <div>
           <h3>Kush Gibson</h3>

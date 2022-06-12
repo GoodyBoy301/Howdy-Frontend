@@ -76,6 +76,13 @@ a {
 
 /* tablet */
 @media (max-width: 900px) {
+  body {
+    background: transparent;
+  }
+  main {
+    width: 100vw;
+    height: 100vh;
+  }
 }
 
 /* Mobile Devices*/
