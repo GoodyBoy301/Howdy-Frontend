@@ -1,7 +1,65 @@
-<template></template>
+<template>
+  <div class="landing" :class="formClass">
+    <nav>
+      <img src="/assets/brand/LogowText.svg" alt="" class="logo" /><span
+        @click="toggleForm"
+        class="toggle-form"
+        >Start Messaging →</span
+      >
+    </nav>
+    <div>
+      <h1><span>Stay connected</span> with your family and friends</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, iste
+        perferendis. Dolorum archit
+      </p>
+      <button>👦🏽 Create a Profile</button>
+    </div>
+  </div>
+</template>
 
 <script>
-export default {};
+import { ref } from "vue";
+import gsap from "gsap";
+
+export default {
+  name: "Landing",
+  props: ["loggedIn"],
+  components: {},
+  setup() {
+    const form = ref(false);
+    const toggleForm = (e) => {
+      form.value = !form.value;
+      if (form.value) {
+        gsap.to(".landing", {
+          x: "-50vw",
+          paddingLeft: "25%",
+          marginRight: "3em",
+        });
+        gsap.to(".toggle-form", { x: "50vw" });
+        gsap.to(".logo", { x: "25vw" });
+        e.target.innerText = "Start Messaging →";
+      } else {
+        gsap.to(".landing", {
+          x: "0%",
+          paddingLeft: "0%",
+          marginRight: "auto",
+        });
+        gsap.to(".toggle-form", { x: "0" });
+        gsap.to(".logo", { x: "0" });
+        e.target.innerText = "Start Messaging →";
+      }
+    };
+    return { form, toggleForm };
+  },
+  computed: {
+    formClass() {
+      if (this.form) {
+        return "form";
+      }
+    },
+  },
+};
 </script>
 
 <style>
