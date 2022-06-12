@@ -238,7 +238,6 @@ time.sent {
   .mobile.back {
     background: transparent;
     padding: 20%;
-    padding-right: 0;
   }
   article {
     width: 82.5%;
