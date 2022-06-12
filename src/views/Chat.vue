@@ -199,4 +199,12 @@ time.sent {
   width: 1.5em;
   cursor: pointer;
 }
+/* tablet */
+@media (max-width: 900px) {
+  .messages {
+    height: calc(99vh - 15em);
+  }
+}
+@media (max-width: 900px) and (min-height: 600px) {
+}
 </style>
