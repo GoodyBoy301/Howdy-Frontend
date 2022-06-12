@@ -2,7 +2,7 @@
   <section class="chat">
     <div class="heading bar">
       <li class="topbar">
-        <img src="/assets/icons/plus.svg" alt="" class="mobile back" />
+        <img src="/assets/icons/back.svg" alt="" class="mobile back" />
         <img src="/assets/DPs/male02.png" alt="" class="dp" />
         <div>
           <h3>Kush Gibson</h3>
@@ -237,6 +237,8 @@ time.sent {
   }
   .mobile.back {
     background: transparent;
+    padding: 20%;
+    padding-right: 0;
   }
   article {
     width: 82.5%;
@@ -253,6 +255,13 @@ time.sent {
   }
   .input {
     width: 90%;
+  }
+  .textarea {
+    font-weight: 200;
+    letter-spacing: 1.2px;
+    font-size: 0.8rem;
+    width: calc(35em * 0.8);
+    max-height: calc(6em * 0.8);
   }
 }
 </style>
