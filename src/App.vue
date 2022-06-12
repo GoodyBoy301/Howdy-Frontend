@@ -78,10 +78,12 @@ a {
 @media (max-width: 900px) {
   body {
     background: transparent;
+    font-size: calc(0.5em + 1vw);
   }
   main {
     width: 100vw;
     height: 100vh;
+    grid-template-columns: 6fr 15fr;
   }
 }
 

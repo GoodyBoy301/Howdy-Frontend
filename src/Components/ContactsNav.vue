@@ -72,8 +72,6 @@ img {
 .heading img {
   padding: 0.6em;
   background: var(--lightPrimary);
-  fill: white;
-  stroke: black;
 }
 .heading img:first-of-type {
   margin: 0 0.55em 0 auto;
@@ -123,5 +121,24 @@ li h3 {
 li p {
   font-weight: 200;
   justify-self: flex-end;
+}
+
+/* tablet */
+@media (max-width: 900px) {
+  ul {
+    padding-bottom: 30%;
+  }
+  li {
+    height: 3.5em;
+  }
+  li > div {
+    font-size: 0.7rem;
+  }
+  li h3 {
+    font-weight: 300;
+  }
+  li p {
+    display: none;
+  }
 }
 </style>
