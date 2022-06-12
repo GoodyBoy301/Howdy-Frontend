@@ -73,6 +73,9 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--darkPrimary) !important;
 }
+.mobile {
+  display: none;
+}
 
 /* tablet */
 @media (max-width: 900px) {
@@ -94,6 +97,9 @@ a {
   }
   main {
     grid-template-columns: 0fr 1fr;
+  }
+  .mobile {
+    display: block;
   }
 }
 </style>

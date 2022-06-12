@@ -1,7 +1,8 @@
 <template>
   <section class="chat">
-    <div class="heading">
+    <div class="heading bar">
       <li class="topbar">
+        <img src="/assets/icons/plus.svg" alt="" class="mobile back" />
         <img src="/assets/DPs/male02.png" alt="" class="dp" />
         <div>
           <h3>Kush Gibson</h3>
@@ -43,6 +44,14 @@
         <article class="sent">
           <img src="/assets/DPs/male01.png" alt="" class="dp" />
           <p>ipsum dolor, sit amet consec</p>
+        </article>
+        <time>3:49 pm</time>
+        <article class="received">
+          <img src="/assets/DPs/male02.png" alt="" class="dp" />
+          <p>
+            Lorem ipsum dolor sit amet consat corrupti numquam eos delectus
+            officiis dolorem neque error libero saepe!
+          </p>
         </article>
         <time>3:49 pm</time>
         <article class="received">
@@ -204,7 +213,46 @@ time.sent {
   .messages {
     height: calc(99vh - 15em);
   }
+  .input {
+    height: 5em;
+  }
 }
-@media (max-width: 900px) and (min-height: 600px) {
+
+/* Mobile Devices*/
+@media (max-width: 576px) {
+  .chat {
+    border-radius: 0;
+  }
+  .messages > div {
+    width: 95%;
+  }
+  .heading.bar {
+    margin-right: 0;
+    margin-left: 0;
+    display: flex;
+    justify-items: center;
+  }
+  .topbar {
+    grid-template-columns: 1fr 1fr 9fr 1fr;
+  }
+  .mobile.back {
+    background: transparent;
+  }
+  article {
+    width: 82.5%;
+    font-weight: 200;
+    letter-spacing: 1.2px;
+  }
+  article p {
+    margin: 0 0.75em;
+  }
+  time {
+    font-size: 0.65rem;
+    font-weight: 200;
+    letter-spacing: 1.2px;
+  }
+  .input {
+    width: 90%;
+  }
 }
 </style>
