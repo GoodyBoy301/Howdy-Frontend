@@ -142,7 +142,7 @@ button {
   letter-spacing: 1.2px;
   border: 0;
   cursor: pointer;
-  transition: 1s, transform 0s;
+  transition: 0.7s, transform 0s;
 }
 button.form {
   cursor: not-allowed;
