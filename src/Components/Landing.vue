@@ -22,16 +22,19 @@
       </button>
     </div>
   </div>
+  <Login />
 </template>
 
 <script>
 import { ref } from "vue";
 import { toggleFormIn, toggleFormOut } from "../Animations/toggleForm.js";
 
+import Login from "./LogIn.vue";
+
 export default {
   name: "Landing",
   props: ["loggedIn"],
-  components: {},
+  components: { Login },
   setup() {
     const form = ref(false);
     const toggleForm = (e) => {
@@ -59,12 +62,13 @@ div.landing {
   width: 100vw;
   /* background: #342324ee; */
   background: #000000e0;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(13px);
   position: absolute;
   top: 0;
   left: 0;
   will-change: width;
   transition: all 0.9 ease-out;
+  z-index: 2;
 }
 .landing > div {
   display: grid;
