@@ -4,6 +4,7 @@
       <img src="/assets/brand/LogowText.svg" alt="" class="logo" /><span
         @click="toggleForm"
         class="toggle-form"
+        data-form-type="in"
         >Start Messaging →</span
       >
     </nav>
@@ -17,12 +18,12 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, iste
         perferendis. Dolorum archit
       </p>
-      <button class="landing_text" @click="formEvent">
+      <button class="landing_text" @click="formEvent" data-form-type="up">
         👦🏽 Create a Profile
       </button>
     </div>
   </div>
-  <Login :hasAccount="hasAccount" />
+  <Login :hasAccount="hasAccount" :toggleForm="toggleForm" />
 </template>
 
 <script>
@@ -39,10 +40,16 @@ export default {
     const form = ref(false);
     const toggleForm = (e) => {
       form.value = !form.value;
-      if (form.value) toggleFormIn();
-      else toggleFormOut();
-      if (e.target.innerText === "Start Messaging →") hasAccount.value = true;
-      else hasAccount.value = false;
+      if (form.value) {
+        toggleFormIn();
+        document.querySelector(".toggle-form").innerText = "";
+      } else {
+        toggleFormOut();
+        document.querySelector(".toggle-form").innerText = "Start Messaging →";
+      }
+      if (e.target.dataset.formType === "in") hasAccount.value = true;
+      if (e.target.dataset.formType === "up") hasAccount.value = false;
+      console.dir(e.target);
     };
 
     const hasAccount = ref(false);

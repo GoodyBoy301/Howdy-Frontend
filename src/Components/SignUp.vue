@@ -14,7 +14,7 @@ export default {
   setup() {},
   computed: {
     signin() {
-      if (this.hasAccount) return "signin";
+      if (!this.hasAccount) return "signin";
     },
   },
 };
@@ -25,8 +25,9 @@ div.signUp {
   /* background: red; */
   padding: 1em;
   display: grid;
-  /* margin: 1em; */
+  margin: 0;
   gap: 1.5em;
+  justify-content: flex-start;
 }
 input {
   display: block;
@@ -37,6 +38,8 @@ input {
   border-bottom: 2px solid black;
   outline: none;
   max-width: 30em;
+  min-width: 400px;
+  margin: auto;
 }
 .signin {
   opacity: 0;

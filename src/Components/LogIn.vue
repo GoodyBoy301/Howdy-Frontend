@@ -1,6 +1,7 @@
 <template>
   <form class="login">
-    <h2>Create An Account</h2>
+    <img src="/assets/icons/x.svg" alt="" class="x" @click="toggleForm" />
+    <h2>{{ hasAccount ? "Welcome Back" : "Create An Account" }}</h2>
     <SignUp :hasAccount="!hasAccount" />
   </form>
 </template>
@@ -8,9 +9,9 @@
 <script>
 import SignUp from "./SignUp.vue";
 export default {
-  components: { SignUp },
   name: "Login",
-  props: ["hasAccount"],
+  props: ["hasAccount", "toggleForm"],
+  components: { SignUp },
 };
 </script>
 
@@ -41,5 +42,12 @@ form h2 {
   font-weight: 500;
   margin: 1em;
   margin-bottom: 0;
+}
+.x {
+  position: absolute;
+  right: 2em;
+  top: 2em;
+  width: 2em;
+  cursor: pointer;
 }
 </style>
