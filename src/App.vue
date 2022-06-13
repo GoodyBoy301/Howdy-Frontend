@@ -33,6 +33,7 @@ export default {
   padding: 0;
   box-sizing: border-box;
   color: white;
+  overflow-x: hidden;
 }
 body {
   background-image: url("/assets/backgroundImg.jpg");

@@ -8,12 +8,18 @@
       >
     </nav>
     <div>
-      <h1><span>Stay connected</span> with your family and friends</h1>
-      <p>
+      <h1 class="landing_text">
+        <span>Stay connected</span>
+        <span class="wF">with your family and friends</span
+        ><span class="wH">with Howdy</span>
+      </h1>
+      <p class="landing_text landing_p">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, iste
         perferendis. Dolorum archit
       </p>
-      <button>👦🏽 Create a Profile</button>
+      <button class="landing_text" @click="formEvent">
+        👦🏽 Create a Profile
+      </button>
     </div>
   </div>
 </template>
@@ -30,21 +36,17 @@ export default {
     const form = ref(false);
     const toggleForm = (e) => {
       form.value = !form.value;
-      if (form.value) {
-        toggleFormIn();
-        e.target.innerText = "Start Messaging →";
-      } else {
-        toggleFormOut();
-        e.target.innerText = "Start Messaging →";
-      }
+      if (form.value) toggleFormIn(e);
+      else toggleFormOut(e);
     };
     return { form, toggleForm };
   },
   computed: {
     formClass() {
-      if (this.form) {
-        return "form";
-      }
+      if (this.form) return "form";
+    },
+    formEvent() {
+      if (!this.form) return this.toggleForm;
     },
   },
 };
@@ -77,6 +79,9 @@ h1 {
 h1 span {
   display: block;
 }
+span.wH {
+  display: none;
+}
 .landing > div > p {
   width: 50%;
   margin: 1em auto;
@@ -98,6 +103,7 @@ nav span {
   position: fixed !important;
   right: 10px;
   float: right;
+  cursor: pointer;
 }
 img {
   all: unset;
@@ -114,6 +120,8 @@ button {
   font-weight: 200;
   color: #dddddd;
   letter-spacing: 1.2px;
+  border: 0;
+  cursor: pointer;
 }
 
 div.landing.form {
