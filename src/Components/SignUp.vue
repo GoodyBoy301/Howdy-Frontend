@@ -40,8 +40,9 @@ input {
   max-width: 30em;
   min-width: 400px;
   margin: auto;
+  pointer-events: visible;
 }
 .signin {
-  opacity: 0;
+  visibility: hidden;
 }
 </style>

@@ -18,7 +18,12 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, iste
         perferendis. Dolorum archit
       </p>
-      <button class="landing_text" @click="formEvent" data-form-type="up">
+      <button
+        class="landing_text"
+        @click="formEvent"
+        data-form-type="up"
+        :class="formClass"
+      >
         👦🏽 Create a Profile
       </button>
     </div>
@@ -49,7 +54,6 @@ export default {
       }
       if (e.target.dataset.formType === "in") hasAccount.value = true;
       if (e.target.dataset.formType === "up") hasAccount.value = false;
-      console.dir(e.target);
     };
 
     const hasAccount = ref(false);
@@ -138,9 +142,14 @@ button {
   letter-spacing: 1.2px;
   border: 0;
   cursor: pointer;
+  transition: 1s, transform 0s;
+}
+button.form {
+  cursor: not-allowed;
+  filter: brightness(0.3);
 }
 
-div.landing.form {
+div.landing.for {
   margin: 0;
   height: 100vh;
   /* width: 50vw; */

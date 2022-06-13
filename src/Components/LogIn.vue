@@ -3,6 +3,10 @@
     <img src="/assets/icons/x.svg" alt="" class="x" @click="toggleForm" />
     <h2>{{ hasAccount ? "Welcome Back" : "Create An Account" }}</h2>
     <SignUp :hasAccount="!hasAccount" />
+    <div class="proceed">
+      <h3>{{ hasAccount ? "Sign In" : "Sign Up" }}</h3>
+      <img src="/assets/icons/back.svg" alt="" />
+    </div>
   </form>
 </template>
 
@@ -49,5 +53,20 @@ form h2 {
   top: 2em;
   width: 2em;
   cursor: pointer;
+}
+.proceed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3em;
+}
+.proceed h3 {
+  color: var(--rare);
+  font-size: 1.75rem;
+}
+.proceed img {
+  width: 2em;
+  cursor: pointer;
+  transform: rotateY(180deg);
 }
 </style>
