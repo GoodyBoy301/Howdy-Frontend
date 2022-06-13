@@ -20,7 +20,7 @@
 
 <script>
 import { ref } from "vue";
-import gsap from "gsap";
+import { toggleFormIn, toggleFormOut } from "../Animations/toggleForm.js";
 
 export default {
   name: "Landing",
@@ -31,22 +31,10 @@ export default {
     const toggleForm = (e) => {
       form.value = !form.value;
       if (form.value) {
-        gsap.to(".landing", {
-          x: "-50vw",
-          paddingLeft: "25%",
-          marginRight: "3em",
-        });
-        gsap.to(".toggle-form", { x: "50vw" });
-        gsap.to(".logo", { x: "25vw" });
+        toggleFormIn();
         e.target.innerText = "Start Messaging →";
       } else {
-        gsap.to(".landing", {
-          x: "0%",
-          paddingLeft: "0%",
-          marginRight: "auto",
-        });
-        gsap.to(".toggle-form", { x: "0" });
-        gsap.to(".logo", { x: "0" });
+        toggleFormOut();
         e.target.innerText = "Start Messaging →";
       }
     };
