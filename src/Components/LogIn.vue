@@ -1,9 +1,17 @@
 <template>
-  <form class="login"></form>
+  <form class="login">
+    <h2>Create An Account</h2>
+    <SignUp :hasAccount="!hasAccount" />
+  </form>
 </template>
 
 <script>
-export default {};
+import SignUp from "./SignUp.vue";
+export default {
+  components: { SignUp },
+  name: "Login",
+  props: ["hasAccount"],
+};
 </script>
 
 <style>
@@ -21,5 +29,17 @@ form {
   transition: all 0.9 ease-out;
   margin-left: 50vw;
   transform: translateX(50vw);
+  color: black;
+  padding: 1em;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+form h2 {
+  color: var(--rare);
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin: 1em;
+  margin-bottom: 0;
 }
 </style>

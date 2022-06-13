@@ -22,7 +22,7 @@
       </button>
     </div>
   </div>
-  <Login />
+  <Login :hasAccount="hasAccount" />
 </template>
 
 <script>
@@ -39,10 +39,15 @@ export default {
     const form = ref(false);
     const toggleForm = (e) => {
       form.value = !form.value;
-      if (form.value) toggleFormIn(e);
-      else toggleFormOut(e);
+      if (form.value) toggleFormIn();
+      else toggleFormOut();
+      if (e.target.innerText === "Start Messaging →") hasAccount.value = true;
+      else hasAccount.value = false;
     };
-    return { form, toggleForm };
+
+    const hasAccount = ref(false);
+
+    return { form, toggleForm, hasAccount };
   },
   computed: {
     formClass() {
