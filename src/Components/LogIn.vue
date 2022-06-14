@@ -3,27 +3,42 @@
     <img src="/assets/icons/x.svg" alt="" class="x" @click="toggleForm" />
     <section>
       <h2>{{ hasAccount ? "Welcome Back🎉" : "Create An Account" }}</h2>
-      <SignUp :hasAccount="!hasAccount" />
+      <SignUp :hasAccount="!hasAccount" :phone="phone" />
     </section>
     <div class="proceed">
       <h3>{{ hasAccount ? "Sign In" : "Sign Up" }}</h3>
-      <img src="/assets/icons/back.svg" alt="" />
+      <button type="submit" class="submit">
+        <img src="/assets/icons/back.svg" alt="" />
+      </button>
     </div>
     <h4 @click="toggleHasAccount">
-      {{ hasAccount ? "SignUp instead" : "SignIn instead" }}
+      {{ hasAccount ? "Sign Up instead" : "Sign In instead" }}
     </h4>
-    <h4 class="forgot">
-      {{ hasAccount ? "Forgot Password" : "© 2022 Howdy" }}
+    <h4 class="forgot" @click="togglePhone(hasAccount)">
+      {{
+        hasAccount ? "Forgot Password" : "Create an Account with Email Address"
+      }}
     </h4>
   </form>
 </template>
 
 <script>
+import { ref } from "vue";
 import SignUp from "./SignUp.vue";
 export default {
   name: "Login",
   props: ["hasAccount", "toggleForm", "toggleHasAccount"],
   components: { SignUp },
+  setup() {
+    const phone = ref(true);
+    const togglePhone = (hasAccount) => {
+      if (!hasAccount) {
+        phone.value = !phone.value;
+      }
+    };
+
+    return { phone, togglePhone };
+  },
 };
 </script>
 
@@ -89,6 +104,9 @@ form h2 {
   color: var(--rare);
   font-size: 1.75rem;
   pointer-events: none;
+}
+button.submit {
+  all: initial;
 }
 .proceed img {
   width: 2em;

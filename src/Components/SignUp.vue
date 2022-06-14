@@ -5,28 +5,43 @@
       spellcheck="false"
       @focus="handleFocus"
       @blur="handleBlur"
+      :type="phone ? 'tel' : 'email'"
+      required
     />
-    <p data-placeholder="Phone Number" :class="signin">Phone Number</p>
-    <input spellcheck="false" @focus="handleFocus" @blur="handleBlur" />
+    <p
+      :data-placeholder="phone ? 'Phone Number' : 'Email Address'"
+      :class="signin"
+    >
+      {{ phone ? "Phone Number" : "Email Address" }}
+    </p>
+    <input
+      spellcheck="false"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      required
+    />
     <p data-placeholder="Username">Username</p>
     <input
       spellcheck="false"
       @focus="handleFocus"
       @blur="handleBlur"
-      type="password"
+      :type="showPassword ? 'text' : 'password'"
+      required
     />
     <p data-placeholder="Password">Password</p>
+    <h6 @click="toggleShowPassword">{{ showPassword ? "🔓" : "🔐" }}</h6>
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
+
 export default {
   name: "SingUp",
-  props: ["hasAccount"],
+  props: ["hasAccount", "phone"],
   components: {},
   setup() {
     const handleBlur = (e) => {
-      console.log(e);
       if (e.target.value && e.target.type !== "password")
         e.target.nextSibling.innerText = e.target.value;
       else
@@ -34,11 +49,16 @@ export default {
           e.target.nextSibling.dataset.placeholder;
     };
     const handleFocus = (e) => {
-      console.log(e);
       e.target.nextSibling.innerText = e.target.nextSibling.dataset.placeholder;
     };
 
-    return { handleBlur, handleFocus };
+    const showPassword = ref(false);
+    const toggleShowPassword = (e) => {
+      showPassword.value = !showPassword.value;
+      console.dir(e.target);
+      e.target.previousSibling.previousSibling.focus();
+    };
+    return { handleBlur, handleFocus, showPassword, toggleShowPassword };
   },
   computed: {
     signin() {
@@ -87,6 +107,20 @@ input {
   left: 1em;
   pointer-events: none;
   transition: 0.2s, visibility 0s;
+}
+.signUp h6 {
+  color: var(--rare);
+  text-align: right;
+  font-size: 1rem;
+  cursor: pointer;
+  /* line-height: 0.3em; */
+  margin: -1em 0 -1em auto;
+  position: relative;
+  bottom: 4em;
+  /* left: 3em; */
+  transition: 0.2s, visibility 0s;
+  float: right;
+  width: 2em;
 }
 
 input:focus {
