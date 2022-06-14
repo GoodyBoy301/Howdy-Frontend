@@ -52,10 +52,11 @@ export default {
 div.signUp {
   /* background: red; */
   padding: 1em;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   gap: 1.5em;
-  justify-content: flex-start;
+  /* justify-content: flex-start; */
 }
 input {
   display: block;
@@ -66,7 +67,7 @@ input {
   outline: none;
   max-width: 30em;
   min-width: 400px;
-  margin: auto;
+  /* margin: auto; */
   pointer-events: visible;
   font-size: 1rem;
   transform: 1s;
@@ -85,7 +86,7 @@ input {
   bottom: 3em;
   left: 1em;
   pointer-events: none;
-  transition: 0.2s;
+  transition: 0.2s, visibility 0s;
 }
 
 input:focus {

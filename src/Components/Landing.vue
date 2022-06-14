@@ -28,7 +28,13 @@
       </button>
     </div>
   </div>
-  <Login :hasAccount="hasAccount" :toggleForm="toggleForm" />
+  <CreateProfile v-if="proceed" />
+  <Login
+    v-else
+    :hasAccount="hasAccount"
+    :toggleForm="toggleForm"
+    :toggleHasAccount="toggleHasAccount"
+  />
 </template>
 
 <script>
@@ -36,11 +42,12 @@ import { ref } from "vue";
 import { toggleFormIn, toggleFormOut } from "../Animations/toggleForm.js";
 
 import Login from "./LogIn.vue";
+import CreateProfile from "./CreateProfile.vue";
 
 export default {
   name: "Landing",
   props: ["loggedIn"],
-  components: { Login },
+  components: { Login, CreateProfile },
   setup() {
     const form = ref(false);
     const toggleForm = (e) => {
@@ -57,8 +64,13 @@ export default {
     };
 
     const hasAccount = ref(false);
+    const toggleHasAccount = () => {
+      hasAccount.value = !hasAccount.value;
+    };
 
-    return { form, toggleForm, hasAccount };
+    const proceed = ref(false);
+
+    return { form, toggleForm, hasAccount, toggleHasAccount, proceed };
   },
   computed: {
     formClass() {
@@ -124,6 +136,11 @@ nav span {
   right: 10px;
   float: right;
   cursor: pointer;
+  transition: 0.2s;
+  padding: 0 0.3em;
+}
+nav span:hover {
+  transform: translateX(-10px);
 }
 img {
   all: unset;

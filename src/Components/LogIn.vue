@@ -1,14 +1,20 @@
 <template>
   <form class="login">
     <img src="/assets/icons/x.svg" alt="" class="x" @click="toggleForm" />
-    <h2>{{ hasAccount ? "Welcome Back" : "Create An Account" }}</h2>
-    <SignUp :hasAccount="!hasAccount" />
+    <section>
+      <h2>{{ hasAccount ? "Welcome Back🎉" : "Create An Account" }}</h2>
+      <SignUp :hasAccount="!hasAccount" />
+    </section>
     <div class="proceed">
       <h3>{{ hasAccount ? "Sign In" : "Sign Up" }}</h3>
       <img src="/assets/icons/back.svg" alt="" />
     </div>
-    <h4>{{ hasAccount ? "SignUp instead" : "SignIn instead" }}</h4>
-    <h4 class="forgot">{{ hasAccount ? "Forgot Password" : "© 2022 Hody" }}</h4>
+    <h4 @click="toggleHasAccount">
+      {{ hasAccount ? "SignUp instead" : "SignIn instead" }}
+    </h4>
+    <h4 class="forgot">
+      {{ hasAccount ? "Forgot Password" : "© 2022 Howdy" }}
+    </h4>
   </form>
 </template>
 
@@ -16,7 +22,7 @@
 import SignUp from "./SignUp.vue";
 export default {
   name: "Login",
-  props: ["hasAccount", "toggleForm"],
+  props: ["hasAccount", "toggleForm", "toggleHasAccount"],
   components: { SignUp },
 };
 </script>
@@ -39,7 +45,7 @@ form {
   color: black;
   padding: 1em;
   display: grid;
-  justify-content: center;
+  /* justify-content: center; */
   align-content: center;
 }
 form h2 {
@@ -48,6 +54,7 @@ form h2 {
   font-weight: 500;
   margin: 1em;
   margin-bottom: 0;
+  pointer-events: none;
 }
 .x {
   position: absolute;
@@ -55,16 +62,33 @@ form h2 {
   top: 2em;
   width: 2em;
   cursor: pointer;
+  box-sizing: content-box;
+  border-radius: 50%;
+}
+.x:hover {
+  border: 2px solid var(--rare);
+  padding: 4px;
+  right: calc(2em - 6px);
+  top: calc(2em - 6px);
+}
+.login section {
+  display: grid;
+  justify-content: center;
+  min-width: 500px;
 }
 .proceed {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 3em;
+  margin-top: 2em;
+  width: 35rem;
+  max-width: 425px;
+  margin: auto;
 }
 .proceed h3 {
   color: var(--rare);
   font-size: 1.75rem;
+  pointer-events: none;
 }
 .proceed img {
   width: 2em;
@@ -79,6 +103,13 @@ h4 {
   color: black;
   font-size: 1rem;
   font-weight: 300;
+  user-select: none;
+  padding: 0 0.3em;
+}
+h4:hover {
+  border-bottom: 1px solid black;
+  padding-bottom: 0.3em;
+  /* box-shadow: 0px 1px 1px 5px black; */
 }
 h4.forgot {
   left: unset;
