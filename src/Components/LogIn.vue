@@ -7,6 +7,8 @@
       <h3>{{ hasAccount ? "Sign In" : "Sign Up" }}</h3>
       <img src="/assets/icons/back.svg" alt="" />
     </div>
+    <h4>{{ hasAccount ? "SignUp instead" : "SignIn instead" }}</h4>
+    <h4 class="forgot">{{ hasAccount ? "Forgot Password" : "© 2022 Hody" }}</h4>
   </form>
 </template>
 
@@ -68,5 +70,18 @@ form h2 {
   width: 2em;
   cursor: pointer;
   transform: rotateY(180deg);
+}
+h4 {
+  position: absolute;
+  left: 1em;
+  bottom: 1em;
+  cursor: pointer;
+  color: black;
+  font-size: 1rem;
+  font-weight: 300;
+}
+h4.forgot {
+  left: unset;
+  right: 1em;
 }
 </style>
