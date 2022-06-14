@@ -6,7 +6,7 @@
       @focus="handleFocus"
       @blur="handleBlur"
       :type="phone ? 'tel' : 'email'"
-      required
+      :required="required"
     />
     <p
       :data-placeholder="phone ? 'Phone Number' : 'Email Address'"
@@ -63,6 +63,10 @@ export default {
   computed: {
     signin() {
       if (!this.hasAccount) return "signin";
+    },
+    required() {
+      if (!this.hasAccount) return false;
+      else return true;
     },
   },
 };
