@@ -83,9 +83,9 @@ ul {
   margin-top: 0;
 }
 li {
-  height: 4em;
+  /* height: 4em; */
   margin: 1.5%;
-  padding: 3.5%;
+  padding: 1.5% 3.5%;
   display: flex;
   align-items: center;
   justify-content: flex-end;

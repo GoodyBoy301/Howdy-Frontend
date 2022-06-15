@@ -154,7 +154,7 @@ nav span {
 nav span:hover {
   transform: translateX(-10px);
 }
-img {
+.landing img {
   all: unset;
   width: 5em;
 }

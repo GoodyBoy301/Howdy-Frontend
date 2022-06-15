@@ -100,6 +100,7 @@ export default {
   width: 100%;
   align-items: center;
   padding: 0;
+  height: 4em;
 }
 .heading .topbar:hover {
   background: unset;
@@ -125,6 +126,7 @@ export default {
   height: 100%;
   align-content: flex-start;
   overflow-y: scroll;
+  overflow-x: unset;
 }
 article {
   width: 70%;

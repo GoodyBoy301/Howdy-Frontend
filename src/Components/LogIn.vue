@@ -37,7 +37,7 @@ export default {
     "setLoggedIn",
   ],
   components: { SignUp },
-  setup({ toggleProceed }) {
+  setup({ toggleProceed, setLoggedIn }) {
     const phone = ref(true);
     const togglePhone = (hasAccount) => {
       console.log();
@@ -49,6 +49,7 @@ export default {
     const handleSubmit = (e, hasAccount) => {
       e.preventDefault();
       if (!hasAccount) toggleProceed();
+      else setLoggedIn();
     };
 
     return { phone, togglePhone, handleSubmit };
