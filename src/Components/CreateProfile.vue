@@ -1,14 +1,18 @@
 <template>
   <form class="login proceed">
-    <!-- <img src="/assets/icons/back.svg" alt="" class="x" @click="toggleForm" /> -->
     <section>
-      <h3>Complete Your Profile</h3>
       <img
         :src="`/assets/DPs/${pic}.png`"
         alt=""
         class="previewDP"
         :style="`background: ${color}`"
       />
+      <textarea
+        spellcheck="false"
+        maxlength="100"
+        placeholder="add a short bio..."
+      />
+      <span class="buttons"><button>Skip</button><button>Save</button></span>
       <div class="colors">
         <span
           v-for="i in [
@@ -45,20 +49,6 @@
         />
       </div>
     </section>
-    <!-- <div class="proceed">
-      <h3>{{ hasAccount ? "Sign In" : "Sign Up" }}</h3>
-      <button type="submit" class="submit">
-        <img src="/assets/icons/back.svg" alt="" />
-      </button>
-    </div>
-    <h4 @click="toggleHasAccount">
-      {{ hasAccount ? "Sign Up instead" : "Sign In instead" }}
-    </h4>
-    <h4 class="forgot" @click="togglePhone(hasAccount)">
-      {{
-        hasAccount ? "Forgot Password" : "Create an Account with Email Address"
-      }}
-    </h4> -->
   </form>
 </template>
 
@@ -102,7 +92,43 @@ img.previewDP {
   pointer-events: none;
   object-fit: contain;
   border-radius: 50%;
-  transition: 1;
+  /* transition: 0.2s; */
+}
+textarea {
+  border-radius: 0.5em;
+  margin: 1em auto;
+  height: 5em;
+  width: 470px;
+  resize: none;
+  color: black;
+  font-size: 1.25rem;
+  font-weight: 500;
+  font-family: inherit;
+  background: #fff3;
+  padding: calc(0.1em + 2px) calc(0.5em + 2px);
+  /* backdrop-filter: blur(1px); */
+  border: 0;
+  /* box-sizing: content-box; */
+  /* transition: 0.2s; */
+}
+textarea:focus {
+  border: 2px solid black;
+  padding: 0.1em 0.5em;
+  outline: none;
+}
+.buttons {
+  margin-bottom: 4em;
+  display: flex;
+}
+.buttons button {
+  font-size: 1rem;
+  padding: 0.7em 1em;
+  font-weight: 600;
+  font-family: inherit;
+}
+.buttons button:first-of-type {
+  color: black;
+  background: #fff3;
 }
 div.colors {
   display: flex;
