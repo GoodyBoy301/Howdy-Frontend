@@ -1,5 +1,5 @@
 <template>
-  <form class="login">
+  <form class="login" @submit="handleSubmit">
     <img src="/assets/icons/x.svg" alt="" class="x" @click="toggleForm" />
     <section>
       <h2>{{ hasAccount ? "Welcome Back🎉" : "Create An Account" }}</h2>
@@ -27,17 +27,23 @@ import { ref } from "vue";
 import SignUp from "./SignUp.vue";
 export default {
   name: "Login",
-  props: ["hasAccount", "toggleForm", "toggleHasAccount"],
+  props: ["hasAccount", "toggleForm", "toggleHasAccount", "toggleProceed"],
   components: { SignUp },
-  setup() {
+  setup({ toggleProceed }) {
     const phone = ref(true);
     const togglePhone = (hasAccount) => {
+      console.log();
       if (!hasAccount) {
         phone.value = !phone.value;
       }
     };
 
-    return { phone, togglePhone };
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      toggleProceed();
+    };
+
+    return { phone, togglePhone, handleSubmit };
   },
 };
 </script>
@@ -112,6 +118,8 @@ button.submit {
   width: 2em;
   cursor: pointer;
   transform: rotateY(180deg);
+  /* padding: 10em; */
+  /* background: var(--rare); */
 }
 h4 {
   position: absolute;

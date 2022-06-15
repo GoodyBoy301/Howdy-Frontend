@@ -55,7 +55,6 @@ export default {
     const showPassword = ref(false);
     const toggleShowPassword = (e) => {
       showPassword.value = !showPassword.value;
-      console.dir(e.target);
       e.target.previousSibling.previousSibling.focus();
     };
     return { handleBlur, handleFocus, showPassword, toggleShowPassword };

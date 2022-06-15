@@ -34,6 +34,7 @@
     :hasAccount="hasAccount"
     :toggleForm="toggleForm"
     :toggleHasAccount="toggleHasAccount"
+    :toggleProceed="toggleProceed"
   />
 </template>
 
@@ -69,8 +70,11 @@ export default {
     };
 
     const proceed = ref(false);
+    const toggleProceed = () => {
+      proceed.value = !proceed.value;
+    };
 
-    return { form, toggleForm, hasAccount, toggleHasAccount, proceed };
+    return { form, toggleForm, hasAccount, toggleHasAccount, proceed, toggleProceed };
   },
   computed: {
     formClass() {
