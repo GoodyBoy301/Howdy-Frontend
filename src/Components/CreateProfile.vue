@@ -3,7 +3,12 @@
     <!-- <img src="/assets/icons/back.svg" alt="" class="x" @click="toggleForm" /> -->
     <section>
       <h3>Complete Your Profile</h3>
-      <img src="/assets/DPs/male02.png" alt="" class="previewDP" />
+      <img
+        :src="`/assets/DPs/${pic}.png`"
+        alt=""
+        class="previewDP"
+        :style="`background: ${color}`"
+      />
       <div class="colors">
         <span
           v-for="i in [
@@ -17,6 +22,7 @@
           ]"
           :key="i"
           :style="`--rare: ${i}`"
+          @click="handleColor(i)"
         />
       </div>
       <div class="images">
@@ -35,6 +41,7 @@
           alt=""
           class="previewDP"
           style="--rare: transparent"
+          @click="handlePic(i)"
         />
       </div>
     </section>
@@ -56,7 +63,25 @@
 </template>
 
 <script>
-export default {};
+import { ref } from "vue";
+export default {
+  name: "CreateProfile",
+  props: [],
+  components: {},
+  setup() {
+    const color = ref("black");
+    const handleColor = (i) => {
+      color.value = i;
+    };
+
+    const pic = ref("male01");
+    const handlePic = (i) => {
+      pic.value = i;
+    };
+
+    return { color, handleColor, pic, handlePic };
+  },
+};
 </script>
 
 <style>
@@ -77,6 +102,7 @@ img.previewDP {
   pointer-events: none;
   object-fit: contain;
   border-radius: 50%;
+  transition: 1;
 }
 div.colors {
   display: flex;
