@@ -56,7 +56,7 @@
 import { ref } from "vue";
 export default {
   name: "CreateProfile",
-  props: [],
+  props: ["setLoggedIn"],
   components: {},
   setup() {
     const color = ref("black");

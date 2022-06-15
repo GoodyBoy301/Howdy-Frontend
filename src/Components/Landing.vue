@@ -28,13 +28,14 @@
       </button>
     </div>
   </div>
-  <CreateProfile v-if="proceed" />
+  <CreateProfile v-if="proceed" :setLoggedIn="setLoggedIn" />
   <Login
     v-else
     :hasAccount="hasAccount"
     :toggleForm="toggleForm"
     :toggleHasAccount="toggleHasAccount"
     :toggleProceed="toggleProceed"
+    :setLoggedIn="setLoggedIn"
   />
 </template>
 
@@ -47,7 +48,7 @@ import CreateProfile from "./CreateProfile.vue";
 
 export default {
   name: "Landing",
-  props: ["loggedIn"],
+  props: ["loggedIn", "setLoggedIn"],
   components: { Login, CreateProfile },
   setup() {
     const form = ref(false);
@@ -74,7 +75,14 @@ export default {
       proceed.value = !proceed.value;
     };
 
-    return { form, toggleForm, hasAccount, toggleHasAccount, proceed, toggleProceed };
+    return {
+      form,
+      toggleForm,
+      hasAccount,
+      toggleHasAccount,
+      proceed,
+      toggleProceed,
+    };
   },
   computed: {
     formClass() {

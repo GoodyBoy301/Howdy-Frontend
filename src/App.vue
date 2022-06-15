@@ -3,7 +3,7 @@
     <ContactsNav />
     <router-view />
   </main>
-  <Landing v-else :loggedIn="loggedIn" />
+  <Landing v-else :loggedIn="loggedIn" :setLoggedIn="setLoggedIn" />
 </template>
 
 <script>
@@ -17,8 +17,11 @@ export default {
   components: { ContactsNav, Landing },
   setup() {
     const loggedIn = ref(false);
+    const setLoggedIn = () => {
+      loggedIn.value = !loggedIn.value;
+    };
 
-    return { loggedIn };
+    return { loggedIn, setLoggedIn };
   },
 };
 </script>

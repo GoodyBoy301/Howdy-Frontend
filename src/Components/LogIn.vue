@@ -29,7 +29,13 @@ import { ref } from "vue";
 import SignUp from "./SignUp.vue";
 export default {
   name: "Login",
-  props: ["hasAccount", "toggleForm", "toggleHasAccount", "toggleProceed"],
+  props: [
+    "hasAccount",
+    "toggleForm",
+    "toggleHasAccount",
+    "toggleProceed",
+    "setLoggedIn",
+  ],
   components: { SignUp },
   setup({ toggleProceed }) {
     const phone = ref(true);
