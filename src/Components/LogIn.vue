@@ -1,5 +1,5 @@
 <template>
-  <form class="login" @submit="handleSubmit">
+  <form class="login" @submit="handleSubmit($event, hasAccount)">
     <img src="/assets/icons/x.svg" alt="" class="x" @click="toggleForm" />
     <section>
       <h2>{{ hasAccount ? "Welcome Back🎉" : "Create An Account" }}</h2>
@@ -16,7 +16,9 @@
     </h4>
     <h4 class="forgot" @click="togglePhone(hasAccount)">
       {{
-        hasAccount ? "Forgot Password" : "Create an Account with Email Address"
+        hasAccount
+          ? "Forgot Password"
+          : `Create an Account with ${phone ? "Email Address" : "Phone Number"}`
       }}
     </h4>
   </form>
@@ -38,9 +40,9 @@ export default {
       }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e, hasAccount) => {
       e.preventDefault();
-      toggleProceed();
+      if (!hasAccount) toggleProceed();
     };
 
     return { phone, togglePhone, handleSubmit };
