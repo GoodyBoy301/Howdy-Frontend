@@ -44,6 +44,9 @@ body {
   background-position: center;
   height: 100vh;
   width: 100vw;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
