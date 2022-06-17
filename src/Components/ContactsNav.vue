@@ -124,7 +124,7 @@ li p {
 }
 
 /* tablet */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   ul {
     padding-bottom: 30%;
   }

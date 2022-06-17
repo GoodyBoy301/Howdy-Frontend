@@ -93,7 +93,7 @@ a {
 }
 
 /* tablet */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   body {
     /* background: transparent; */
     font-size: calc(0.5em + 1vw);

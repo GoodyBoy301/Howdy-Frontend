@@ -195,7 +195,7 @@ div.landing.form {
 }
 
 /* tablet */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   h1 {
     width: unset;
   }
