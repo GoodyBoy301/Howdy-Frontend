@@ -35,7 +35,7 @@ export function toggleFormOut(e) {
   });
   gsap.to(".logo", { x: 0 });
   gsap.to(".landing_text", { x: 0 });
-  gsap.to(".landing_p", { width: "50%", duration: 0.4 });
+  gsap.to(".landing_p", { width: "", duration: 0.4 });
   // gsap.to(".landing", { background: "#000000e0" });
   gsap.set(".wF", { display: "block" });
   gsap.set(".wH", { display: "none" });

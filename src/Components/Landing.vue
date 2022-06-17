@@ -182,7 +182,7 @@ button.form {
   filter: brightness(0.3);
 }
 
-div.landing.for {
+div.landing.form {
   margin: 0;
   height: 100vh;
   /* width: 50vw; */
@@ -192,5 +192,15 @@ div.landing.for {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+/* tablet */
+@media (max-width: 900px) {
+  h1 {
+    width: unset;
+  }
+  .landing > div > p {
+    width: 80%;
+  }
 }
 </style>
