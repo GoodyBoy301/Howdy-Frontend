@@ -138,4 +138,11 @@ input:focus + p {
 input:placeholder-shown + p {
   display: none;
 }
+
+/* Mobile Devices*/
+@media (max-width: 576px) {
+  input {
+    min-width: unset;
+  }
+}
 </style>

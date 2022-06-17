@@ -159,4 +159,18 @@ h4.forgot {
     transform: translateX(100vw);
   }
 }
+/* Mobile Devices*/
+@media (max-width: 576px) {
+  form {
+    position: unset;
+  }
+  .login section {
+    max-width: 80vw;
+    min-width: unset;
+  }
+  .proceed {
+    min-width: unset;
+    max-width: 80vw;
+  }
+}
 </style>

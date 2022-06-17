@@ -116,5 +116,9 @@ a {
   .mobile {
     display: block;
   }
+  #app,
+  body {
+    overflow: hidden !important;
+  }
 }
 </style>
