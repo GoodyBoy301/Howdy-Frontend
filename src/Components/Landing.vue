@@ -112,6 +112,10 @@ div.landing {
 }
 .landing > div {
   display: grid;
+  height: 70vh;
+  place-items: center;
+  place-content: center;
+  bottom: 0;
 }
 h1 {
   text-align: center;

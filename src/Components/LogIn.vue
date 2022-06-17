@@ -74,7 +74,7 @@ form {
   transform: translateX(50vw);
   color: black;
   padding: 1em;
-  display: grid;
+  display: none;
   /* justify-content: center; */
   align-content: center;
 }
@@ -149,5 +149,14 @@ h4:hover {
 h4.forgot {
   left: unset;
   right: 1em;
+}
+
+/* tablet */
+@media (max-width: 900px) {
+  form {
+    width: 100vw;
+    margin-left: 0;
+    transform: translateX(100vw);
+  }
 }
 </style>
