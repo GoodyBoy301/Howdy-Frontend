@@ -149,4 +149,11 @@ div.images {
   pointer-events: all;
   /* display: none; */
 }
+/* tablet */
+@media (max-width: 1024px) {
+  form.proceed {
+    transform: unset;
+    width: 100vw;
+  }
+}
 </style>

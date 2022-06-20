@@ -151,7 +151,7 @@ h4.forgot {
 }
 
 /* tablet */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   form {
     width: 100vw;
     margin-left: 0;
