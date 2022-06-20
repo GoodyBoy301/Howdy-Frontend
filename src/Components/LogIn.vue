@@ -82,8 +82,7 @@ form h2 {
   color: var(--rare);
   font-size: 2.5rem;
   font-weight: 500;
-  margin: 1em;
-  margin-bottom: 0;
+  margin: 1rem;
   pointer-events: none;
 }
 .x {
@@ -171,6 +170,10 @@ h4.forgot {
   .proceed {
     min-width: unset;
     max-width: 80vw;
+  }
+  h4.forgot {
+    top: 7vh;
+    height: 2em;
   }
 }
 </style>

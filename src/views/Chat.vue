@@ -212,6 +212,9 @@ time.sent {
 }
 /* tablet */
 @media (max-width: 1024px) {
+  .chat {
+    border-radius: unset;
+  }
   .messages {
     height: calc(99vh - 15em);
   }
