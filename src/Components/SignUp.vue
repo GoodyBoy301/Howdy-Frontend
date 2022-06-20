@@ -144,5 +144,8 @@ input:placeholder-shown + p {
   input {
     min-width: unset;
   }
+  input:focus + p {
+    bottom: 4.25em;
+  }
 }
 </style>

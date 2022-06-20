@@ -164,8 +164,11 @@ h4.forgot {
     position: unset;
   }
   .login section {
-    max-width: 80vw;
+    max-width: 90vw;
     min-width: unset;
+  }
+  form h2 {
+    font-size: 2rem;
   }
   .proceed {
     min-width: unset;
