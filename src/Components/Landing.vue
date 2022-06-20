@@ -140,6 +140,7 @@ span.wH {
 }
 nav {
   width: 90%;
+  min-height: 4em;
   margin: auto;
   margin-top: 1.5em;
   display: flex;
