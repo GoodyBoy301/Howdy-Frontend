@@ -1,5 +1,5 @@
 <template>
-  <form class="login proceed">
+  <form class="login proceed" @submit="handleSubmit">
     <section>
       <img
         :src="`/assets/DPs/${pic}.png`"
@@ -58,7 +58,7 @@ export default {
   name: "CreateProfile",
   props: ["setLoggedIn"],
   components: {},
-  setup() {
+  setup({ setLoggedIn }) {
     const color = ref("black");
     const handleColor = (i) => {
       color.value = i;
@@ -69,7 +69,12 @@ export default {
       pic.value = i;
     };
 
-    return { color, handleColor, pic, handlePic };
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      setLoggedIn();
+    };
+
+    return { color, handleColor, pic, handlePic, handleSubmit };
   },
 };
 </script>
