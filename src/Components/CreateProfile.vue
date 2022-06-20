@@ -161,4 +161,14 @@ div.images {
     width: 100vw;
   }
 }
+
+/* Mobile Devices*/
+@media (max-width: 576px) {
+  textarea {
+    width: 300px;
+  }
+  .buttons button {
+    width: 8.5em;
+  }
+}
 </style>
