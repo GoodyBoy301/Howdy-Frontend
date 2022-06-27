@@ -11,12 +11,15 @@ import { ref } from "vue";
 import ContactsNav from "./Components/ContactsNav.vue";
 import Landing from "./Components/Landing.vue";
 
+import fetchLoggedIn from "./modules/fetchLoggedIn.js";
+import "./utils/db.js";
+
 export default {
   name: "App",
   props: [],
   components: { ContactsNav, Landing },
   setup() {
-    const loggedIn = ref(false);
+    const loggedIn = ref(fetchLoggedIn);
     const setLoggedIn = () => {
       loggedIn.value = !loggedIn.value;
     };
