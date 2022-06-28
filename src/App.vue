@@ -93,7 +93,8 @@ main {
 }
 
 .loading {
-  background: #51312eee;
+  /* background: #51312eee; */
+  background: black;
   display: flex;
   align-items: center;
   justify-content: center;

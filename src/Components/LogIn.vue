@@ -26,6 +26,7 @@
 
 <script>
 import { ref } from "vue";
+import { set } from "idb-keyval";
 import SignUp from "./SignUp.vue";
 export default {
   name: "Login",
@@ -50,7 +51,7 @@ export default {
       e.preventDefault();
       if (!hasAccount) toggleProceed();
       else {
-        db.set("user", "Kush Gibson").then(() => setLoggedIn());
+        set("user", "Kush Gibson").then(() => setLoggedIn());
       }
     };
 

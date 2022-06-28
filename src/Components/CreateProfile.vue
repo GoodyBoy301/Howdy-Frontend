@@ -54,6 +54,8 @@
 
 <script>
 import { ref } from "vue";
+import { set } from "idb-keyval";
+
 export default {
   name: "CreateProfile",
   props: ["setLoggedIn"],
@@ -71,7 +73,7 @@ export default {
 
     const handleSubmit = (e) => {
       e.preventDefault();
-      setLoggedIn();
+      set("user", "Kush Gibson").then(() => setLoggedIn());
     };
 
     return { color, handleColor, pic, handlePic, handleSubmit };
