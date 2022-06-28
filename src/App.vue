@@ -3,8 +3,8 @@
     <!-- <div class="spinner"></div> -->
   </main>
   <main v-else-if="loggedIn">
-    <ContactsNav />
-    <router-view />
+    <ContactsNav :setLoggedIn="setLoggedIn" />
+    <router-view :setLoggedIn="setLoggedIn" />
   </main>
   <Landing v-else :loggedIn="loggedIn" :setLoggedIn="setLoggedIn" />
 </template>

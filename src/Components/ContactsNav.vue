@@ -4,7 +4,7 @@
       <span style="--color: #fe5f58" /><span style="--color: #ffbc2e" /><span
         style="--color: #24c840"
       />
-      <h3 class="logout__mobile">Logout</h3>
+      <h3 class="logout__mobile" @click="Logout">Logout</h3>
     </div>
     <div class="heading">
       <h2>Contacts</h2>
@@ -28,7 +28,17 @@
 </template>
 
 <script>
-export default {};
+import { clear } from "idb-keyval";
+export default {
+  props: ["setLoggedIn"],
+  setup({ setLoggedIn }) {
+    const Logout = () => {
+      clear().then(() => setLoggedIn());
+    };
+    console.log(setLoggedIn);
+    return { Logout };
+  },
+};
 </script>
 
 <style>
