@@ -11,12 +11,21 @@
         <div><img src="/assets/icons/dots.svg" alt="" /></div>
       </li>
     </div>
-    <h3 class="logout__desktop">Logout</h3>
+    <h3 class="logout__desktop" @click="Logout">Logout</h3>
   </section>
 </template>
 
 <script>
-export default {};
+import { clear } from "idb-keyval";
+export default {
+  props: ["setLoggedIn"],
+  setup({ setLoggedIn }) {
+    const Logout = () => {
+      clear().then(() => setLoggedIn());
+    };
+    return { Logout };
+  },
+};
 </script>
 
 <style>

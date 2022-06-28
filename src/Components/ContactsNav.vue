@@ -35,7 +35,6 @@ export default {
     const Logout = () => {
       clear().then(() => setLoggedIn());
     };
-    console.log(setLoggedIn);
     return { Logout };
   },
 };
