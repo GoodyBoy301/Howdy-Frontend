@@ -21,7 +21,7 @@ export default {};
 <style>
 /* Mobile Devices*/
 @media (max-width: 576px) {
-  .home {
+  .chat.home {
     grid-area: 1;
     width: 0;
   }

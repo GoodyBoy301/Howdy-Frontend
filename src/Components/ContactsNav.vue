@@ -144,4 +144,21 @@ li p {
     display: none;
   }
 }
+
+/* Mobile Devices*/
+@media (max-width: 576px) {
+  aside {
+    font-size: 25px;
+  }
+  li p {
+    display: unset;
+  }
+  li {
+    margin: auto;
+  }
+  li > div {
+    font-size: 0.9rem;
+    margin-right: 1em;
+  }
+}
 </style>
