@@ -49,7 +49,9 @@ export default {
     const handleSubmit = (e, hasAccount) => {
       e.preventDefault();
       if (!hasAccount) toggleProceed();
-      else setLoggedIn();
+      else {
+        db.set("user", "Kush Gibson").then(() => setLoggedIn());
+      }
     };
 
     return { phone, togglePhone, handleSubmit };
