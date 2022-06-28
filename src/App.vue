@@ -1,5 +1,8 @@
 <template>
-  <main v-if="loggedIn">
+  <main v-if="true" class="loading">
+    <div class="spinner"></div>
+  </main>
+  <main v-else-if="loggedIn">
     <ContactsNav />
     <router-view />
   </main>
@@ -27,6 +30,19 @@ export default {
     fetchLoggedIn().then((val) => (loggedIn.value = val));
 
     return { loggedIn, setLoggedIn };
+  },
+  mounted() {
+    document
+      .querySelector(".spinner")
+      .animate(
+        [{ transform: "rotate(-45deg)" }, { transform: "rotate(404deg)" }],
+        {
+          duration: 1000,
+          iterations: Infinity,
+          direction: "alternate",
+          easing: "ease-in-out",
+        }
+      );
   },
 };
 </script>
@@ -71,6 +87,23 @@ main {
   grid-template-columns: 3fr 7fr;
   overflow: hidden;
 }
+
+.loading {
+  background: var(--darkPrimary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+}
+.spinner {
+  border: 10px solid var(--rare);
+  border-top-color: transparent;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
 a {
   all: unset;
 }
