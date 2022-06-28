@@ -4,6 +4,7 @@
       <span style="--color: #fe5f58" /><span style="--color: #ffbc2e" /><span
         style="--color: #24c840"
       />
+      <h3 class="logout__mobile">Logout</h3>
     </div>
     <div class="heading">
       <h2>Contacts</h2>
@@ -122,6 +123,9 @@ li p {
   font-weight: 200;
   justify-self: flex-end;
 }
+.logout__mobile {
+  display: none;
+}
 
 /* tablet */
 @media (max-width: 1024px) {
@@ -159,6 +163,13 @@ li p {
   li > div {
     font-size: 0.9rem;
     margin-right: 1em;
+  }
+  .logout__mobile {
+    margin-left: auto;
+    font-size: 0.8em;
+    font-weight: 400;
+    color: #fe5f58;
+    display: block;
   }
 }
 </style>
