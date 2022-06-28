@@ -19,10 +19,12 @@ export default {
   props: [],
   components: { ContactsNav, Landing },
   setup() {
-    const loggedIn = ref(fetchLoggedIn);
+    const loggedIn = ref();
     const setLoggedIn = () => {
       loggedIn.value = !loggedIn.value;
     };
+
+    fetchLoggedIn().then((val) => (loggedIn.value = val));
 
     return { loggedIn, setLoggedIn };
   },
