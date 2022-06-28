@@ -1,6 +1,6 @@
 <template>
-  <main v-if="true" class="loading">
-    <div class="spinner"></div>
+  <main v-if="loading" class="loading">
+    <!-- <div class="spinner"></div> -->
   </main>
   <main v-else-if="loggedIn">
     <ContactsNav />
@@ -27,23 +27,27 @@ export default {
       loggedIn.value = !loggedIn.value;
     };
 
-    fetchLoggedIn().then((val) => (loggedIn.value = val));
+    const loading = ref(true);
+    fetchLoggedIn().then((val) => {
+      loggedIn.value = val;
+      loading.value = false;
+    });
 
-    return { loggedIn, setLoggedIn };
+    return { loggedIn, setLoggedIn, loading };
   },
-  mounted() {
-    document
-      .querySelector(".spinner")
-      .animate(
-        [{ transform: "rotate(-45deg)" }, { transform: "rotate(404deg)" }],
-        {
-          duration: 1000,
-          iterations: Infinity,
-          direction: "alternate",
-          easing: "ease-in-out",
-        }
-      );
-  },
+  // mounted() {
+  //   document
+  //     .querySelector(".spinner")
+  //     .animate(
+  //       [{ transform: "rotate(-45deg)" }, { transform: "rotate(404deg)" }],
+  //       {
+  //         duration: 1000,
+  //         iterations: Infinity,
+  //         direction: "alternate",
+  //         easing: "ease-in-out",
+  //       }
+  //     );
+  // },
 };
 </script>
 <style>
@@ -89,12 +93,13 @@ main {
 }
 
 .loading {
-  background: var(--darkPrimary);
+  background: #51312eee;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100vw;
+  backdrop-filter: blur(13px);
 }
 .spinner {
   border: 10px solid var(--rare);
