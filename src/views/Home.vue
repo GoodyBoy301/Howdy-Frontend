@@ -105,5 +105,10 @@ export default {
   .logout__desktop {
     display: none;
   }
+  .banner,
+  .bio,
+  .myName {
+    display: none;
+  }
 }
 </style>
