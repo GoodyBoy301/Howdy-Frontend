@@ -7,6 +7,13 @@
         class="previewDP"
         :style="`background: ${color}`"
       />
+      <input
+        spellcheck="false"
+        :required="required"
+        placeholder="enter your name"
+        class="enterName"
+        maxlength="24"
+      />
       <textarea
         spellcheck="false"
         maxlength="100"
@@ -101,7 +108,8 @@ img.previewDP {
   border-radius: 50%;
   /* transition: 0.2s; */
 }
-textarea {
+textarea,
+.enterName {
   border-radius: 0.5em;
   margin: 1em auto;
   height: 5em;
@@ -118,13 +126,22 @@ textarea {
   /* box-sizing: content-box; */
   /* transition: 0.2s; */
 }
+input.enterName {
+  text-align: left;
+  color: black;
+  height: unset;
+  padding-top: 0.75em;
+  padding-bottom: 0.75em;
+  margin: 0 auto;
+  border-radius: 1em;
+}
 textarea:focus {
   border: 2px solid black;
   padding: 0.1em 0.5em;
   outline: none;
 }
 .buttons {
-  margin-bottom: 4em;
+  margin-bottom: 1em;
   display: flex;
 }
 .buttons button {
