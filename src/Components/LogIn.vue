@@ -27,6 +27,7 @@
 <script>
 import { ref } from "vue";
 import { set } from "idb-keyval";
+import axios from "axios";
 import SignUp from "./SignUp.vue";
 export default {
   name: "Login",
@@ -53,6 +54,14 @@ export default {
       if (!hasAccount) toggleProceed();
       else {
         console.log(e, Body);
+        axios.get("http://localhost:3000/users").then(({ data }) => {
+          const [found] = data.filter(
+            (datum) => datum.username === Body.username
+          );
+          if (found && found.password === Body.password) setLoggedIn();
+          else console.log(false);
+          console.log(found);
+        });
       }
     };
     //const handleSubmit = (e, hasAccount) => {
