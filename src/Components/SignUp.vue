@@ -7,6 +7,7 @@
       @blur="handleBlur"
       :type="phone ? 'tel' : 'email'"
       :required="required"
+      :v-model="phone ? Body.number : Body.email"
     />
     <p
       :data-placeholder="phone ? 'Phone Number' : 'Email Address'"
@@ -19,6 +20,7 @@
       @focus="handleFocus"
       @blur="handleBlur"
       required
+      v-model="Body.username"
     />
     <p data-placeholder="Username">Username</p>
     <input
@@ -27,6 +29,7 @@
       @blur="handleBlur"
       :type="showPassword ? 'text' : 'password'"
       required
+      v-model="Body.password"
     />
     <p data-placeholder="Password">Password</p>
     <h6 @click="toggleShowPassword">{{ showPassword ? "🔓" : "🔐" }}</h6>
@@ -38,7 +41,7 @@ import { ref } from "vue";
 
 export default {
   name: "SingUp",
-  props: ["hasAccount", "phone"],
+  props: ["hasAccount", "phone", "Body"],
   components: {},
   setup() {
     const handleBlur = (e) => {
