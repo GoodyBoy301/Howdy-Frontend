@@ -55,6 +55,7 @@ export default {
   --darkPrimary: #342324;
   --lightPrimary: #51312e;
   --rare: #8175ff;
+  --error: hotpink;
 }
 * {
   margin: 0;
