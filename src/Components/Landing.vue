@@ -33,6 +33,7 @@
     :setLoggedIn="setLoggedIn"
     :Body="Body"
     :Error="Error"
+    :toggleError="toggleError"
   />
   <Login
     v-else
@@ -43,6 +44,7 @@
     :setLoggedIn="setLoggedIn"
     :Body="Body"
     :Error="Error"
+    :toggleError="toggleError"
   />
 </template>
 
@@ -84,6 +86,9 @@ export default {
 
     const Body = ref({});
     const Error = ref(false);
+    const toggleError = () => {
+      Error.value = !Error.value;
+    };
 
     return {
       form,
@@ -94,6 +99,7 @@ export default {
       toggleProceed,
       Body,
       Error,
+      toggleError,
     };
   },
   computed: {
