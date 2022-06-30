@@ -1,5 +1,5 @@
 <template>
-  <form class="login" @submit="handleSubmit($event, hasAccount)">
+  <form class="login" @submit="handleSubmit($event, hasAccount, Body)">
     <img src="/assets/icons/x.svg" alt="" class="x" @click="toggleForm" />
     <section>
       <h2>{{ hasAccount ? "Welcome Back🎉" : "Create An Account" }}</h2>
@@ -36,6 +36,7 @@ export default {
     "toggleHasAccount",
     "toggleProceed",
     "setLoggedIn",
+    "Body",
   ],
   components: { SignUp },
   setup({ toggleProceed, setLoggedIn }) {
@@ -47,20 +48,11 @@ export default {
       }
     };
 
-    const Body = ref({
-      email: "",
-      phone: "",
-      username: "",
-      password: "",
-      name: "",
-      pic: "",
-      color: "",
-    });
-    const handleSubmit = (e, hasAccount) => {
+    const handleSubmit = (e, hasAccount, Body) => {
       e.preventDefault();
       if (!hasAccount) toggleProceed();
       else {
-        console.log(e, Body.value);
+        console.log(e, Body);
       }
     };
     //const handleSubmit = (e, hasAccount) => {
@@ -71,7 +63,7 @@ export default {
     //}
     //}
 
-    return { phone, togglePhone, handleSubmit, Body };
+    return { phone, togglePhone, handleSubmit };
   },
 };
 </script>
