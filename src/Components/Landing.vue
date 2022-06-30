@@ -28,7 +28,7 @@
       </button>
     </div>
   </div>
-  <CreateProfile v-if="proceed" :setLoggedIn="setLoggedIn" />
+  <CreateProfile v-if="proceed" :setLoggedIn="setLoggedIn" :Body="Body" />
   <Login
     v-else
     :hasAccount="hasAccount"
@@ -36,6 +36,7 @@
     :toggleHasAccount="toggleHasAccount"
     :toggleProceed="toggleProceed"
     :setLoggedIn="setLoggedIn"
+    :Body="Body"
   />
 </template>
 
@@ -75,6 +76,8 @@ export default {
       proceed.value = !proceed.value;
     };
 
+    const Body = ref({});
+
     return {
       form,
       toggleForm,
@@ -82,6 +85,7 @@ export default {
       toggleHasAccount,
       proceed,
       toggleProceed,
+      Body,
     };
   },
   computed: {
