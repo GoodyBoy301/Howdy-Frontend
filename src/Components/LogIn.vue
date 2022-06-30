@@ -1,7 +1,8 @@
 <template>
-  <form class="login" @submit="handleSubmit($event, hasAccount, Body)">
+  <form class="login" @submit="handleSubmit($event, hasAccount, Body, Error)">
     <img src="/assets/icons/x.svg" alt="" class="x" @click="toggleForm" />
     <section>
+      <h2 v-show="Error" class="authToast">Something went wrong</h2>
       <h2>{{ hasAccount ? "Welcome Back🎉" : "Create An Account" }}</h2>
       <SignUp :hasAccount="!hasAccount" :phone="phone" :Body="Body" />
     </section>
@@ -38,9 +39,11 @@ export default {
     "toggleProceed",
     "setLoggedIn",
     "Body",
+    "Error",
+    "toggleError",
   ],
   components: { SignUp },
-  setup({ toggleProceed, setLoggedIn }) {
+  setup({ toggleProceed, setLoggedIn, toggleError }) {
     const phone = ref(true);
     const togglePhone = (hasAccount) => {
       console.log();
@@ -49,7 +52,7 @@ export default {
       }
     };
 
-    const handleSubmit = (e, hasAccount, Body) => {
+    const handleSubmit = (e, hasAccount, Body, Error) => {
       e.preventDefault();
       if (!hasAccount) toggleProceed();
       else {
@@ -58,8 +61,16 @@ export default {
           const [found] = data.filter(
             (datum) => datum.username === Body.username
           );
-          if (found && found.password === Body.password) setLoggedIn();
-          else console.log(false);
+          if (found && found.password === Body.password) {
+            setLoggedIn();
+          } else {
+            toggleError();
+            console.log(Error);
+            const removeError = setTimeout(() => {
+              toggleError();
+              clearTimeout(removeError);
+            }, 1800);
+          }
           console.log(found);
         });
       }
@@ -169,7 +180,16 @@ h4.forgot {
   left: unset;
   right: 1em;
 }
-
+.authToast {
+  font-size: 1.6rem;
+  background: var(--error);
+  color: white;
+  text-align: center;
+  padding: 1.5em;
+  position: absolute;
+  top: 10%;
+  width: 92%;
+}
 /* tablet */
 @media (max-width: 768px) {
   form {
@@ -197,6 +217,10 @@ h4.forgot {
   h4.forgot {
     top: 7vh;
     height: 2em;
+  }
+  .authToast {
+    padding: 0.25em;
+    font-size: 1.35em;
   }
 }
 </style>
