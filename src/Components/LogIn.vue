@@ -3,7 +3,7 @@
     <img src="/assets/icons/x.svg" alt="" class="x" @click="toggleForm" />
     <section>
       <h2>{{ hasAccount ? "Welcome Back🎉" : "Create An Account" }}</h2>
-      <SignUp :hasAccount="!hasAccount" :phone="phone" />
+      <SignUp :hasAccount="!hasAccount" :phone="phone" :Body="Body" />
     </section>
     <div class="proceed">
       <h3>{{ hasAccount ? "Sign In" : "Sign Up" }}</h3>
@@ -47,15 +47,31 @@ export default {
       }
     };
 
+    const Body = ref({
+      email: "",
+      phone: "",
+      username: "",
+      password: "",
+      name: "",
+      pic: "",
+      color: "",
+    });
     const handleSubmit = (e, hasAccount) => {
       e.preventDefault();
       if (!hasAccount) toggleProceed();
       else {
-        set("user", "Kush Gibson").then(() => setLoggedIn());
+        console.log(e, Body.value);
       }
     };
+    //const handleSubmit = (e, hasAccount) => {
+    //e.preventDefault();
+    //if (!hasAccount) toggleProceed();
+    //else {
+    //set("user", "Kush Gibson").then(() => setLoggedIn());
+    //}
+    //}
 
-    return { phone, togglePhone, handleSubmit };
+    return { phone, togglePhone, handleSubmit, Body };
   },
 };
 </script>
