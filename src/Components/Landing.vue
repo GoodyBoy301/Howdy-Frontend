@@ -90,6 +90,7 @@ export default {
       toggle: () => {},
       cancel: () => {},
       call: () => {},
+      misc: "",
     });
 
     Error.value.toggle = () => {
@@ -105,6 +106,7 @@ export default {
     };
     Error.value.call = () => (Error.value.state = true);
     Error.value.setMessage = (msg) => (Error.value.message = msg);
+    Error.value.setMisc = (msg) => (Error.value.misc = msg);
 
     return {
       form,
