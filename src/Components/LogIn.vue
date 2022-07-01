@@ -2,7 +2,7 @@
   <form class="login" @submit="handleSubmit($event, hasAccount, Body, Error)">
     <img src="/assets/icons/x.svg" alt="" class="x" @click="toggleForm" />
     <section>
-      <h2 v-show="Error" class="authToast">{{ errorText }}</h2>
+      <h2 v-show="Error.state" class="authToast">{{ Error.message }}</h2>
       <h2>{{ hasAccount ? "Welcome Back🎉" : "Create An Account" }}</h2>
       <SignUp :hasAccount="!hasAccount" :phone="phone" :Body="Body" />
     </section>
@@ -40,10 +40,9 @@ export default {
     "setLoggedIn",
     "Body",
     "Error",
-    "toggleError",
   ],
   components: { SignUp },
-  setup({ toggleProceed, setLoggedIn, toggleError }) {
+  setup({ toggleProceed, setLoggedIn }) {
     const phone = ref(true);
     const togglePhone = (hasAccount) => {
       console.log();
@@ -51,8 +50,6 @@ export default {
         phone.value = !phone.value;
       }
     };
-
-    const errorText = ref("something went wrong");
 
     const handleSubmit = (e, hasAccount, Body, Error) => {
       e.preventDefault();
@@ -65,13 +62,20 @@ export default {
           );
           if (found && found.password === Body.password) {
             setLoggedIn();
-          } else {
-            toggleError();
+          } else if (found && found.password !== Body.password) {
+            Error.setMessage("Incorrect password");
+            Error.setMisc("Incorrect password");
+            Error.toggle();
             console.log(Error);
-            const removeError = setTimeout(() => {
-              toggleError();
-              clearTimeout(removeError);
-            }, 1800);
+          } else if (!found) {
+            Error.setMessage("Account Doesn't Exist");
+            Error.setMisc("Account Doesn't Exist");
+            Error.toggle();
+            console.log(Error);
+          } else {
+            Error.setMisc = "unknown";
+            Error.toggle();
+            console.log(Error);
           }
           console.log(found);
         });
@@ -85,7 +89,7 @@ export default {
     //}
     //}
 
-    return { phone, togglePhone, handleSubmit, errorText };
+    return { phone, togglePhone, handleSubmit };
   },
 };
 </script>
