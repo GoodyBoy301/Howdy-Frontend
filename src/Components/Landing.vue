@@ -99,6 +99,10 @@ export default {
         Error.value.state = true;
         clearTimeout(timeout);
       }, 300);
+      const timeout2 = setTimeout(() => {
+        Error.value.state = false;
+        clearTimeout(timeout2);
+      }, 2000);
     };
     Error.value.cancel = () => {
       Error.value.state = false;
