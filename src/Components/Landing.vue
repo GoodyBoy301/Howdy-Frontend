@@ -99,7 +99,10 @@ export default {
         clearTimeout(timeout);
       }, 300);
     };
-    Error.value.cancel = () => (Error.value.state = false);
+    Error.value.cancel = () => {
+      Error.value.state = false;
+      Error.value.message = "something went wrong";
+    };
     Error.value.call = () => (Error.value.state = true);
     Error.value.setMessage = (msg) => (Error.value.message = msg);
 
