@@ -33,7 +33,6 @@
     :setLoggedIn="setLoggedIn"
     :Body="Body"
     :Error="Error"
-    :toggleError="toggleError"
   />
   <Login
     v-else
@@ -44,7 +43,6 @@
     :setLoggedIn="setLoggedIn"
     :Body="Body"
     :Error="Error"
-    :toggleError="toggleError"
   />
 </template>
 
@@ -85,10 +83,25 @@ export default {
     };
 
     const Body = ref({});
-    const Error = ref(false);
-    const toggleError = () => {
-      Error.value = !Error.value;
+    const Error = ref({
+      state: false,
+      message: "something went wrong",
+      setMessage: () => {},
+      toggle: () => {},
+      cancel: () => {},
+      call: () => {},
+    });
+
+    Error.value.toggle = () => {
+      Error.value.state = false;
+      const timeout = setTimeout(() => {
+        Error.value.state = true;
+        clearTimeout(timeout);
+      }, 300);
     };
+    Error.value.cancel = () => (Error.value.state = false);
+    Error.value.call = () => (Error.value.state = true);
+    Error.value.setMessage = (msg) => (Error.value.message = msg);
 
     return {
       form,
@@ -99,7 +112,6 @@ export default {
       toggleProceed,
       Body,
       Error,
-      toggleError,
     };
   },
   computed: {
