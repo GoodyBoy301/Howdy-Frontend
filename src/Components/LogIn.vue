@@ -2,7 +2,7 @@
   <form class="login" @submit="handleSubmit($event, hasAccount, Body, Error)">
     <img src="/assets/icons/x.svg" alt="" class="x" @click="toggleForm" />
     <section>
-      <h2 v-show="Error" class="authToast">Something went wrong</h2>
+      <h2 v-show="Error" class="authToast">{{ errorText }}</h2>
       <h2>{{ hasAccount ? "Welcome Back🎉" : "Create An Account" }}</h2>
       <SignUp :hasAccount="!hasAccount" :phone="phone" :Body="Body" />
     </section>
@@ -52,6 +52,8 @@ export default {
       }
     };
 
+    const errorText = ref("something went wrong");
+
     const handleSubmit = (e, hasAccount, Body, Error) => {
       e.preventDefault();
       if (!hasAccount) toggleProceed();
@@ -83,7 +85,7 @@ export default {
     //}
     //}
 
-    return { phone, togglePhone, handleSubmit };
+    return { phone, togglePhone, handleSubmit, errorText };
   },
 };
 </script>
