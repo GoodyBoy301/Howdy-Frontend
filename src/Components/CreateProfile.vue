@@ -9,7 +9,7 @@
       />
       <input
         spellcheck="false"
-        :required="required"
+        required="required"
         placeholder="enter your name"
         class="enterName"
         maxlength="24"
@@ -35,7 +35,7 @@
           ]"
           :key="i"
           :style="`--rare: ${i}`"
-          @click="handleColor(i)"
+          @click="handleColor(i, Body)"
         />
       </div>
       <div class="images">
@@ -54,7 +54,7 @@
           alt=""
           class="previewDP"
           style="--rare: transparent"
-          @click="handlePic(i)"
+          @click="handlePic(i, Body)"
         />
       </div>
     </section>
@@ -72,13 +72,15 @@ export default {
   components: {},
   setup({ setLoggedIn }) {
     const color = ref("black");
-    const handleColor = (i) => {
+    const handleColor = (i, Body) => {
       color.value = i;
+      Body.color = i;
     };
 
     const pic = ref("male01");
-    const handlePic = (i) => {
+    const handlePic = (i, Body) => {
       pic.value = i;
+      Body.pic = i;
     };
 
     const handleSubmit = (e, Body, Error) => {
