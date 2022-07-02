@@ -65,10 +65,8 @@ export default {
       }
     };
 
-    const loading = ref(false);
     const handleSubmit = (e, hasAccount, Body, Error) => {
       e.preventDefault();
-      loading.value = true;
       if (!hasAccount) toggleProceed();
       else {
         console.log(e, Body);
@@ -94,12 +92,11 @@ export default {
             console.log(Error);
           }
           console.log(found);
-          loading.value = false;
         });
       }
     };
 
-    return { phone, togglePhone, handleSubmit, loading };
+    return { phone, togglePhone, handleSubmit };
   },
   mounted() {
     const animRotate = document.querySelector(".anim-rotate path");
@@ -125,12 +122,7 @@ export default {
       submitAnimation.play();
     });
   },
-  computed: {
-    Loading() {
-      console.log(this.loading);
-      if (this.loading) return "anim-rotate";
-    },
-  },
+  computed: {},
 };
 </script>
 
