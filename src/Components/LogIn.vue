@@ -75,7 +75,7 @@ export default {
             (datum) => datum.username === Body.username
           );
           if (found && found.password === Body.password) {
-            set("user", "Kush Gibson").then(() => setLoggedIn());
+            set("user", found).then(() => setLoggedIn());
           } else if (found && found.password !== Body.password) {
             Error.setMessage("Incorrect password");
             Error.setMisc("Incorrect password");
