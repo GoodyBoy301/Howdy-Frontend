@@ -114,6 +114,9 @@ main {
 a {
   all: unset;
 }
+.hidden {
+  display: none;
+}
 
 /* CUSTOM SCROLL BAR */
 ::-webkit-scrollbar {
