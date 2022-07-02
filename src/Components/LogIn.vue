@@ -77,7 +77,7 @@ export default {
             (datum) => datum.username === Body.username
           );
           if (found && found.password === Body.password) {
-            setLoggedIn();
+            set("user", "Kush Gibson").then(() => setLoggedIn());
           } else if (found && found.password !== Body.password) {
             Error.setMessage("Incorrect password");
             Error.setMisc("Incorrect password");
@@ -98,13 +98,6 @@ export default {
         });
       }
     };
-    //const handleSubmit = (e, hasAccount) => {
-    //e.preventDefault();
-    //if (!hasAccount) toggleProceed();
-    //else {
-    //set("user", "Kush Gibson").then(() => setLoggedIn());
-    //}
-    //}
 
     return { phone, togglePhone, handleSubmit, loading };
   },
@@ -121,8 +114,7 @@ export default {
       ],
       {
         duration: 800,
-        // iterations: 1,
-        // easing: "steps(4)",
+
         easing: "ease-in-out",
       }
     );
