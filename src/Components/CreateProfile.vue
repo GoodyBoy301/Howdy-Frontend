@@ -1,5 +1,5 @@
 <template>
-  <form class="login proceed" @submit="handleSubmit">
+  <form class="login proceed" @submit="handleSubmit($event, Body, Error)">
     <section>
       <img
         :src="`/assets/DPs/${pic}.png`"
@@ -62,10 +62,11 @@
 <script>
 import { ref } from "vue";
 import { set } from "idb-keyval";
+import axios from "axios";
 
 export default {
   name: "CreateProfile",
-  props: ["setLoggedIn"],
+  props: ["setLoggedIn", "Body", "Error"],
   components: {},
   setup({ setLoggedIn }) {
     const color = ref("black");
@@ -78,10 +79,22 @@ export default {
       pic.value = i;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e, Body, Error) => {
       e.preventDefault();
-      set("user", "Kush Gibson").then(() => setLoggedIn());
+
+      console.log(e, Body);
+      axios
+        .post("http://localhost:3000/users", { ...Body, id: Math.random() })
+        .then(({ data }) => {
+          set("user", data).then(() => setLoggedIn());
+          console.log(data);
+        });
     };
+
+    // const handleSubmit = (e) => {
+    //   e.preventDefault();
+    //   set("user", "Kush Gibson").then(() => setLoggedIn());
+    // };
 
     return { color, handleColor, pic, handlePic, handleSubmit };
   },
