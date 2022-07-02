@@ -13,11 +13,13 @@
         placeholder="enter your name"
         class="enterName"
         maxlength="24"
+        v-model="Body.name"
       />
       <textarea
         spellcheck="false"
         maxlength="100"
         placeholder="add a short bio..."
+        v-model="Body.bio"
       />
       <span class="buttons"><button>Skip</button><button>Save</button></span>
       <div class="colors">
