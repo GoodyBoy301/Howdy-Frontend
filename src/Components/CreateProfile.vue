@@ -200,7 +200,8 @@ div.images {
 
 /* Mobile Devices*/
 @media (max-width: 576px) {
-  textarea {
+  textarea,
+  input.enterName {
     width: 300px;
   }
   .buttons button {
