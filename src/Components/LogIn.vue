@@ -7,9 +7,23 @@
       <SignUp :hasAccount="!hasAccount" :phone="phone" :Body="Body" />
     </section>
     <div class="proceed">
-      <h3>{{ hasAccount ? "Sign In" : "Sign Up" }}</h3>
-      <button type="submit" class="submit">
-        <img src="/assets/icons/back.svg" alt="" />
+      <label for="submit"
+        ><h3>{{ hasAccount ? "Sign In" : "Sign Up" }}</h3></label
+      >
+      <button type="submit" class="submit hidden" id="submit">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="64"
+          height="64"
+          fill="white"
+          viewBox="0 0 16 16"
+          class="anim-rotate"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"
+          />
+        </svg>
       </button>
     </div>
     <h4 @click="toggleHasAccount">
@@ -51,8 +65,10 @@ export default {
       }
     };
 
+    const loading = ref(false);
     const handleSubmit = (e, hasAccount, Body, Error) => {
       e.preventDefault();
+      loading.value = true;
       if (!hasAccount) toggleProceed();
       else {
         console.log(e, Body);
@@ -78,6 +94,7 @@ export default {
             console.log(Error);
           }
           console.log(found);
+          loading.value = false;
         });
       }
     };
@@ -89,7 +106,38 @@ export default {
     //}
     //}
 
-    return { phone, togglePhone, handleSubmit };
+    return { phone, togglePhone, handleSubmit, loading };
+  },
+  mounted() {
+    const animRotate = document.querySelector(".anim-rotate path");
+    const form = document.querySelector(".login");
+    const submitAnimation = animRotate.animate(
+      [
+        { transform: "translate(0)" },
+        { transform: "translate(30px)", offset: 0.2 },
+        { transform: "translateY(30px)" },
+        { transform: "translate(-30px)", offset: 0.6 },
+        { transform: "translate(0)" },
+      ],
+      {
+        duration: 800,
+        // iterations: 1,
+        // easing: "steps(4)",
+        easing: "ease-in-out",
+      }
+    );
+    submitAnimation.pause();
+
+    form.addEventListener("submit", () => {
+      submitAnimation.currentTime = 0;
+      submitAnimation.play();
+    });
+  },
+  computed: {
+    Loading() {
+      console.log(this.loading);
+      if (this.loading) return "anim-rotate";
+    },
   },
 };
 </script>
@@ -195,6 +243,14 @@ h4.forgot {
   position: absolute;
   top: 10%;
   width: 92%;
+}
+.anim-rotate {
+  font-weight: 300;
+  font-size: 32px !important;
+  line-height: 32px !important;
+  background: var(--rare);
+  border-radius: 50%;
+  padding: 10%;
 }
 /* tablet */
 @media (max-width: 768px) {
