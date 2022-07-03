@@ -2,7 +2,12 @@
   <section class="chat">
     <div class="heading bar">
       <li class="topbar">
-        <img src="/assets/icons/back.svg" alt="" class="mobile back" />
+        <img
+          src="/assets/icons/back.svg"
+          alt=""
+          class="mobile back"
+          @click="$router.back()"
+        />
         <img src="/assets/DPs/male02.png" alt="" class="dp" />
         <div>
           <h3>Kush Gibson</h3>
