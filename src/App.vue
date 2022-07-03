@@ -112,7 +112,7 @@ main {
 }
 
 a {
-  all: unset;
+  text-decoration: none;
 }
 .hidden {
   display: none;
