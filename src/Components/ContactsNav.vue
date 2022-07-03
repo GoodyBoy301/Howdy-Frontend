@@ -12,10 +12,7 @@
       <img src="/assets/icons/plus.svg" alt="" />
     </div>
     <ul>
-      <li
-        v-for="i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]"
-        :key="i"
-      >
+      <li v-for="user in AllUsers" :key="user.username">
         <img src="/assets/DPs/male02.png" alt="" class="dp" />
         <div>
           <h3>Kush Gibson</h3>
@@ -28,14 +25,21 @@
 </template>
 
 <script>
+import { ref } from "vue";
 import { clear } from "idb-keyval";
+import axios from "axios";
 export default {
   props: ["setLoggedIn"],
   setup({ setLoggedIn }) {
     const Logout = () => {
       clear().then(() => setLoggedIn());
     };
-    return { Logout };
+
+    const AllUsers = ref([]);
+    axios
+      .get("http://localhost:3000/users")
+      .then(({ data }) => (AllUsers.value = data));
+    return { Logout, AllUsers };
   },
 };
 </script>
