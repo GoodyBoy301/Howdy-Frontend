@@ -1,5 +1,5 @@
 <template>
-  <section class="chat">
+  <section class="chat" :style="`--dp:${Contact.color}`">
     <div class="heading bar">
       <li class="topbar">
         <img
@@ -8,9 +8,9 @@
           class="mobile back"
           @click="$router.back()"
         />
-        <img src="/assets/DPs/male02.png" alt="" class="dp" />
+        <img src="/assets/DPs/male02.png" alt="" class="dp" style />
         <div>
-          <h3>Kush Gibson</h3>
+          <h3>{{ Contact.name }}</h3>
           <p>Online 8 mins ago</p>
         </div>
         <div><img src="/assets/icons/dots.svg" alt="" /></div>
@@ -78,6 +78,8 @@
 </template>
 
 <script>
+import { get } from "idb-keyval";
+import axios from "axios";
 import { ref } from "vue";
 export default {
   name: "chat",
@@ -86,7 +88,17 @@ export default {
   setup() {
     const input = ref("");
 
-    return { input };
+    const Contact = ref({});
+    return { input, Contact };
+  },
+  beforeMount() {
+    axios.get("http://localhost:3000/users").then(({ data }) => {
+      this.Contact = data.filter(
+        (datum) => datum.username === this.$route.params.contact
+      )[0];
+
+      console.log(this.Contact);
+    });
   },
 };
 </script>
