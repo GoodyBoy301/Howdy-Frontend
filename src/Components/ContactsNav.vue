@@ -13,7 +13,7 @@
     </div>
     <ul>
       <router-link
-        v-for="user in AllUsers"
+        v-for="user in Contacts"
         :key="user.username"
         :to="user.username"
       >
@@ -41,11 +41,11 @@ export default {
       clear().then(() => setLoggedIn());
     };
 
-    const AllUsers = ref([]);
+    const Contacts = ref([]);
     axios
       .get("http://localhost:3000/users")
-      .then(({ data }) => (AllUsers.value = data));
-    return { Logout, AllUsers };
+      .then(({ data }) => (Contacts.value = data));
+    return { Logout, Contacts };
   },
 };
 </script>
