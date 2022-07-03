@@ -21,10 +21,9 @@
         />
       </div>
       <div>
-        <h5 class="myName">Goodness Urama</h5>
+        <h5 class="myName">{{ User?.name }}</h5>
         <h6 class="bio">
-          QQ sse aeseq ESRW SFCRDD ESEA EDASA AESEA AEDSXESDB SRFDAR SRSXE
-          srdrsfds srfdxrds ssrfdsrdrssb srf
+          {{ User?.bio }}
         </h6>
       </div>
     </section>
@@ -33,14 +32,21 @@
 </template>
 
 <script>
-import { clear } from "idb-keyval";
+import { ref } from "vue";
+import axios from "axios";
+import { clear, get } from "idb-keyval";
 export default {
   props: ["setLoggedIn"],
   setup({ setLoggedIn }) {
+    const User = ref({});
+    get("user").then((user) => (User.value = user));
     const Logout = () => {
       clear().then(() => setLoggedIn());
     };
-    return { Logout };
+    axios
+      .get("http://localhost:3000/users")
+      .then(({ data }) => console.log({ data, User }));
+    return { Logout, User };
   },
 };
 </script>
@@ -55,6 +61,7 @@ export default {
   height: 100%;
   justify-content: flex-start;
   grid-template-rows: 5fr 1fr 4fr;
+  grid-template-columns: 1fr;
 }
 .banner {
   background: yellow;
