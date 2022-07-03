@@ -13,9 +13,9 @@
     </div>
     <ul>
       <li v-for="user in AllUsers" :key="user.username">
-        <img src="/assets/DPs/male02.png" alt="" class="dp" />
+        <img :src="`/assets/DPs/${user.pic}.png`" alt="" class="dp" />
         <div>
-          <h3>Kush Gibson</h3>
+          <h3>{{ user.name }}</h3>
           <p>Lorem ipsum dol...</p>
         </div>
         <div><p>Yesterday</p></div>
