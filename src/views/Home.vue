@@ -33,7 +33,6 @@
 
 <script>
 import { ref } from "vue";
-import axios from "axios";
 import { clear, get } from "idb-keyval";
 export default {
   props: ["setLoggedIn"],
@@ -43,9 +42,7 @@ export default {
     const Logout = () => {
       clear().then(() => setLoggedIn());
     };
-    axios
-      .get("http://localhost:3000/users")
-      .then(({ data }) => console.log({ data, User }));
+
     return { Logout, User };
   },
 };
