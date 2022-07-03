@@ -18,7 +18,12 @@
         :to="user.username"
       >
         <!-- <router-link :to="user.username"> -->
-        <img :src="`/assets/DPs/${user.pic}.png`" alt="" class="dp" />
+        <img
+          :src="`/assets/DPs/${user.pic}.png`"
+          alt=""
+          class="dp"
+          :style="`--dp:${user.color}`"
+        />
         <div>
           <h3>{{ user.name }}</h3>
           <p>Lorem ipsum dol...</p>
