@@ -12,14 +12,20 @@
       <img src="/assets/icons/plus.svg" alt="" />
     </div>
     <ul>
-      <li v-for="user in AllUsers" :key="user.username">
+      <router-link
+        v-for="user in AllUsers"
+        :key="user.username"
+        :to="user.username"
+      >
+        <!-- <router-link :to="user.username"> -->
         <img :src="`/assets/DPs/${user.pic}.png`" alt="" class="dp" />
         <div>
           <h3>{{ user.name }}</h3>
           <p>Lorem ipsum dol...</p>
         </div>
         <div><p>Yesterday</p></div>
-      </li>
+      </router-link>
+      <!-- </li> -->
     </ul>
   </aside>
 </template>
@@ -96,7 +102,8 @@ ul {
   list-style: none;
   margin-top: 0;
 }
-li {
+li,
+a {
   /* height: 4em; */
   margin: 1.5%;
   padding: 1.5% 3.5%;
@@ -111,7 +118,8 @@ li:hover {
   background: var(--darkPrimary);
   border-radius: 0.5em;
 }
-li img {
+li img,
+a img {
   width: 3em;
   height: 3em;
   padding: 0.25em;
@@ -121,7 +129,8 @@ li img {
 img.dp {
   background: var(--dp) !important;
 }
-li > div {
+li > div,
+a > div {
   font-size: 0.7rem;
   letter-spacing: 0.5px;
   display: flex;
@@ -129,10 +138,12 @@ li > div {
   justify-content: flex-end;
   min-height: 60%;
 }
-li h3 {
+li h3,
+a h3 {
   font-weight: 500;
 }
-li p {
+li p,
+a p {
   font-weight: 200;
   justify-self: flex-end;
 }
@@ -148,16 +159,20 @@ li p {
   ul {
     padding-bottom: 30%;
   }
-  li {
+  li,
+  a {
     height: 3.5em;
   }
-  li > div {
+  li > div,
+  a > div {
     font-size: 0.7rem;
   }
-  li h3 {
+  li h3,
+  a h3 {
     font-weight: 300;
   }
-  li p {
+  li p,
+  a p {
     display: none;
   }
 }
@@ -167,13 +182,16 @@ li p {
   aside {
     font-size: 25px;
   }
-  li p {
+  li p,
+  a p {
     display: unset;
   }
-  li {
+  li,
+  a {
     margin: auto;
   }
-  li > div {
+  li > div,
+  a > div {
     font-size: 0.9rem;
     margin-right: 1em;
   }
