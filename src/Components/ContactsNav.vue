@@ -125,9 +125,9 @@ li:hover {
 }
 li img,
 a img {
-  width: 3em;
-  height: 3em;
-  padding: 0.25em;
+  width: 2.3em;
+  height: 2.3em;
+  padding: 0.28em;
   box-sizing: border-box;
   object-fit: contain;
 }
