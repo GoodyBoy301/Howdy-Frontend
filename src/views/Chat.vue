@@ -18,16 +18,27 @@
     </div>
     <div class="messages">
       <div>
-        <time class="sent">3:49 pm</time>
-        <article class="sent">
-          <img src="/assets/DPs/male01.png" alt="" class="dp" />
-          <p>ipsum dolor, sit amet consec</p>
-        </article>
-        <time>3:49 pm</time>
-        <article class="received">
-          <img src="/assets/DPs/male02.png" alt="" class="dp" />
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-        </article>
+        <section v-for="message in Messages" :key="message.date">
+          <article
+            :class="message.to === Contact.username ? `sent` : `received`"
+          >
+            <img src="/assets/DPs/male01.png" alt="" class="dp" />
+            <p>{{ message.content }}</p>
+          </article>
+          <time :class="message.to === Contact.username ? `sent` : `received`">{{
+            new Date(message.date).toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })
+          }}</time>
+        </section>
+        <!-- <section>
+          <article class="received">
+            <img src="/assets/DPs/male02.png" alt="" class="dp" />
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+          </article>
+          <time>3:49 pm</time>
+        </section>
         <time class="sent">3:49 pm</time>
         <article class="sent">
           <img src="/assets/DPs/male01.png" alt="" class="dp" />
@@ -65,7 +76,7 @@
             Lorem ipsum dolor sit amet consat corrupti numquam eos delectus
             officiis dolorem neque error libero saepe!
           </p>
-        </article>
+        </article> -->
       </div>
     </div>
     <div class="input">
@@ -89,7 +100,8 @@ export default {
     const input = ref("");
 
     const Contact = ref({});
-    return { input, Contact };
+    const Messages = ref([]);
+    return { input, Contact, Messages };
   },
   beforeMount() {
     axios.get("http://localhost:3000/users").then(({ data }) => {
@@ -98,6 +110,11 @@ export default {
       )[0];
 
       console.log(this.Contact);
+    });
+    axios.get("http://localhost:3000/messages").then(({ data }) => {
+      this.Messages = data;
+
+      console.log(this.Messages);
     });
   },
 };
@@ -179,9 +196,18 @@ time {
   margin: 0 6em;
   font-size: 0.55rem;
   font-weight: 300;
+  margin-right: auto;
+  width: fit-content;
 }
 time.sent {
   margin-left: auto;
+  margin-right: 2em;
+  display: block;
+}
+time.received {
+  margin-right: auto;
+  margin-left: 6em;
+  display: block;
 }
 
 .input {
