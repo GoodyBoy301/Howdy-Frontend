@@ -132,9 +132,13 @@ export default {
     });
     setInterval(() => {
       axios.get("http://localhost:3000/messages").then(({ data }) => {
-        const sortedData = data.sort(
-          (x, y) => Number(new Date(y.date)) - Number(new Date(x.date))
-        );
+        const sortedData = data
+          .filter(
+            (datum) =>
+              datum.to === this.Contact.username ||
+              datum.from === this.Contact.username
+          )
+          .sort((x, y) => Number(new Date(y.date)) - Number(new Date(x.date)));
         this.Messages = sortedData;
 
         // console.log(this.Messages)x
