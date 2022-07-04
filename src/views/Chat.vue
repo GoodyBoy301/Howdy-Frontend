@@ -32,58 +32,15 @@
             })
           }}</time>
         </section>
-        <!-- <section>
-          <article class="received">
-            <img src="/assets/DPs/male02.png" alt="" class="dp" />
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
-          </article>
-          <time>3:49 pm</time>
-        </section>
-        <time class="sent">3:49 pm</time>
-        <article class="sent">
-          <img src="/assets/DPs/male01.png" alt="" class="dp" />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-            facilis beatae earum, laudantium
-          </p>
-        </article>
-        <time>3:49 pm</time>
-        <article class="received">
-          <img src="/assets/DPs/male02.png" alt="" class="dp" />
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat,
-            velit eveniet. Sit laborum fugit praesentium non quas odio
-            consequatur,
-          </p>
-        </article>
-        <time class="sent">3:49 pm</time>
-        <article class="sent">
-          <img src="/assets/DPs/male01.png" alt="" class="dp" />
-          <p>ipsum dolor, sit amet consec</p>
-        </article>
-        <time>3:49 pm</time>
-        <article class="received">
-          <img src="/assets/DPs/male02.png" alt="" class="dp" />
-          <p>
-            Lorem ipsum dolor sit amet consat corrupti numquam eos delectus
-            officiis dolorem neque error libero saepe!
-          </p>
-        </article>
-        <time>3:49 pm</time>
-        <article class="received">
-          <img src="/assets/DPs/male02.png" alt="" class="dp" />
-          <p>
-            Lorem ipsum dolor sit amet consat corrupti numquam eos delectus
-            officiis dolorem neque error libero saepe!
-          </p>
-        </article> -->
       </div>
     </div>
     <div class="input">
-      <span class="textarea" contenteditable spellcheck="false" /><img
-        src="/assets/icons/send.svg"
-        alt=""
-      />
+      <span
+        class="textarea"
+        contenteditable
+        spellcheck="false"
+        @keyup.enter="handleSend"
+      /><img src="/assets/icons/send.svg" alt="" @click="handleSendButton" />
     </div>
   </section>
 </template>
@@ -101,7 +58,15 @@ export default {
 
     const Contact = ref({});
     const Messages = ref([]);
-    return { input, Contact, Messages };
+
+    const handleSend = (e) => {
+      e.preventDefault();
+    };
+    const handleSendButton = (e) => {
+      console.log(e);
+    };
+
+    return { input, Contact, Messages, handleSend, handleSendButton };
   },
   beforeMount() {
     axios.get("http://localhost:3000/users").then(({ data }) => {
@@ -111,11 +76,13 @@ export default {
 
       console.log(this.Contact);
     });
-    axios.get("http://localhost:3000/messages").then(({ data }) => {
-      this.Messages = data;
+    setInterval(() => {
+      axios.get("http://localhost:3000/messages").then(({ data }) => {
+        this.Messages = data;
 
-      console.log(this.Messages);
-    });
+        console.log(this.Messages);
+      });
+    }, 1000);
   },
 };
 </script>
