@@ -35,4 +35,71 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+article {
+  width: 70%;
+  margin: 0.75em 0.4em;
+  font-size: 0.8rem;
+  margin-left: auto;
+  display: flex;
+  margin-left: auto;
+  flex-direction: row-reverse;
+}
+
+article p {
+  background: var(--dp);
+  flex: 1;
+  margin: 0 1.5em;
+  box-sizing: content-box;
+  padding: 0.8em 1.2em;
+  border-radius: 1em;
+}
+article > img.dp {
+  object-fit: contain;
+  padding: 1%;
+}
+.sent {
+  --dp: var(--darkPrimary);
+}
+.received {
+  margin-left: 5px;
+  flex-direction: row;
+}
+
+
+time {
+  margin: 0 6em;
+  font-size: 0.55rem;
+  font-weight: 300;
+  margin-right: auto;
+  width: fit-content;
+}
+  time.sent {
+    margin-left: auto;
+    margin-right: 2em;
+    display: block;
+  }
+
+time.received {
+  margin-right: auto;
+  margin-left: 6em;
+  display: block;
+}
+
+/* Mobile Devices*/
+@media (max-width: 576px) {
+    article {
+    width: 82.5%;
+    font-weight: 200;
+    letter-spacing: 1.2px;
+  }
+  article p {
+    margin: 0 0.75em;
+  }
+    time {
+    font-size: 0.65rem;
+    font-weight: 200;
+    letter-spacing: 1.2px;
+  }
+}
+</style>
