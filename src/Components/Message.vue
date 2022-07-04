@@ -1,9 +1,5 @@
 <template>
-  <section
-    v-for="(message, index) in Messages"
-    :key="message.date"
-    :data-index="10 - index"
-  >
+  <section>
     <article :class="message.to === Contact.username ? `sent` : `received`">
       <img src="/assets/DPs/male01.png" alt="" class="dp" />
       <transition @enter="onEnter">
@@ -22,7 +18,7 @@
 <script>
 import gsap from "gsap";
 export default {
-  props: ["Contact", "Messages"],
+  props: ["Contact", "message"],
   setup() {
     const onEnter = (el) => {
       gsap.from(el, {
@@ -33,9 +29,8 @@ export default {
         position: absolute,
         duration: 0.2,
       });
-
-      return { onEnter };
     };
+    return { onEnter };
   },
 };
 </script>
