@@ -61,10 +61,7 @@ export default {
 
     const handleSend = (e) => {
       e.preventDefault();
-      const content = e.target.innerText.substring(
-        0,
-        e.target.innerText.length - 1
-      );
+      const content = e.target.innerText;
       e.target.innerText = "";
       axios.post("http://localhost:3000/messages", {
         content,
@@ -75,7 +72,16 @@ export default {
       });
     };
     const handleSendButton = (e) => {
-      console.log(e);
+      e.preventDefault();
+      const content = e.target.previousSibling.innerText;
+      e.target.previousSibling.innerText = "";
+      axios.post("http://localhost:3000/messages", {
+        content,
+        from: "me",
+        to: Contact.value.username,
+        date: new Date().toJSON(),
+        id: Math.random(),
+      });
     };
 
     return { input, Contact, Messages, handleSend, handleSendButton };
