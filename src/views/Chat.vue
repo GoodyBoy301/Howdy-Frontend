@@ -61,6 +61,13 @@ export default {
 
     const handleSend = (e) => {
       e.preventDefault();
+      axios.post("http://localhost:3000/messages", {
+        content: e.target.innerText,
+        from: "me",
+        to: Contact.value.username,
+        date: new Date().toJSON(),
+        id: Math.random(),
+      });
     };
     const handleSendButton = (e) => {
       console.log(e);
@@ -78,9 +85,12 @@ export default {
     });
     setInterval(() => {
       axios.get("http://localhost:3000/messages").then(({ data }) => {
-        this.Messages = data;
+        const sortedData = data.sort(
+          (x, y) => Number(new Date(y.date)) - Number(new Date(x.date))
+        );
+        this.Messages = sortedData;
 
-        console.log(this.Messages);
+        // console.log(this.Messages)x
       });
     }, 1000);
   },
