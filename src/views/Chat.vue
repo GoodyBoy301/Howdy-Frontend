@@ -8,7 +8,7 @@
           class="mobile back"
           @click="$router.back()"
         />
-        <img src="/assets/DPs/male02.png" alt="" class="dp" style />
+        <img :src="`/assets/DPs/${Contact.pic}.png`" alt="" class="dp" style />
         <div>
           <h3>{{ Contact.name }}</h3>
           <p>Online 8 mins ago</p>
@@ -47,6 +47,24 @@
         spellcheck="false"
         @keydown.enter.capture.prevent="handleSend"
       /><img src="/assets/icons/send.svg" alt="" @click="handleSendButton" />
+    </div>
+    <div class="userInfo" v-show="false">
+      <section class="profile">
+        <div class="banner">
+          <img
+            :src="`/assets/DPs/${Contact.pic}.png`"
+            alt=""
+            class="previewDP profileDP"
+          />
+        </div>
+        <div>
+          <h5 class="myName">{{ Contact?.name }}</h5>
+          <h6 class="bio">
+            {{ Contact?.bio }}
+          </h6>
+        </div>
+      </section>
+      <h3 class="logout__desktop" @click="Logout">Logout</h3>
     </div>
   </section>
 </template>
@@ -130,13 +148,14 @@ export default {
 
       console.log(this.Contact);
     });
+
     setInterval(() => {
       axios.get("http://localhost:3000/messages").then(({ data }) => {
         const sortedData = data
           .filter(
             (datum) =>
-              datum.to === this.Contact.username ||
-              datum.from === this.Contact.username
+              datum.to === this.Contact?.username ||
+              datum.from === this.Contact?.username
           )
           .sort((x, y) => Number(new Date(y.date)) - Number(new Date(x.date)));
         this.Messages = sortedData;
@@ -144,6 +163,19 @@ export default {
         // console.log(this.Messages)x
       });
     }, 1000);
+    this.Messages = [];
+  },
+  watch: {
+    $route() {
+      this.Messages = [];
+      axios.get("http://localhost:3000/users").then(({ data }) => {
+        this.Contact = data.filter(
+          (datum) => datum.username === this.$route.params.contact
+        )[0];
+
+        console.log(this.Contact);
+      });
+    },
   },
 };
 </script>
@@ -156,6 +188,7 @@ export default {
   height: inherit;
   backdrop-filter: blur(13px);
   --dp: #804d0a;
+  position: relative;
 }
 .heading .topbar {
   display: grid;
@@ -218,7 +251,7 @@ article > img.dp {
 }
 
 .sent {
-  --dp: #178339;
+  --dp: var(--darkPrimary);
 }
 time {
   margin: 0 6em;
@@ -282,14 +315,16 @@ time.received {
   width: 1.5em;
   cursor: pointer;
 }
-/* .messages-enter-from {
-  opacity: 0;
-  transform: translateX(40px);
-}*/
-/* .messages-enter-active,
-.messages-move {
-  transition: 0.2s;
-} */
+.userInfo {
+  /* width: 300px; */
+  height: 400px;
+  color: blue;
+  background: white;
+  position: absolute;
+  right: 2.5%;
+  left: 50%;
+  top: 12.5%;
+}
 
 /* tablet */
 @media (max-width: 1024px) {
