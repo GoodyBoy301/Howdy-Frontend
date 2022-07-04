@@ -13,31 +13,38 @@
           <h3>{{ Contact.name }}</h3>
           <p>Online 8 mins ago</p>
         </div>
-        <div><img src="/assets/icons/dots.svg" alt="" /></div>
+        <div>
+          <img src="/assets/icons/dots.svg" alt="" @click="handleMenu" />
+          <div class="userInfo">
+            <section class="profile">
+              <div class="banner">
+                <img
+                  :src="`/assets/DPs/${Contact.pic}.png`"
+                  alt=""
+                  class="previewDP profileDP"
+                />
+              </div>
+              <div>
+                <h5 class="myName">{{ Contact?.name }}</h5>
+                <h6 class="bio">
+                  {{ Contact?.bio }}
+                </h6>
+              </div>
+            </section>
+            <h3 class="logout__desktop" @click="Logout">Logout</h3>
+          </div>
+        </div>
       </li>
     </div>
     <div class="messages">
       <transition-group name="messages" tag="div" @enter="onEnter">
-        <section
+        <Message
+          :Contact="Contact"
           v-for="(message, index) in Messages"
           :key="message.date"
           :data-index="10 - index"
-        >
-          <article
-            :class="message.to === Contact.username ? `sent` : `received`"
-          >
-            <img src="/assets/DPs/male01.png" alt="" class="dp" />
-            <transition @enter="handleEnter">
-              <p>{{ message.content }}</p>
-            </transition>
-          </article>
-          <time :class="message.to === Contact.username ? `sent` : `received`">{{
-            new Date(message.date).toLocaleTimeString([], {
-              hour: "2-digit",
-              minute: "2-digit",
-            })
-          }}</time>
-        </section>
+          :message="message"
+        />
       </transition-group>
     </div>
     <div class="input">
@@ -48,24 +55,6 @@
         @keydown.enter.capture.prevent="handleSend"
       /><img src="/assets/icons/send.svg" alt="" @click="handleSendButton" />
     </div>
-    <div class="userInfo" v-show="false">
-      <section class="profile">
-        <div class="banner">
-          <img
-            :src="`/assets/DPs/${Contact.pic}.png`"
-            alt=""
-            class="previewDP profileDP"
-          />
-        </div>
-        <div>
-          <h5 class="myName">{{ Contact?.name }}</h5>
-          <h6 class="bio">
-            {{ Contact?.bio }}
-          </h6>
-        </div>
-      </section>
-      <h3 class="logout__desktop" @click="Logout">Logout</h3>
-    </div>
   </section>
 </template>
 
@@ -74,15 +63,18 @@ import { get } from "idb-keyval";
 import axios from "axios";
 import { ref } from "vue";
 import gsap from "gsap";
+import Message from "../Components/Message.vue";
 export default {
   name: "chat",
   props: [],
-  components: {},
+  components: { Message },
   setup() {
-    const input = ref("");
-
     const Contact = ref({});
     const Messages = ref([]);
+
+    const handleMenu = () => {
+      console.log(5);
+    };
 
     const handleSend = (e) => {
       e.preventDefault();
@@ -118,26 +110,14 @@ export default {
         duration: 0.2,
       });
     };
-    const handleEnter = (el) => {
-      gsap.from(el, {
-        y: 50,
-        opacity: 0,
-        delay: el.dataset.index / 150,
-        ease: "ease-out",
-        position: absolute,
-        duration: 0.2,
-      });
-      console.log(2);
-    };
 
     return {
-      input,
+      handleMenu,
       Contact,
       Messages,
       handleSend,
       handleSendButton,
       onEnter,
-      handleEnter,
     };
   },
   beforeMount() {
@@ -146,7 +126,7 @@ export default {
         (datum) => datum.username === this.$route.params.contact
       )[0];
 
-      console.log(this.Contact);
+      // console.log(this.Contact);
     });
 
     setInterval(() => {
@@ -173,7 +153,7 @@ export default {
           (datum) => datum.username === this.$route.params.contact
         )[0];
 
-        console.log(this.Contact);
+        // console.log(this.Contact);
       });
     },
   },
