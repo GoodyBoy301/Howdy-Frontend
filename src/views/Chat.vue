@@ -17,13 +17,19 @@
       </li>
     </div>
     <div class="messages">
-      <div>
-        <section v-for="message in Messages" :key="message.date">
+      <transition-group name="messages" tag="div" @enter="onEnter">
+        <section
+          v-for="(message, index) in Messages"
+          :key="message.date"
+          :data-index="10 - index"
+        >
           <article
             :class="message.to === Contact.username ? `sent` : `received`"
           >
             <img src="/assets/DPs/male01.png" alt="" class="dp" />
-            <p>{{ message.content }}</p>
+            <transition @enter="handleEnter">
+              <p>{{ message.content }}</p>
+            </transition>
           </article>
           <time :class="message.to === Contact.username ? `sent` : `received`">{{
             new Date(message.date).toLocaleTimeString([], {
@@ -32,7 +38,7 @@
             })
           }}</time>
         </section>
-      </div>
+      </transition-group>
     </div>
     <div class="input">
       <span
@@ -49,6 +55,7 @@
 import { get } from "idb-keyval";
 import axios from "axios";
 import { ref } from "vue";
+import gsap from "gsap";
 export default {
   name: "chat",
   props: [],
@@ -84,7 +91,36 @@ export default {
       });
     };
 
-    return { input, Contact, Messages, handleSend, handleSendButton };
+    const onEnter = (el) => {
+      gsap.from(el, {
+        y: 10,
+        opacity: 0,
+        delay: el.dataset.index / 15,
+        ease: "power3",
+        duration: 0.2,
+      });
+    };
+    const handleEnter = (el) => {
+      gsap.from(el, {
+        y: 50,
+        opacity: 0,
+        delay: el.dataset.index / 150,
+        ease: "ease-out",
+        position: absolute,
+        duration: 0.2,
+      });
+      console.log(2);
+    };
+
+    return {
+      input,
+      Contact,
+      Messages,
+      handleSend,
+      handleSendButton,
+      onEnter,
+      handleEnter,
+    };
   },
   beforeMount() {
     axios.get("http://localhost:3000/users").then(({ data }) => {
@@ -242,6 +278,15 @@ time.received {
   width: 1.5em;
   cursor: pointer;
 }
+/* .messages-enter-from {
+  opacity: 0;
+  transform: translateX(40px);
+}*/
+/* .messages-enter-active,
+.messages-move {
+  transition: 0.2s;
+} */
+
 /* tablet */
 @media (max-width: 1024px) {
   .chat {
