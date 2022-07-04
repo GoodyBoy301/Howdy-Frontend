@@ -13,27 +13,7 @@
           <h3>{{ Contact.name }}</h3>
           <p>Online 8 mins ago</p>
         </div>
-        <div>
-          <img src="/assets/icons/dots.svg" alt="" @click="handleMenu" />
-          <div class="userInfo">
-            <section class="profile">
-              <div class="banner">
-                <img
-                  :src="`/assets/DPs/${Contact.pic}.png`"
-                  alt=""
-                  class="previewDP profileDP"
-                />
-              </div>
-              <div>
-                <h5 class="myName">{{ Contact?.name }}</h5>
-                <h6 class="bio">
-                  {{ Contact?.bio }}
-                </h6>
-              </div>
-            </section>
-            <h3 class="logout__desktop" @click="Logout">Logout</h3>
-          </div>
-        </div>
+        <Menu :Contact="Contact" />
       </li>
     </div>
     <div class="messages">
@@ -64,17 +44,14 @@ import axios from "axios";
 import { ref } from "vue";
 import gsap from "gsap";
 import Message from "../Components/Message.vue";
+import Menu from "../Components/Menu.vue";
 export default {
   name: "chat",
   props: [],
-  components: { Message },
+  components: { Message, Menu },
   setup() {
     const Contact = ref({});
     const Messages = ref([]);
-
-    const handleMenu = () => {
-      console.log(5);
-    };
 
     const handleSend = (e) => {
       e.preventDefault();
@@ -112,7 +89,6 @@ export default {
     };
 
     return {
-      handleMenu,
       Contact,
       Messages,
       handleSend,
