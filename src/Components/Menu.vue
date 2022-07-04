@@ -35,4 +35,15 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.userInfo {
+  /* width: 300px; */
+  height: 400px;
+  color: blue;
+  background: white;
+  position: absolute;
+  right: 2.5%;
+  left: 50%;
+  top: 12.5%;
+}
+</style>

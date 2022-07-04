@@ -224,16 +224,6 @@ export default {
   width: 1.5em;
   cursor: pointer;
 }
-.userInfo {
-  /* width: 300px; */
-  height: 400px;
-  color: blue;
-  background: white;
-  position: absolute;
-  right: 2.5%;
-  left: 50%;
-  top: 12.5%;
-}
 
 /* tablet */
 @media (max-width: 1024px) {
