@@ -39,7 +39,7 @@
         class="textarea"
         contenteditable
         spellcheck="false"
-        @keyup.enter="handleSend"
+        @keydown.enter.capture.prevent="handleSend"
       /><img src="/assets/icons/send.svg" alt="" @click="handleSendButton" />
     </div>
   </section>
@@ -61,8 +61,13 @@ export default {
 
     const handleSend = (e) => {
       e.preventDefault();
+      const content = e.target.innerText.substring(
+        0,
+        e.target.innerText.length - 1
+      );
+      e.target.innerText = "";
       axios.post("http://localhost:3000/messages", {
-        content: e.target.innerText,
+        content,
         from: "me",
         to: Contact.value.username,
         date: new Date().toJSON(),
@@ -209,6 +214,7 @@ time.received {
   padding-right: 4em;
   flex: 1;
   opacity: 0.8;
+  transition: 3s;
 }
 .textarea:focus {
   outline: var(--darkPrimary) solid 1px;
