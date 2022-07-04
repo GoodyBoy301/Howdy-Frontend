@@ -12,10 +12,10 @@
       </li>
     </div> -->
 
-    <section class="profile">
+    <section class="profile" :style="`--dp:${User.color}`">
       <div class="banner">
         <img
-          :src="`/assets/DPs/${pic || 'male04'}.png`"
+          :src="`/assets/DPs/${User.pic}.png`"
           alt=""
           class="previewDP profileDP"
         />
@@ -54,14 +54,14 @@ export default {
 }
 .profile {
   display: grid;
-  background: white;
+  background: var(--lightPrimary);
   height: 100%;
   justify-content: flex-start;
   grid-template-rows: 5fr 1fr 4fr;
   grid-template-columns: 1fr;
 }
 .banner {
-  background: yellow;
+  background: var(--dp);
   height: 150px;
   margin: 0;
   display: flex;
@@ -72,7 +72,7 @@ export default {
   position: relative;
   top: 60%;
   background: inherit;
-  border: 3px solid white;
+  border: 3px solid var(--lightPrimary);
   box-sizing: content-box;
 }
 .logout__desktop {
@@ -85,7 +85,7 @@ export default {
   cursor: pointer;
 }
 .myName {
-  color: var(--darkPrimary);
+  color: white;
   text-align: center;
   font-size: 1.5rem;
   width: 75%;
@@ -93,7 +93,7 @@ export default {
   font-weight: 600;
 }
 .bio {
-  color: var(--darkPrimary);
+  color: white;
   text-align: center;
   font-size: 1rem;
   width: 75%;
