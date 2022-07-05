@@ -14,13 +14,13 @@
       </h6>
     </div>
   </section>
-  <h3 class="logout__desktop" @click="Logout">Logout</h3>
+  <h3 class="logout__desktop" @click="Logout" v-if="logout">Logout</h3>
 </template>
 
 <script>
 import { clear } from "idb-keyval";
 export default {
-  props: ["User", "setLoggedIn"],
+  props: ["User", "setLoggedIn", "logout"],
   setup({ setLoggedIn }) {
     const Logout = () => {
       clear().then(() => setLoggedIn());

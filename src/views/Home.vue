@@ -1,6 +1,6 @@
 <template>
   <section class="chat home">
-    <Profile :User="User" :setLoggedIn="setLoggedIn" />
+    <Profile :User="User" :setLoggedIn="setLoggedIn" :logout="true" />
   </section>
 </template>
 
