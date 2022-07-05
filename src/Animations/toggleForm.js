@@ -1,7 +1,7 @@
 import gsap from "gsap";
 
 export function toggleFormIn(e) {
-  if (innerWidth > 900) {
+  if (innerWidth > 769) {
     gsap.to(".landing", {
       x: "-50vw",
     });
@@ -42,7 +42,7 @@ export function toggleFormOut(e) {
 
   gsap.set(".login", { display: "none", delay: 0.5 });
 
-  if (innerWidth > 900)
+  if (innerWidth > 769)
     gsap.to(".login", {
       x: "50vw",
     });
