@@ -14,11 +14,20 @@
         alt=""
         @click="handleSearch"
       />
-      <Search v-if="Search" />
+      <Search v-if="Search" :searchTerm="searchTerm">
+        <input
+          type="text"
+          placeholder="Search your Contacts..."
+          maxlength="15"
+          spellcheck="false"
+          v-model="searchTerm"
+          id="inputSearch"
+        />
+      </Search>
     </div>
     <ul>
       <router-link
-        v-for="user in Contacts"
+        v-for="user in Search ? filterContacts : Contacts"
         :key="user.username"
         :to="user.username"
       >
@@ -54,11 +63,15 @@ export default {
     };
 
     const Contacts = ref([]);
-    axios
-      .get("http://localhost:3000/users")
-      .then(({ data }) => (Contacts.value = data));
+    axios.get("http://localhost:3000/users").then(({ data }) => {
+      Contacts.value = data;
+      filterContacts.value = data;
+    });
+
+    const filterContacts = ref([]);
 
     const Search = ref(false);
+    const searchTerm = ref("");
     const handleSearch = (e) => {
       const anime = e.target.animate([{ transform: "rotate(0.25turn)" }], {
         duration: 200,
@@ -73,8 +86,23 @@ export default {
         anime.reverse();
       }
       Search.value = !Search.value;
+      document.querySelector("#inputSearch")?.focus();
     };
-    return { Logout, Contacts, Search, handleSearch };
+    return {
+      Logout,
+      Contacts,
+      filterContacts,
+      Search,
+      handleSearch,
+      searchTerm,
+    };
+  },
+  watch: {
+    searchTerm(x) {
+      this.filterContacts = this.Contacts.filter(
+        (contact) => contact.name.includes(x) || contact.username.includes(x)
+      );
+    },
   },
 };
 </script>

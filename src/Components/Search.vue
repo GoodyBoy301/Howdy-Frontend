@@ -1,25 +1,21 @@
 <template>
   <section class="search">
-    <input
-      type="text"
-      placeholder="Search your contats..."
-      maxlength="15"
-      spellcheck="false"
-    />
+    <slot />
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["searchTerm"],
+};
 </script>
 
 <style>
 .search {
   position: absolute;
-  /* background: var(--lightPrimary); */
   left: 1.5%;
   right: 70%;
-  top: 7.5%;
+  top: 4%;
   bottom: 2.5%;
 }
 .search input {
@@ -28,8 +24,16 @@ export default {};
   font-size: 1.3rem;
   text-align: left;
   color: white;
+  width: 275%;
+  min-width: unset;
 }
 .search input:focus {
   color: white;
+}
+/* Mobile Devices*/
+@media (max-width: 576px) {
+  .search {
+    top: 7.5%;
+  }
 }
 </style>
