@@ -9,7 +9,11 @@
     <div class="heading">
       <h2>Contacts</h2>
       <img src="/assets/icons/plus.svg" alt="" />
-      <img src="/assets/icons/search.svg" alt="" @click="handleSearch" />
+      <img
+        :src="`/assets/icons/${Search ? 'x' : 'search'}.svg`"
+        alt=""
+        @click="handleSearch"
+      />
       <Search v-if="Search" />
     </div>
     <ul>
@@ -53,7 +57,24 @@ export default {
     axios
       .get("http://localhost:3000/users")
       .then(({ data }) => (Contacts.value = data));
-    return { Logout, Contacts };
+
+    const Search = ref(false);
+    const handleSearch = (e) => {
+      const anime = e.target.animate([{ transform: "rotate(0.25turn)" }], {
+        duration: 200,
+        easing: "ease-in-out",
+      });
+      anime.pause();
+      if (!Search.value) {
+        anime.currentTime = 0;
+        anime.play();
+      } else {
+        anime.currentTime = 200;
+        anime.reverse();
+      }
+      Search.value = !Search.value;
+    };
+    return { Logout, Contacts, Search, handleSearch };
   },
 };
 </script>
