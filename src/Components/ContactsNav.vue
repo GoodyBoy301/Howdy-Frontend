@@ -8,8 +8,9 @@
     </div>
     <div class="heading">
       <h2>Contacts</h2>
-      <img src="/assets/icons/search.svg" alt="" />
       <img src="/assets/icons/plus.svg" alt="" />
+      <img src="/assets/icons/search.svg" alt="" @click="handleSearch" />
+      <Search v-if="Search" />
     </div>
     <ul>
       <router-link
@@ -39,7 +40,9 @@
 import { ref } from "vue";
 import { clear } from "idb-keyval";
 import axios from "axios";
+import Search from "./Search.vue";
 export default {
+  components: { Search },
   props: ["setLoggedIn"],
   setup({ setLoggedIn }) {
     const Logout = () => {
