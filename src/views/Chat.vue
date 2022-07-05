@@ -16,7 +16,7 @@
         <Menu :Contact="Contact" />
       </li>
     </div>
-    <div class="messages">
+    <div class="messages" @click="handleMenu">
       <transition-group name="messages" tag="div" @enter="onEnter">
         <Message
           :Contact="Contact"
@@ -27,7 +27,7 @@
         />
       </transition-group>
     </div>
-    <div class="input">
+    <div class="input" @click="handleMenu">
       <span
         class="textarea"
         contenteditable
@@ -50,8 +50,13 @@ export default {
   props: [],
   components: { Message, Menu },
   setup() {
+    // const menu = ;
     const Contact = ref({});
     const Messages = ref([]);
+
+    const handleMenu = () => {
+      document.querySelector("#menuRemote").classList.remove("menuOn");
+    };
 
     const handleSend = (e) => {
       e.preventDefault();
@@ -91,6 +96,7 @@ export default {
     return {
       Contact,
       Messages,
+      handleMenu,
       handleSend,
       handleSendButton,
       onEnter,

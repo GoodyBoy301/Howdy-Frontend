@@ -1,5 +1,5 @@
 <template>
-  <div @mouseenter="handleMenu">
+  <div class="menuOff" id="menuRemote">
     <img src="/assets/icons/dots.svg" alt="" @click="handleMenu" />
     <div class="userInfo">
       <section class="profile">
@@ -27,7 +27,7 @@ export default {
   props: ["Contact"],
   setup() {
     const handleMenu = (e) => {
-      console.log(e.target);
+      e.target.parentElement.classList.toggle("menuOn");
     };
 
     return { handleMenu };
@@ -45,5 +45,17 @@ export default {
   right: 2.5%;
   left: 50%;
   top: 12.5%;
+  z-index: 10;
+}
+.menuOff .userInfo {
+  display: none;
+}
+.menuOff img:hover ~ .userInfo {
+  display: unset;
+  opacity: 0.8;
+}
+.menuOn .userInfo {
+  display: unset;
+  opacity: 1 !important;
 }
 </style>
