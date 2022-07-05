@@ -8,11 +8,28 @@
     </div>
     <div class="heading">
       <h2>Contacts</h2>
-      <img src="/assets/icons/plus.svg" alt="" />
+      <img src="/assets/icons/plus.svg" v-if="Add" />
+      <img
+        :src="`/assets/icons/${Add ? 'x' : 'plus'}.svg`"
+        alt=""
+        @click="handleAdd"
+      />
+      <Search v-if="Add" :searchTerm="addTerm">
+        <input
+          type="text"
+          placeholder="Search user..."
+          maxlength="15"
+          spellcheck="false"
+          v-model="addTerm"
+          id="inputAdd"
+          autofocus
+        />
+      </Search>
       <img
         :src="`/assets/icons/${Search ? 'x' : 'search'}.svg`"
         alt=""
         @click="handleSearch"
+        v-if="!Add"
       />
       <Search v-if="Search" :searchTerm="searchTerm">
         <input
@@ -22,12 +39,13 @@
           spellcheck="false"
           v-model="searchTerm"
           id="inputSearch"
+          autofocus
         />
       </Search>
     </div>
     <ul>
       <router-link
-        v-for="user in Search ? filterContacts : Contacts"
+        v-for="user in Search || Add ? filterContacts : Contacts"
         :key="user.username"
         :to="user.username"
       >
@@ -84,9 +102,29 @@ export default {
       } else {
         anime.currentTime = 200;
         anime.reverse();
+        filterContacts.value = Contacts.value;
+
       }
       Search.value = !Search.value;
-      document.querySelector("#inputSearch")?.focus();
+    };
+
+    const Add = ref(false);
+    const addTerm = ref("");
+    const handleAdd = (e) => {
+      const anime = e.target.animate([{ transform: "rotate(0.25turn)" }], {
+        duration: 200,
+        easing: "ease-in-out",
+      });
+      anime.pause();
+      if (!Add.value) {
+        anime.currentTime = 0;
+        anime.play();
+      } else {
+        anime.currentTime = 200;
+        anime.reverse();
+        filterContacts.value = Contacts.value;
+      }
+      Add.value = !Add.value;
     };
     return {
       Logout,
@@ -95,10 +133,21 @@ export default {
       Search,
       handleSearch,
       searchTerm,
+      Add,
+      handleAdd,
+      addTerm,
     };
   },
   watch: {
     searchTerm(x) {
+      console.log(0);
+
+      this.filterContacts = this.Contacts.filter(
+        (contact) => contact.name.includes(x) || contact.username.includes(x)
+      );
+    },
+    addTerm(x) {
+      console.log(1);
       this.filterContacts = this.Contacts.filter(
         (contact) => contact.name.includes(x) || contact.username.includes(x)
       );
