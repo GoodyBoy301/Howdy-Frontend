@@ -45,4 +45,13 @@ export default {
   display: unset;
   opacity: 1 !important;
 }
+/* Mobile Devices*/
+@media (max-width: 576px) {
+  .userInfo {
+    left: 5%;
+  }
+  .menuOff img:hover ~ .userInfo {
+    opacity: 0;
+  }
+}
 </style>
