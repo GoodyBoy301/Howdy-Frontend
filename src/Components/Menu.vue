@@ -2,28 +2,15 @@
   <div class="menuOff" id="menuRemote">
     <img src="/assets/icons/dots.svg" alt="" @click="handleMenu" />
     <div class="userInfo">
-      <section class="profile">
-        <div class="banner">
-          <img
-            :src="`/assets/DPs/${Contact.pic}.png`"
-            alt=""
-            class="previewDP profileDP"
-          />
-        </div>
-        <div>
-          <h5 class="myName">{{ Contact?.name }}</h5>
-          <h6 class="bio">
-            {{ Contact?.bio }}
-          </h6>
-        </div>
-      </section>
-      <h3 class="logout__desktop" @click="Logout">Logout</h3>
+      <Profile :User="Contact" />
     </div>
   </div>
 </template>
 
 <script>
+import Profile from "./Profile.vue";
 export default {
+  components: { Profile },
   props: ["Contact"],
   setup() {
     const handleMenu = (e) => {
