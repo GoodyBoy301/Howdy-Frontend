@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { clear } from "idb-keyval";
 export default {
   props: ["User", "setLoggedIn"],
   setup({ setLoggedIn }) {

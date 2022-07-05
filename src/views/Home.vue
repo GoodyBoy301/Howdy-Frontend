@@ -6,7 +6,7 @@
 
 <script>
 import { ref } from "vue";
-import { clear, get } from "idb-keyval";
+import { get } from "idb-keyval";
 import Profile from "../Components/Profile.vue";
 export default {
   components: { Profile },
