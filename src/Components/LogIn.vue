@@ -237,7 +237,7 @@ h4.forgot {
   padding: 10%;
 }
 /* tablet */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   form {
     width: 100vw;
     margin-left: 0;
