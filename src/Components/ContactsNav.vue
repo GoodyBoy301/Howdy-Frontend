@@ -81,10 +81,12 @@ export default {
     };
 
     const Contacts = ref([]);
-    axios.get("http://localhost:3000/users").then(({ data }) => {
-      Contacts.value = data;
-      filterContacts.value = data;
-    });
+    setInterval(() => {
+      axios.get(`${process.env.VUE_APP_API}/users`).then(({ data }) => {
+        Contacts.value = data;
+        filterContacts.value = data;
+      });
+    }, 2000);
 
     const filterContacts = ref([]);
 
@@ -103,7 +105,6 @@ export default {
         anime.currentTime = 200;
         anime.reverse();
         filterContacts.value = Contacts.value;
-
       }
       Search.value = !Search.value;
     };
@@ -140,14 +141,11 @@ export default {
   },
   watch: {
     searchTerm(x) {
-      console.log(0);
-
       this.filterContacts = this.Contacts.filter(
         (contact) => contact.name.includes(x) || contact.username.includes(x)
       );
     },
     addTerm(x) {
-      console.log(1);
       this.filterContacts = this.Contacts.filter(
         (contact) => contact.name.includes(x) || contact.username.includes(x)
       );
