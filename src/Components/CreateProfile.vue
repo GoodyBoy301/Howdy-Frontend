@@ -88,7 +88,10 @@ export default {
 
       console.log(e, Body);
       axios
-        .post("http://localhost:3000/users", { ...Body, id: Math.random() })
+        .post(`${process.env.VUE_APP_API}/users`, {
+          ...Body,
+          id: Math.random(),
+        })
         .then(({ data }) => {
           set("user", data).then(() => setLoggedIn());
           console.log(data);
