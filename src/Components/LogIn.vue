@@ -67,10 +67,23 @@ export default {
 
     const handleSubmit = (e, hasAccount, Body, Error) => {
       e.preventDefault();
-      if (!hasAccount) toggleProceed();
-      else {
-        console.log(e, Body);
-        axios.get("http://localhost:3000/users").then(({ data }) => {
+      if (!hasAccount) {
+        axios.get(`${process.env.VUE_APP_API}/users`).then(({ data }) => {
+          const [found] = data.filter(
+            (datum) => datum.username === Body.username
+          );
+          if (found) {
+            Error.setMessage("Username already taken");
+            Error.setMisc("Username taken");
+            Error.toggle();
+          } else {
+            toggleProceed();
+          }
+        });
+
+        // toggleProceed()
+      } else {
+        axios.get(`${process.env.VUE_APP_API}/users`).then(({ data }) => {
           const [found] = data.filter(
             (datum) => datum.username === Body.username
           );
@@ -80,16 +93,13 @@ export default {
             Error.setMessage("Incorrect password");
             Error.setMisc("Incorrect password");
             Error.toggle();
-            console.log(Error);
           } else if (!found) {
             Error.setMessage("Account Doesn't Exist");
             Error.setMisc("Account Doesn't Exist");
             Error.toggle();
-            console.log(Error);
           } else {
             Error.setMisc = "unknown";
             Error.toggle();
-            console.log(Error);
           }
           console.log(found);
         });
