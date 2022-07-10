@@ -50,7 +50,7 @@ export default {
   props: [],
   components: { Message, Menu },
   setup() {
-    // const menu = ;
+    let loop;
     const Contact = ref({});
     const Messages = ref([]);
 
@@ -62,7 +62,7 @@ export default {
       e.preventDefault();
       const content = e.target.innerText;
       e.target.innerText = "";
-      axios.post("http://localhost:3000/messages", {
+      axios.post(`${process.env.VUE_APP_API}/messages`, {
         content,
         from: "me",
         to: Contact.value.username,
@@ -74,7 +74,7 @@ export default {
       e.preventDefault();
       const content = e.target.previousSibling.innerText;
       e.target.previousSibling.innerText = "";
-      axios.post("http://localhost:3000/messages", {
+      axios.post(`${process.env.VUE_APP_API}/messages`, {
         content,
         from: "me",
         to: Contact.value.username,
@@ -100,19 +100,18 @@ export default {
       handleSend,
       handleSendButton,
       onEnter,
+      loop,
     };
   },
   beforeMount() {
-    axios.get("http://localhost:3000/users").then(({ data }) => {
+    axios.get(`${process.env.VUE_APP_API}/users`).then(({ data }) => {
       this.Contact = data.filter(
         (datum) => datum.username === this.$route.params.contact
       )[0];
-
-      // console.log(this.Contact);
     });
 
-    setInterval(() => {
-      axios.get("http://localhost:3000/messages").then(({ data }) => {
+    this.loop = setInterval(() => {
+      axios.get(`${process.env.VUE_APP_API}/messages`).then(({ data }) => {
         const sortedData = data
           .filter(
             (datum) =>
@@ -121,8 +120,6 @@ export default {
           )
           .sort((x, y) => Number(new Date(y.date)) - Number(new Date(x.date)));
         this.Messages = sortedData;
-
-        // console.log(this.Messages)x
       });
     }, 1000);
     this.Messages = [];
@@ -130,12 +127,11 @@ export default {
   watch: {
     $route() {
       this.Messages = [];
-      axios.get("http://localhost:3000/users").then(({ data }) => {
+      axios.get(`${process.env.VUE_APP_API}/users`).then(({ data }) => {
         this.Contact = data.filter(
           (datum) => datum.username === this.$route.params.contact
         )[0];
-
-        // console.log(this.Contact);
+        innerWidth < 576 && clearInterval(this.loop);
       });
     },
   },
