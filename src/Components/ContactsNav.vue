@@ -43,11 +43,11 @@
         />
       </Search>
     </div>
-    <ul>
+    <ul v-if="Contacts || filterContacts || Search">
       <router-link
         v-for="user in Search || Add ? filterContacts : Contacts"
         :key="user.username"
-        :to="user.username"
+        :to="User?.username === user.from ? user.to : user.from"
       >
         <!-- <router-link :to="user.username"> -->
         <img
@@ -69,7 +69,7 @@
 
 <script>
 import { ref } from "vue";
-import { clear } from "idb-keyval";
+import { clear, get } from "idb-keyval";
 import axios from "axios";
 import Search from "./Search.vue";
 export default {
@@ -81,12 +81,19 @@ export default {
     };
 
     const Contacts = ref([]);
-    setInterval(() => {
-      axios.get(`${process.env.VUE_APP_API}/users`).then(({ data }) => {
-        Contacts.value = data;
-        filterContacts.value = data;
-      });
-    }, 2000);
+
+    let User;
+    get("user").then((data) => {
+      User = data;
+      setInterval(() => {
+        axios
+          .get(`${process.env.VUE_APP_API}/contacts?username=${data.username}`)
+          .then(({ data }) => {
+            Contacts.value = data;
+            filterContacts.value = data;
+          });
+      }, 2000);
+    });
 
     const filterContacts = ref([]);
 
@@ -128,6 +135,7 @@ export default {
       Add.value = !Add.value;
     };
     return {
+      User,
       Logout,
       Contacts,
       filterContacts,
