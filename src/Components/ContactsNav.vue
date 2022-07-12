@@ -47,7 +47,9 @@
       <router-link
         v-for="user in Search || Add ? filterContacts : Contacts"
         :key="user.username"
-        :to="User?.username === user.from ? user.to : user.from"
+        :to="
+          (User?.username === user.from ? user.to : user.from) || user.username
+        "
       >
         <!-- <router-link :to="user.username"> -->
         <img
@@ -144,6 +146,7 @@ export default {
       User,
       Logout,
       Contacts,
+      Users,
       filterContacts,
       Search,
       handleSearch,
