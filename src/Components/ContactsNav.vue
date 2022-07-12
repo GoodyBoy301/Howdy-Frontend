@@ -81,6 +81,7 @@ export default {
     };
 
     const Contacts = ref([]);
+    const Users = ref([]);
 
     let User;
     get("user").then((data) => {
@@ -90,9 +91,14 @@ export default {
           .get(`${process.env.VUE_APP_API}/contacts?username=${data.username}`)
           .then(({ data }) => {
             Contacts.value = data;
-            filterContacts.value = data;
+            //filterContacts.value = data;
           });
       }, 2000);
+      setInterval(() => {
+        axios.get(`${process.env.VUE_APP_API}/users`).then(({ data }) => {
+          Users.value = data;
+        });
+      }, 4000);
     });
 
     const filterContacts = ref([]);
@@ -149,13 +155,13 @@ export default {
   },
   watch: {
     searchTerm(x) {
-      this.filterContacts = this.Contacts.filter(
-        (contact) => contact.name.includes(x) || contact.username.includes(x)
+      this.filterContacts = this.Contacts?.filter(
+        (contact) => contact.name?.includes(x) || contact.username?.includes(x)
       );
     },
     addTerm(x) {
-      this.filterContacts = this.Contacts.filter(
-        (contact) => contact.name.includes(x) || contact.username.includes(x)
+      this.filterContacts = this.Users?.filter(
+        (contact) => contact.name?.includes(x) || contact.username?.includes(x)
       );
     },
   },
