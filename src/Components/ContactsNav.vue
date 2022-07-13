@@ -47,9 +47,7 @@
       <router-link
         v-for="user in Search || Add ? filterContacts : Contacts"
         :key="user.username"
-        :to="
-          (User?.username === user.from ? user.to : user.from) || user.username
-        "
+        :to="getRoute(user)"
       >
         <!-- <router-link :to="user.username"> -->
         <img
@@ -142,6 +140,13 @@ export default {
       }
       Add.value = !Add.value;
     };
+
+    const getRoute = (user) => {
+      if (user.username) return user.username;
+      //sent by me
+      if (User.username === user.from) return user.to;
+      return user.from;
+    };
     return {
       User,
       Logout,
@@ -154,6 +159,7 @@ export default {
       Add,
       handleAdd,
       addTerm,
+      getRoute,
     };
   },
   watch: {
@@ -246,6 +252,7 @@ a img {
   padding: 0.28em;
   box-sizing: border-box;
   object-fit: contain;
+  cursor: pointer;
 }
 img.dp {
   background: var(--dp) !important;
