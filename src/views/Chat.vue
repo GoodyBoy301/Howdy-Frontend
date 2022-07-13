@@ -17,7 +17,8 @@
       </li>
     </div>
     <div class="messages" @click="handleMenu">
-      <transition-group name="messages" tag="div" @enter="onEnter">
+      <!-- <transition-group name="messages" tag="div" @enter="onEnter"> -->
+      <div>
         <Message
           :Contact="Contact"
           v-for="(message, index) in Messages"
@@ -25,7 +26,8 @@
           :data-index="10 - index"
           :message="message"
         />
-      </transition-group>
+      </div>
+      <!-- </transition-group> -->
     </div>
     <div class="input" @click="handleMenu">
       <span
@@ -54,6 +56,11 @@ export default {
     const Contact = ref({});
     const Messages = ref([]);
 
+    let User;
+    get("user").then((data) => {
+      User = data;
+    });
+
     const handleMenu = () => {
       document.querySelector("#menuRemote").classList.remove("menuOn");
     };
@@ -62,25 +69,28 @@ export default {
       e.preventDefault();
       const content = e.target.innerText;
       e.target.innerText = "";
-      axios.post(`${process.env.VUE_APP_API}/messages`, {
-        content,
-        from: "me",
-        to: Contact.value.username,
-        date: new Date().toJSON(),
-        id: Math.random(),
-      });
+      axios
+        .post(`${process.env.VUE_APP_API}/messages`, {
+          content,
+          from: User.username,
+          to: Contact.value.username,
+          date: new Date().toJSON(),
+          id: 44,
+        })
+        .then((x) => console.log(x));
     };
     const handleSendButton = (e) => {
-      e.preventDefault();
       const content = e.target.previousSibling.innerText;
       e.target.previousSibling.innerText = "";
-      axios.post(`${process.env.VUE_APP_API}/messages`, {
-        content,
-        from: "me",
-        to: Contact.value.username,
-        date: new Date().toJSON(),
-        id: Math.random(),
-      });
+      axios
+        .post(`${process.env.VUE_APP_API}/messages`, {
+          content,
+          from: User.username,
+          to: Contact.value.username,
+          date: new Date().toJSON(),
+          id: Math.random(),
+        })
+        .then((x) => console.log(x));
     };
 
     const onEnter = (el) => {
