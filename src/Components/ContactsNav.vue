@@ -57,7 +57,7 @@
           :style="`--dp:${user.color}`"
         />
         <div>
-          <h3>{{ user.name }}</h3>
+          <h3>{{ getName(user) }}</h3>
           <p>Lorem ipsum dol...</p>
         </div>
         <div><p>Yesterday</p></div>
@@ -157,6 +157,16 @@ export default {
           !(person.username === User.username)
       )[0]?.pic;
     };
+    const getName = (user) => {
+      //if found from searches
+      if (user.username) return user.name;
+
+      return Users.value.filter(
+        (person) =>
+          (person.username === user.to || person.username === user.from) &&
+          !(person.username === User.username)
+      )[0]?.name;
+    };
     return {
       User,
       Logout,
@@ -171,6 +181,7 @@ export default {
       addTerm,
       getRoute,
       getPic,
+      getName,
     };
   },
   watch: {
