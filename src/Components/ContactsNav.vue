@@ -51,7 +51,7 @@
       >
         <!-- <router-link :to="user.username"> -->
         <img
-          :src="`/assets/DPs/${user.pic}.png`"
+          :src="`/assets/DPs/${getPic(user)}.png`"
           alt=""
           class="dp"
           :style="`--dp:${user.color}`"
@@ -147,6 +147,16 @@ export default {
       if (User.username === user.from) return user.to;
       return user.from;
     };
+    const getPic = (user) => {
+      //if found from searches
+      if (user.username) return user.pic;
+
+      return Users.value.filter(
+        (person) =>
+          (person.username === user.to || person.username === user.from) &&
+          !(person.username === User.username)
+      )[0]?.pic;
+    };
     return {
       User,
       Logout,
@@ -160,6 +170,7 @@ export default {
       handleAdd,
       addTerm,
       getRoute,
+      getPic,
     };
   },
   watch: {
