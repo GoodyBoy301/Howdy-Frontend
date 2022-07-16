@@ -58,7 +58,7 @@
         />
         <div>
           <h3>{{ getName(user) }}</h3>
-          <p>Lorem ipsum dol...</p>
+          <p>{{ getLastMessage(user) }}</p>
         </div>
         <div><p>Yesterday</p></div>
       </router-link>
@@ -167,6 +167,15 @@ export default {
           !(person.username === User.username)
       )[0]?.name;
     };
+    const getLastMessage = (user) => {
+      //if found from searches
+      if (user.username)
+        return user.bio?.slice(0, 15) + (user.bio?.length > 15 ? "..." : "");
+
+      return (
+        user.content.slice(0, 15) + (user.content.length > 15 ? "..." : "")
+      );
+    };
     return {
       User,
       Logout,
@@ -182,6 +191,7 @@ export default {
       getRoute,
       getPic,
       getName,
+      getLastMessage,
     };
   },
   watch: {
