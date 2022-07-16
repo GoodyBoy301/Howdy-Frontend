@@ -152,14 +152,13 @@ export default {
     const getDate = (user) => {
       if (user.username) return `@${user.username}`;
 
-      date = new Date(user.date).toLocaleTimeString([], {
+      return new Date(user.date).toLocaleTimeString([], {
         day: "2-digit",
         month: "short",
         hour: "2-digit",
         minute: "2-digit",
         hour12: false,
       });
-      return date;
     };
     const getPic = (user) => {
       //if found from searches
