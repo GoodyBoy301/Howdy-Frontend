@@ -60,7 +60,9 @@
           <h3>{{ getName(user) }}</h3>
           <p>{{ getLastMessage(user) }}</p>
         </div>
-        <div><p>Yesterday</p></div>
+        <div>
+          <p>{{ getDate(user) }}</p>
+        </div>
       </router-link>
       <!-- </li> -->
     </ul>
@@ -147,6 +149,18 @@ export default {
       if (User.username === user.from) return user.to;
       return user.from;
     };
+    const getDate = (user) => {
+      if (user.username) return `@${user.username}`;
+
+      date = new Date(user.date).toLocaleTimeString([], {
+        day: "2-digit",
+        month: "short",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      });
+      return date;
+    };
     const getPic = (user) => {
       //if found from searches
       if (user.username) return user.pic;
@@ -203,6 +217,7 @@ export default {
       getName,
       getLastMessage,
       getColor,
+      getDate,
     };
   },
   watch: {
