@@ -54,7 +54,7 @@
           :src="`/assets/DPs/${getPic(user)}.png`"
           alt=""
           class="dp"
-          :style="`--dp:${user.color}`"
+          :style="`--dp:${getColor(user)}`"
         />
         <div>
           <h3>{{ getName(user) }}</h3>
@@ -167,6 +167,16 @@ export default {
           !(person.username === User.username)
       )[0]?.name;
     };
+    const getColor = (user) => {
+      //if found from searches
+      if (user.username) return user.color;
+
+      return Users.value.filter(
+        (person) =>
+          (person.username === user.to || person.username === user.from) &&
+          !(person.username === User.username)
+      )[0]?.color;
+    };
     const getLastMessage = (user) => {
       //if found from searches
       if (user.username)
@@ -192,6 +202,7 @@ export default {
       getPic,
       getName,
       getLastMessage,
+      getColor,
     };
   },
   watch: {
