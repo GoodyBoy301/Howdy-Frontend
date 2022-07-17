@@ -43,13 +43,7 @@
         />
       </Search>
     </div>
-    <!-- <ul v-if="Contacts || filterContacts || Search"> -->
-    <transition-group
-      name="messages"
-      tag="ul"
-      @enter="onEnter"
-      v-if="Contacts || filterContacts || Search"
-    >
+    <ul v-if="Contacts || filterContacts || Search">
       <router-link
         v-for="user in Search || Add ? filterContacts : Contacts"
         :key="user.username"
@@ -71,8 +65,7 @@
         </div>
       </router-link>
       <!-- </li> -->
-    </transition-group>
-    <!-- </ul> -->
+    </ul>
   </aside>
 </template>
 
@@ -102,7 +95,7 @@ export default {
           .get(`${process.env.VUE_APP_API}/contacts?username=${data.username}`)
           .then(({ data }) => {
             Contacts.value = data;
-            //filterContacts.value = data;
+            // filterContacts.value = data;
           });
       }, 2000);
       setInterval(() => {
@@ -209,15 +202,12 @@ export default {
       );
     };
 
-    const onEnter = (el) => {
-      gsap.from(el, {
-        y: 10,
-        opacity: 0,
-        delay: el.dataset.index / 15,
-        ease: "power3",
-        duration: 0.2,
-      });
+    const getUsers = (Search, filterContacts, Contacts) => {
+      if (Search) return Search;
+      else if (filterContacts.value) return filterContacts;
+      else return Contacts;
     };
+
     return {
       User,
       Logout,
@@ -236,14 +226,20 @@ export default {
       getLastMessage,
       getColor,
       getDate,
-      onEnter,
+      getUsers,
     };
   },
   watch: {
     searchTerm(x) {
+      // this.filterContacts = [this.Contacts[0]];
       this.filterContacts = this.Contacts?.filter(
-        (contact) => contact.name?.includes(x) || contact.username?.includes(x)
+        (contact) =>
+          this.getName(contact)?.includes(x) ||
+          this.getDate(contact)?.includes(x) ||
+          contact.from?.includes(x) ||
+          contact.to?.includes(x)
       );
+      console.log(this.filterContacts);
     },
     addTerm(x) {
       this.filterContacts = this.Users?.filter(
