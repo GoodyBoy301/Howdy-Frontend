@@ -17,8 +17,8 @@
       </li>
     </div>
     <div class="messages" @click="handleMenu">
-      <!-- <transition-group name="messages" tag="div" @enter="onEnter"> -->
-      <div>
+      <transition-group name="messages" tag="div" @enter="onEnter">
+        <!-- <div> -->
         <Message
           :Contact="Contact"
           v-for="(message, index) in Messages"
@@ -26,8 +26,8 @@
           :data-index="10 - index"
           :message="message"
         />
-      </div>
-      <!-- </transition-group> -->
+        <!-- </div> -->
+      </transition-group>
     </div>
     <div class="input" @click="handleMenu">
       <span
@@ -104,6 +104,7 @@ export default {
     };
 
     return {
+      User,
       Contact,
       Messages,
       handleMenu,
@@ -121,17 +122,27 @@ export default {
     });
 
     this.loop = setInterval(() => {
-      axios.get(`${process.env.VUE_APP_API}/messages`).then(({ data }) => {
-        const sortedData = data
-          .filter(
-            (datum) =>
-              datum.to === this.Contact?.username ||
-              datum.from === this.Contact?.username
+      let User;
+      get("user").then((data) => {
+        User = data;
+        axios
+          .get(
+            `${process.env.VUE_APP_API}/messages?username=${User.username}&contact=${this.Contact.username}`
           )
-          .sort((x, y) => Number(new Date(y.date)) - Number(new Date(x.date)));
-        this.Messages = sortedData;
-      });
-    }, 1000);
+          .then(({ data }) => {
+            const sortedData = data
+              .filter(
+                (datum) =>
+                  datum.to === this.Contact?.username ||
+                  datum.from === this.Contact?.username
+              )
+              .sort(
+                (x, y) => Number(new Date(y.date)) - Number(new Date(x.date))
+              );
+            this.Messages = sortedData;
+          });
+      }, 1000);
+    });
     this.Messages = [];
   },
   watch: {
