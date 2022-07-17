@@ -25,13 +25,13 @@
       <div class="colors">
         <span
           v-for="i in [
-            'red',
-            'orange',
-            'yellow',
-            'green',
-            'blue',
-            'indigo',
-            'violet',
+            '#97260c',
+            '#97690c',
+            '#998b0c',
+            '#5f960d',
+            '#0d6496',
+            '#660d96',
+            '#960d62',
           ]"
           :key="i"
           :style="`--rare: ${i}`"
