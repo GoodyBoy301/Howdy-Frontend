@@ -43,7 +43,13 @@
         />
       </Search>
     </div>
-    <ul v-if="Contacts || filterContacts || Search">
+    <!-- <ul v-if="Contacts || filterContacts || Search"> -->
+    <transition-group
+      name="messages"
+      tag="ul"
+      @enter="onEnter"
+      v-if="Contacts || filterContacts || Search"
+    >
       <router-link
         v-for="user in Search || Add ? filterContacts : Contacts"
         :key="user.username"
@@ -65,7 +71,8 @@
         </div>
       </router-link>
       <!-- </li> -->
-    </ul>
+    </transition-group>
+    <!-- </ul> -->
   </aside>
 </template>
 
@@ -74,6 +81,8 @@ import { ref } from "vue";
 import { clear, get } from "idb-keyval";
 import axios from "axios";
 import Search from "./Search.vue";
+import gsap from "gsap";
+
 export default {
   components: { Search },
   props: ["setLoggedIn"],
@@ -199,6 +208,16 @@ export default {
         user.content.slice(0, 15) + (user.content.length > 15 ? "..." : "")
       );
     };
+
+    const onEnter = (el) => {
+      gsap.from(el, {
+        y: 10,
+        opacity: 0,
+        delay: el.dataset.index / 15,
+        ease: "power3",
+        duration: 0.2,
+      });
+    };
     return {
       User,
       Logout,
@@ -217,6 +236,7 @@ export default {
       getLastMessage,
       getColor,
       getDate,
+      onEnter,
     };
   },
   watch: {
