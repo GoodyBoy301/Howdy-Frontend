@@ -81,7 +81,7 @@ export default {
           }
         });
 
-        toggleProceed();
+        // toggleProceed();
       } else {
         axios.get(`${process.env.VUE_APP_API}/users`).then(({ data }) => {
           const [found] = data.filter(
