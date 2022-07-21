@@ -140,6 +140,10 @@ export default {
                 (x, y) => Number(new Date(y.date)) - Number(new Date(x.date))
               );
             this.Messages = sortedData;
+          })
+          .catch((e) => {
+            console.log("error!", e);
+            clearInterval(this.loop);
           });
       }, 5000);
     });
