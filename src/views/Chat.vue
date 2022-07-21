@@ -141,7 +141,7 @@ export default {
               );
             this.Messages = sortedData;
           });
-      }, 1000);
+      }, 5000);
     });
     this.Messages = [];
   },
