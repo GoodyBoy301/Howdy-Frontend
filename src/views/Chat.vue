@@ -265,10 +265,10 @@ export default {
     border-radius: unset;
   }
   .messages {
-    height: calc(90vh - 15em);
+    height: calc(87vh - 15em);
   }
   .input {
-    height: 10em;
+    height: 12em;
   }
 }
 

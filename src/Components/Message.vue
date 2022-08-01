@@ -21,14 +21,14 @@ export default {
   props: ["Contact", "message"],
   setup() {
     const onEnter = (el) => {
-      gsap.from(el, {
-        y: 50,
-        opacity: 0,
-        delay: el.dataset.index / 150,
-        ease: "ease-out",
-        position: absolute,
-        duration: 0.2,
-      });
+      // gsap.from(el, {
+      //   y: 50,
+      //   opacity: 0,
+      //   delay: el.dataset.index / 150,
+      //   ease: "ease-out",
+      //   position: absolute,
+      //   duration: 0.2,
+      // });
     };
     return { onEnter };
   },
@@ -66,7 +66,6 @@ article > img.dp {
   flex-direction: row;
 }
 
-
 time {
   margin: 0 6em;
   font-size: 0.55rem;
@@ -74,11 +73,11 @@ time {
   margin-right: auto;
   width: fit-content;
 }
-  time.sent {
-    margin-left: auto;
-    margin-right: 2em;
-    display: block;
-  }
+time.sent {
+  margin-left: auto;
+  margin-right: 2em;
+  display: block;
+}
 
 time.received {
   margin-right: auto;
@@ -88,7 +87,7 @@ time.received {
 
 /* Mobile Devices*/
 @media (max-width: 576px) {
-    article {
+  article {
     width: 82.5%;
     font-weight: 200;
     letter-spacing: 1.2px;
@@ -96,7 +95,7 @@ time.received {
   article p {
     margin: 0 0.75em;
   }
-    time {
+  time {
     font-size: 0.65rem;
     font-weight: 200;
     letter-spacing: 1.2px;
