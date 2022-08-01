@@ -96,13 +96,13 @@ export default {
     };
 
     const onEnter = (el) => {
-      gsap.from(el, {
-        y: 10,
-        opacity: 0,
-        delay: el.dataset.index / 15,
-        ease: "power3",
-        duration: 0.2,
-      });
+      // gsap.from(el, {
+      //   y: 10,
+      //   opacity: 0,
+      //   delay: el.dataset.index / 15,
+      //   ease: "power3",
+      //   duration: 0.2,
+      // });
     };
 
     return {
@@ -125,32 +125,35 @@ export default {
     });
 
     this.loop = setInterval(() => {
-      // if (this.done) {
-      this.Messages = [];
-      let User;
-      get("user").then((data) => {
-        User = data;
-        axios
-          .get(
-            `${process.env.VUE_APP_API}/messages?username=${User.username}&contact=${this.Contact.username}`
-          )
-          .then(({ data }) => {
-            const sortedData = data
-              .filter(
-                (datum) =>
-                  datum.to === this.Contact?.username ||
-                  datum.from === this.Contact?.username
-              )
-              .sort(
-                (x, y) => Number(new Date(y.date)) - Number(new Date(x.date))
-              );
-            this.Messages = sortedData;
-          })
-          .catch((e) => {
-            console.log("error!", e);
-            //clearInterval(this.loop);
-          });
-      });
+      if (this.done) {
+        this.done = false;
+        this.Messages = [];
+        let User;
+        get("user").then((data) => {
+          User = data;
+          axios
+            .get(
+              `${process.env.VUE_APP_API}/messages?username=${User.username}&contact=${this.Contact.username}`
+            )
+            .then(({ data }) => {
+              const sortedData = data
+                .filter(
+                  (datum) =>
+                    datum.to === this.Contact?.username ||
+                    datum.from === this.Contact?.username
+                )
+                .sort(
+                  (x, y) => Number(new Date(y.date)) - Number(new Date(x.date))
+                );
+              this.Messages = sortedData;
+            })
+            .catch((e) => {
+              console.log("error!", e);
+              //clearInterval(this.loop);
+            });
+        });
+        this.done = true;
+      }
     }, 5000);
   },
   watch: {
