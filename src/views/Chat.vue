@@ -262,10 +262,10 @@ export default {
     border-radius: unset;
   }
   .messages {
-    height: calc(97vh - 15em);
+    height: calc(90vh - 15em);
   }
   .input {
-    height: 6em;
+    height: 10em;
   }
 }
 
