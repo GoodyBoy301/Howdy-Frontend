@@ -2,9 +2,9 @@
   <section>
     <article :class="message.to === Contact.username ? `sent` : `received`">
       <img src="/assets/DPs/male01.png" alt="" class="dp" />
-      <transition @enter="onEnter">
-        <p>{{ message.content }}</p>
-      </transition>
+      <!-- <transition @enter="onEnter"> -->
+      <p>{{ message.content }}</p>
+      <!-- </transition> -->
     </article>
     <time :class="message.to === Contact.username ? `sent` : `received`">{{
       new Date(message.date).toLocaleTimeString([], {

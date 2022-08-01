@@ -145,8 +145,15 @@ export default {
               .sort(
                 (x, y) => Number(new Date(y.date)) - Number(new Date(x.date))
               );
+            if (
+              this.Messages[0].content !== sortedData[0].content ||
+              this.Messages[this.Messages.length - 1].content !==
+                sortedData[sortedData.length - 1].content
+            ) {
+              this.Messages = sortedData;
+            }
             // this.Messages = sortedData;
-            this.Messages.push(sortedData[sortedData.length - 1]);
+            // this.Messages.push(sortedData[sortedData.length - 1]);
           })
           .catch((e) => {
             console.log("error!", e);
@@ -266,10 +273,10 @@ export default {
     border-radius: unset;
   }
   .messages {
-    height: calc(95vh - 15em);
+    height: calc(87vh - 15em);
   }
   .input {
-    height: 13em;
+    height: 12em;
   }
 }
 

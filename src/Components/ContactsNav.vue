@@ -97,12 +97,12 @@ export default {
             Contacts.value = data;
             // filterContacts.value = data;
           });
-      }, 10000);
+      }, 5000);
       setInterval(() => {
         axios.get(`${process.env.VUE_APP_API}/users`).then(({ data }) => {
           Users.value = data;
         });
-      }, 15000);
+      }, 5000);
     });
 
     const filterContacts = ref([]);
