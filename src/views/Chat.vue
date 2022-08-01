@@ -55,6 +55,8 @@ export default {
     let loop;
     const Contact = ref({});
     const Messages = ref([]);
+    const OldMessages = ref([]);
+    const done = ref(true);
 
     let User;
     get("user").then((data) => {
@@ -107,6 +109,7 @@ export default {
       User,
       Contact,
       Messages,
+      OldMessages,
       handleMenu,
       handleSend,
       handleSendButton,
@@ -122,6 +125,8 @@ export default {
     });
 
     this.loop = setInterval(() => {
+      // if (this.done) {
+      this.Messages = [];
       let User;
       get("user").then((data) => {
         User = data;
@@ -143,11 +148,10 @@ export default {
           })
           .catch((e) => {
             console.log("error!", e);
-            clearInterval(this.loop);
+            //clearInterval(this.loop);
           });
-      }, 5000);
-    });
-    this.Messages = [];
+      });
+    }, 5000);
   },
   watch: {
     $route() {
@@ -258,10 +262,10 @@ export default {
     border-radius: unset;
   }
   .messages {
-    height: calc(99vh - 15em);
+    height: calc(97vh - 15em);
   }
   .input {
-    height: 5em;
+    height: 6em;
   }
 }
 
