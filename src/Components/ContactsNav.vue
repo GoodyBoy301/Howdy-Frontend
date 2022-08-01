@@ -45,7 +45,9 @@
     </div>
     <ul v-if="Contacts || filterContacts || Search">
       <router-link
-        v-for="user in Search || Add ? filterContacts : Contacts"
+        v-for="user in Search || Add
+          ? user in filterContacts
+          : user in Contacts"
         :key="user.username"
         :to="getRoute(user)"
       >
