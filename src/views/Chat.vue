@@ -125,35 +125,35 @@ export default {
     });
 
     this.loop = setInterval(() => {
-      if (this.done) {
-        this.done = false;
-        this.Messages = [];
-        let User;
-        get("user").then((data) => {
-          User = data;
-          axios
-            .get(
-              `${process.env.VUE_APP_API}/messages?username=${User.username}&contact=${this.Contact.username}`
-            )
-            .then(({ data }) => {
-              const sortedData = data
-                .filter(
-                  (datum) =>
-                    datum.to === this.Contact?.username ||
-                    datum.from === this.Contact?.username
-                )
-                .sort(
-                  (x, y) => Number(new Date(y.date)) - Number(new Date(x.date))
-                );
-              this.Messages = sortedData;
-            })
-            .catch((e) => {
-              console.log("error!", e);
-              //clearInterval(this.loop);
-            });
-        });
-        this.done = true;
-      }
+      // if (this.done) {
+      this.done = false;
+      this.Messages = [];
+      let User;
+      get("user").then((data) => {
+        User = data;
+        axios
+          .get(
+            `${process.env.VUE_APP_API}/messages?username=${User.username}&contact=${this.Contact.username}`
+          )
+          .then(({ data }) => {
+            const sortedData = data
+              .filter(
+                (datum) =>
+                  datum.to === this.Contact?.username ||
+                  datum.from === this.Contact?.username
+              )
+              .sort(
+                (x, y) => Number(new Date(y.date)) - Number(new Date(x.date))
+              );
+            this.Messages = sortedData;
+          })
+          .catch((e) => {
+            console.log("error!", e);
+            //clearInterval(this.loop);
+          });
+      });
+      // this.done = true;
+      // }
     }, 5000);
   },
   watch: {
