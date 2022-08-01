@@ -95,7 +95,9 @@ export default {
           .get(`${process.env.VUE_APP_API}/contacts?username=${data.username}`)
           .then(({ data }) => {
             Contacts.value = data;
-            // filterContacts.value = data;
+            if (!filterContacts) {
+              filterContacts.value = data;
+            }
           });
       }, 5000);
       setInterval(() => {
@@ -239,7 +241,7 @@ export default {
           contact.from?.includes(x) ||
           contact.to?.includes(x)
       );
-      console.log(this.filterContacts);
+      // console.log(this.filterContacts);
     },
     addTerm(x) {
       this.filterContacts = this.Users?.filter(
