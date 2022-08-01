@@ -11,7 +11,7 @@
         <img :src="`/assets/DPs/${Contact.pic}.png`" alt="" class="dp" style />
         <div>
           <h3>{{ Contact.name }}</h3>
-          <p>{{ Contact.bio.slice(0, 15) }}</p>
+          <p>{{ Contact.bio.slice(0, 25) }}</p>
         </div>
         <Menu :Contact="Contact" />
       </li>
@@ -150,6 +150,9 @@ export default {
               this.Messages[this.Messages.length - 1].content !==
                 sortedData[sortedData.length - 1].content
             ) {
+              this.Messages = sortedData;
+            }
+            if (!this.Messages) {
               this.Messages = sortedData;
             }
             // this.Messages = sortedData;
