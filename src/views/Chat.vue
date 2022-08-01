@@ -11,7 +11,7 @@
         <img :src="`/assets/DPs/${Contact.pic}.png`" alt="" class="dp" style />
         <div>
           <h3>{{ Contact.name }}</h3>
-          <p>Online 8 mins ago</p>
+          <p>{{ Contact.bio.slice(0, 15) }}</p>
         </div>
         <Menu :Contact="Contact" />
       </li>
