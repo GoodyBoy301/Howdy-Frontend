@@ -96,6 +96,7 @@ export default {
     };
 
     const onEnter = (el) => {
+      console.log(4)
       // gsap.from(el, {
       //   y: 10,
       //   opacity: 0,
