@@ -1,5 +1,5 @@
 <template>
-  <section class="chat" :style="`--dp:${Contact.color}`">
+  <section class="chat" :style="`--dp:${Contact?.color}`">
     <div class="heading bar">
       <li class="topbar">
         <img
@@ -11,7 +11,7 @@
         <img :src="`/assets/DPs/${Contact.pic}.png`" alt="" class="dp" style />
         <div>
           <h3>{{ Contact.name }}</h3>
-          <p>{{ Contact.bio.slice(0, 25) }}</p>
+          <p>{{ Contact.bio?.slice(0, 25) }}</p>
         </div>
         <Menu :Contact="Contact" />
       </li>
