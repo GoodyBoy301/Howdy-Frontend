@@ -43,14 +43,14 @@
         />
       </Search>
     </div>
-    <!-- <ul v-if="Contacts || filterContacts || Search"> -->
-      <ul><router-link
+    <ul v-if="Contacts || filterContacts || Search">
+      <h1>debugging</h1><router-link
         v-for="user in Search || Add
           ? user in filterContacts
           : user in Contacts"
         :key="user.username"
         :to="getRoute(user)"
-      ><h1>debugging</h1>
+      >
         <!-- <router-link :to="user.username"> -->
         <img
           :src="`/assets/DPs/${getPic(user)}.png`"
