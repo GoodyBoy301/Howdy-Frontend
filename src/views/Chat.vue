@@ -133,7 +133,7 @@ export default {
         User = data;
         axios
           .get(
-            `${process.env.VUE_APP_API}/messages?username=${User.username}&contact=${this.Contact.username}`
+            `${process.env.VUE_APP_API}/messages?username=${User.username}&contact=${this.Contact?.username}`
           )
           .then(({ data }) => {
             const sortedData = data
