@@ -8,10 +8,10 @@
           class="mobile back"
           @click="$router.back()"
         />
-        <img :src="`/assets/DPs/${Contact.pic}.png`" alt="" class="dp" style />
+        <img :src="`/assets/DPs/${Contact?.pic}.png`" alt="" class="dp" style />
         <div>
-          <h3>{{ Contact.name }}</h3>
-          <p>{{ Contact.bio?.slice(0, 25) }}</p>
+          <h3>{{ Contact?.name }}</h3>
+          <p>{{ Contact?.bio?.slice(0, 25) }}</p>
         </div>
         <Menu :Contact="Contact" />
       </li>
