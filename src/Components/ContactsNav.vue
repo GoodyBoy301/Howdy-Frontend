@@ -242,6 +242,7 @@ export default {
       getColor,
       getDate,
       getUsers,
+      getArray
     };
   },
   watch: {
