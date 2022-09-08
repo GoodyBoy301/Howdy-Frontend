@@ -128,7 +128,7 @@ export default {
     this.loop = setInterval(() => {
       // if (this.done) {
       this.done = false;
-      this.Messages = [];
+      // this.Messages = [];
       let User;
       get("user").then((data) => {
         User = data;
