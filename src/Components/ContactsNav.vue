@@ -43,8 +43,8 @@
         />
       </Search>
     </div>
-    <ul v-if="Contacts || filterContacts || Search">
-      <router-link
+    <!-- <ul v-if="Contacts || filterContacts || Search"> -->
+      <ul><router-link
         v-for="user in Search || Add
           ? user in filterContacts
           : user in Contacts"
