@@ -50,7 +50,7 @@
           : user in Contacts"
         :key="user.username"
         :to="getRoute(user)"
-      >
+      ><h1>debugging</h1>
         <!-- <router-link :to="user.username"> -->
         <img
           :src="`/assets/DPs/${getPic(user)}.png`"
