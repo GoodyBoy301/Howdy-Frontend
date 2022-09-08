@@ -45,7 +45,7 @@
     </div>
     <ul v-if="Contacts || filterContacts || Search">
       <router-link
-        v-for="user in Contacts"
+        v-for="user in getArray(Search,Add, filterContacts, Contacts)"
         :key="user.username"
         :to="getRoute(user)"
       >
@@ -216,6 +216,12 @@ export default {
       else if (filterContacts.value) return filterContacts;
       else return Contacts;
     };
+
+    const getArray = (Search,Add, filterContacts, Contacts) => {
+      if (Search) return Search;
+      if (Add) return filterContacts
+      return Contacts
+    }
 
     return {
       User,
