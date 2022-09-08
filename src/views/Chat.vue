@@ -17,8 +17,8 @@
       </li>
     </div>
     <div class="messages" @click="handleMenu">
-      <transition-group name="messages" tag="div" @enter="onEnter">
-        <!-- <div> -->
+      <!-- <transition-group name="messages" tag="div" @enter="onEnter"> -->
+        <div>
         <Message
           :Contact="Contact"
           v-for="(message, index) in Messages"
@@ -26,8 +26,8 @@
           :data-index="10 - index"
           :message="message"
         />
-        <!-- </div> -->
-      </transition-group>
+        </div>
+      <!-- </transition-group> -->
     </div>
     <div class="input" @click="handleMenu">
       <span
