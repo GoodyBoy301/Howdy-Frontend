@@ -1,12 +1,12 @@
 <template>
   <section
     class="profile"
-    :style="`--dp:${User.color}`"
+    :style="`--dp:${User?.color}`"
     :class="logout && `hide`"
   >
     <div class="banner">
       <img
-        :src="`/assets/DPs/${User.pic}.png`"
+        :src="`/assets/DPs/${User?.pic}.png`"
         alt=""
         class="previewDP profileDP"
       />
